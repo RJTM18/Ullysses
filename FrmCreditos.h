@@ -48,11 +48,17 @@ namespace Lab2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"FrmCreditos";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// FrmCreditos
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(661, 565);
+			this->Name = L"FrmCreditos";
+			this->Text = L"FrmCreditos";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};

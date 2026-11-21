@@ -14,10 +14,10 @@ protected:
 	int filas, columnas;       
 	int indiceX, indiceY;      
 	             
-	int escala;
+	double escala;
 
 public:
-	Sprite(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int filas, int columnas, int velocidad, int escala) {
+	Sprite(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int filas, int columnas, int velocidad, double escala) {
 		this->x = x;
 		this->y = y;
 		this->anchoSpriteSheet = anchoSpriteSheet;
@@ -49,9 +49,16 @@ public:
 	//HAMP Explica: rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	Rectangle getRectangle()
 	{
-		return Rectangle(x + anchoSpriteSheet / 5, y + altoSpriteSheet / 5, anchoSpriteSheet * 3 / 5, altoSpriteSheet * 3 / 5);
-	}
+		int ancho = anchoFrame * escala;
+		int alto = altoFrame * escala;
 
+		return Rectangle(
+			x + ancho / 4,
+			y + alto / 4,
+			ancho * 2/4,
+			alto * 2/4
+		);
+	}
 	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
 	void dibujarRectangulo(Graphics^ g)
 	{

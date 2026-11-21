@@ -97,6 +97,7 @@ namespace Lab2 {
 			this->label1->BackColor = System::Drawing::Color::Transparent;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei Light", 25.8F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Red;
 			this->label1->Location = System::Drawing::Point(377, 116);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(134, 57);

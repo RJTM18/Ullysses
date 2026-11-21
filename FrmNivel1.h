@@ -30,13 +30,22 @@ namespace Ullyses {
 		}
 
 	private:
+		int contadorMovimientos = 0;
 		Juego* juego;
 		Bitmap^ fondoJuego;
 		Bitmap^ Leopold;
 		Direccion TeclaPresionada;
-
+		Bitmap^ AutoNegro;
 	private: System::Windows::Forms::Panel^ pnlSpriteScreen;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Panel^ pnlEstadistica;
+	private: System::Windows::Forms::Label^ lblVida;
+
+	private: System::Windows::Forms::Label^ lblNombre;
+	private: System::Windows::Forms::Label^ lblMetros;
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 #pragma region Windows Form Designer generated code
@@ -47,37 +56,94 @@ namespace Ullyses {
 		void InitializeComponent(void) {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlSpriteScreen = (gcnew System::Windows::Forms::Panel());
+			this->pnlEstadistica = (gcnew System::Windows::Forms::Panel());
+			this->lblMetros = (gcnew System::Windows::Forms::Label());
+			this->lblVida = (gcnew System::Windows::Forms::Label());
+			this->lblNombre = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pnlSpriteScreen->SuspendLayout();
+			this->pnlEstadistica->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlSpriteScreen
 			// 
+			this->pnlSpriteScreen->Controls->Add(this->pnlEstadistica);
 			this->pnlSpriteScreen->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteScreen->Location = System::Drawing::Point(0, 0);
-			this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4);
 			this->pnlSpriteScreen->Name = L"pnlSpriteScreen";
 			this->pnlSpriteScreen->Size = System::Drawing::Size(1768, 815);
 			this->pnlSpriteScreen->TabIndex = 0;
 			this->pnlSpriteScreen->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlSpriteScreen_Paint);
+			// 
+			// pnlEstadistica
+			// 
+			this->pnlEstadistica->BackColor = System::Drawing::SystemColors::Info;
+			this->pnlEstadistica->Controls->Add(this->lblMetros);
+			this->pnlEstadistica->Controls->Add(this->lblVida);
+			this->pnlEstadistica->Controls->Add(this->lblNombre);
+			this->pnlEstadistica->Dock = System::Windows::Forms::DockStyle::Right;
+			this->pnlEstadistica->Location = System::Drawing::Point(1413, 0);
+			this->pnlEstadistica->Name = L"pnlEstadistica";
+			this->pnlEstadistica->Size = System::Drawing::Size(355, 815);
+			this->pnlEstadistica->TabIndex = 0;
+			// 
+			// lblMetros
+			// 
+			this->lblMetros->AutoSize = true;
+			this->lblMetros->Font = (gcnew System::Drawing::Font(L"Matura MT Script Capitals", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblMetros->Location = System::Drawing::Point(104, 353);
+			this->lblMetros->Name = L"lblMetros";
+			this->lblMetros->Size = System::Drawing::Size(152, 37);
+			this->lblMetros->TabIndex = 3;
+			this->lblMetros->Text = L"Metros: 0";
+			this->lblMetros->Click += gcnew System::EventHandler(this, &FrmNivel1::lblMetros_Click);
+			// 
+			// lblVida
+			// 
+			this->lblVida->AutoSize = true;
+			this->lblVida->Font = (gcnew System::Drawing::Font(L"Magneto", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblVida->Location = System::Drawing::Point(120, 222);
+			this->lblVida->Name = L"lblVida";
+			this->lblVida->Size = System::Drawing::Size(136, 32);
+			this->lblVida->TabIndex = 2;
+			this->lblVida->Text = L"Vidas: 3";
+			this->lblVida->Click += gcnew System::EventHandler(this, &FrmNivel1::lblVida_Click);
+			// 
+			// lblNombre
+			// 
+			this->lblNombre->AutoSize = true;
+			this->lblNombre->Font = (gcnew System::Drawing::Font(L"Matura MT Script Capitals", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblNombre->Location = System::Drawing::Point(35, 48);
+			this->lblNombre->Name = L"lblNombre";
+			this->lblNombre->Size = System::Drawing::Size(308, 45);
+			this->lblNombre->TabIndex = 0;
+			this->lblNombre->Text = L"Nivel 1: Leopold";
 			// 
 			// timer1
 			// 
 			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
 			// 
-			// FrmNivel2
+			// FrmNivel1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1768, 815);
 			this->Controls->Add(this->pnlSpriteScreen);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->Name = L"FrmNivel2";
+			this->Margin = System::Windows::Forms::Padding(4);
+			this->Name = L"FrmNivel1";
 			this->Text = L"Juego";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel1::FrmJuego_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmJuego_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmJuego_KeyUp);
+			this->pnlSpriteScreen->ResumeLayout(false);
+			this->pnlEstadistica->ResumeLayout(false);
+			this->pnlEstadistica->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -91,11 +157,10 @@ namespace Ullyses {
 
 	private: System::Void FrmJuego_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (pnlSpriteScreen->Width <= 0 || pnlSpriteScreen->Height <= 0) return;
-
 		if (juego == nullptr) juego = new Juego(pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 		fondoJuego = cargarImagen("Sprites\\NivelUno.png");
 		Leopold = cargarImagen("Sprites\\LeopoldBloom.png");
-
+		
 		juego->crearLeopold(
 			/* Posicion X */			30,
 			/* Posicion Y */			(int)(pnlSpriteScreen->Height / 2),
@@ -104,23 +169,80 @@ namespace Ullyses {
 			/* columnas */				4,
 			/* filas */					4,
 			/* velocidad */				25,
-			/* escala (1/2/3) */		1
+			/* escala (1/2/3) */		0.6
 		);
+		AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
+
+		int carriles[3] = { 325, 400, 600 };
+		
+			for (int i = 0; i < 3; i++) {
+				juego->crearCarro(
+					pnlSpriteScreen->Width + i * 500,
+					carriles[i],
+					AutoNegro->Width,
+					AutoNegro->Height,
+					4, 4, 20, 0.8
+				);
+			}
+		
 	};
 
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		juego->moverJunior(TeclaPresionada, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-		Graphics^ canvas = pnlSpriteScreen->CreateGraphics();
-		BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteScreen->ClientRectangle);
-		buffer->Graphics->DrawImage(fondoJuego, 0, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+	if (juego == nullptr || fondoJuego == nullptr ||
+		Leopold == nullptr || AutoNegro == nullptr) return;
 
-		juego->dibujarJunior(buffer->Graphics, Leopold);
-		buffer->Render(canvas);
+	juego->moverLeopold(TeclaPresionada,
+		pnlSpriteScreen->Width - pnlEstadistica->Width,
+		pnlSpriteScreen->Height);
 
-		delete buffer;
-		delete canvas;
-	};
+	if (TeclaPresionada == Derecha)
+	{
+		contadorMovimientos++;
+
+		if (contadorMovimientos >= 5)
+		{
+			juego->aumentarMetros(5);
+			contadorMovimientos = 0;
+		}
+
+		
+	}
+	juego->moverCarros();
+
+	Graphics^ canvas = pnlSpriteScreen->CreateGraphics();
+	BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteScreen->ClientRectangle);
+	
+	buffer->Graphics->DrawImage(fondoJuego, 0, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+
+	juego->dibujarCarros(buffer->Graphics, AutoNegro);
+	juego->dibujarLeopold(buffer->Graphics, Leopold);
+	juego->dibujarColisiones(buffer->Graphics);
+	buffer->Render(canvas);
+
+	delete buffer;
+	delete canvas;
+
+	juego->verificarColisiones();
+
+	lblVida->Text = "Vidas: " + juego->getVida().ToString();
+	lblMetros->Text = "Metros: " + juego->metros().ToString();
+
+	if (juego->gano())
+	{
+		timer1->Stop();
+		MessageBox::Show("Ganaste!!!");
+		return;
+	}
+
+	if (juego->perdio())
+	{
+		timer1->Stop();
+		MessageBox::Show("GAME OVER");
+	}
+	
+};
+
 
 	private: System::Void FrmJuego_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::Down || e->KeyCode == Keys::S)	TeclaPresionada = Abajo;
@@ -137,6 +259,11 @@ namespace Ullyses {
 	};
 	private: System::Void pnlSpriteScreen_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
+private: System::Void lblVida_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lblMetros_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+}
 };
 }
 

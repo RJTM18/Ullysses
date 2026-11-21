@@ -143,6 +143,7 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Carro.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FrmCreditos.h">
       <FileType>CppForm</FileType>
@@ -195,6 +196,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmCreditos.resx">
+      <DependentUpon>FrmCreditos.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuInicio.resx">
       <DependentUpon>FrmMenuInicio.h</DependentUpon>
     </EmbeddedResource>
