@@ -1,20 +1,19 @@
 #pragma once
-#include "Junior.h"
 #include "Debug.h"
 #include <vector>
-
+#include "Leopold.h"
 class Juego {
 public:
 	Juego(int anchoPantallaPixel, int altoPantallaPixel) : anchoPantalla(anchoPantallaPixel), altoPantalla(altoPantallaPixel) {};
 	~Juego() { 
-		delete junior; 
+		delete leopold; 
 	};
 
-	void crearJunior(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, int escala) { junior = new Junior(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala); }
-	void dibujarJunior(Graphics^ g, Bitmap^ imgJunior) { junior->dibujar(g, imgJunior); }
+	void crearLeopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, int escala) { leopold = new Leopold(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala); }
+	void dibujarJunior(Graphics^ g, Bitmap^ imgJunior) { leopold->dibujar(g, imgJunior); }
 
 	void moverJunior(Direccion tecla, int AnchoPantallaSprite, int AltoPantallaSprite) { 
-		junior->mover(tecla, AnchoPantallaSprite, AltoPantallaSprite); 
+		leopold->mover(tecla, AnchoPantallaSprite, AltoPantallaSprite); 
 
 	}
 
@@ -23,7 +22,7 @@ private:
 	int anchoPantalla;
 	int altoPantalla;
 
-	Junior* junior;
+	Leopold* leopold;
 	// std::vector<Debug*> debugs;
 };
 

@@ -1,12 +1,12 @@
 #pragma once
 #include "Sprite.h"
 
-class Junior : public Sprite {
+class Leopold : public Sprite {
 public:
-	Junior(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, int escala) :
+	Leopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, int escala) :
 		Sprite(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala) {
 	};
-	~Junior() {};
+	~Leopold() {};
 
 	void mover(Direccion tecla, int AnchoPantallaSprite, int AltoPantallaSprite) override {
 		//HAMP Explica: PASO 1 - si hay flecha, dx y dy dicen hacia donde ir y se avanza velocidad pixeles
@@ -33,10 +33,10 @@ public:
 	};
 
 	void Animar(Direccion tecla) {
-		if (tecla == Abajo)		indiceY = 0; 
-		if (tecla == Izquierda) indiceY = 1;
-		if (tecla == Derecha)	indiceY = 2;
-		if (tecla == Arriba)	indiceY = 3;
+		if (tecla == Abajo)		indiceY = 0;
+		if (tecla == Izquierda) indiceY = 2;
+		if (tecla == Derecha)	indiceY = 3;
+		if (tecla == Arriba)	indiceY = 1;
 
 		if (tecla != Ninguno) {
 			indiceX++;
@@ -44,14 +44,5 @@ public:
 		}
 		else { indiceX = 0; }
 	};
-
-	void lanzarDebug() {
-		if (estaLanzando) return;
-		estaLanzando = true;
-	}
-
-private:
-	Direccion tecla;
-	bool estaLanzando;
 
 };

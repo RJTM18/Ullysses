@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "FrmNivel2.h"
+#include "FrmNivel1.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,7 +8,7 @@ using namespace System::Windows::Forms;
 int main() {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    Application::Run(gcnew Ullyses::FrmNivel2());
+    Application::Run(gcnew Ullyses::FrmNivel1());
     return 0;
 }
 

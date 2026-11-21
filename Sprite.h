@@ -36,32 +36,15 @@ public:
 
 	virtual ~Sprite() {}
 
-	// Cada hijo define como se mueve
+
 	virtual void mover(Direccion tecla, int limiteAncho, int limiteAlto) = 0;
 
-	//Bitmap^ imagen => Sprite que es un conjunto de Frames (cuadros) que se recortan y se dibujan en el panel
-	//Graphics^ g => lienzo donde se dibuja el sprite
+
 	void dibujar(Graphics^ g, Bitmap^ imagen)	{
-		//HAMP Explica: origen = cuadro que se recorta, destino = donde se pinta
 		Rectangle recorte = Rectangle(indiceX * anchoFrame, indiceY * altoFrame, anchoFrame, altoFrame);
 		Rectangle destino = Rectangle(x, y, (int)(anchoFrame * escala), (int)(altoFrame * escala));
 		g->DrawImage(imagen, destino, recorte, GraphicsUnit::Pixel);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	//HAMP Explica: rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	Rectangle getRectangle()

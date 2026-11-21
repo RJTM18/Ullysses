@@ -45,7 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -150,17 +150,17 @@
     <ClInclude Include="FrmMenuInicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="FrmNivel1.h">
+    <ClInclude Include="FrmNivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="FrmNivel2.h">
+    <ClInclude Include="FrmNivel1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmNivel3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Juego.h" />
-    <ClInclude Include="Junior.h" />
+    <ClInclude Include="Leopold.h" />
     <ClInclude Include="LogicaGeneral.h" />
     <ClInclude Include="LogicaNivel1.h" />
     <ClInclude Include="LogicaNivel2.h" />
@@ -193,6 +193,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmNivel1.resx">
+      <DependentUpon>FrmNivel1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNivel2.resx">
+      <DependentUpon>FrmNivel2.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

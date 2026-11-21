@@ -38,7 +38,7 @@
     <ClInclude Include="Juego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FrmNivel2.h">
+    <ClInclude Include="FrmNivel1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LogicaGeneral.h">
@@ -56,9 +56,6 @@
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="Junior.h">
-      <Filter>Header Files\Sprites</Filter>
-    </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Header Files\Sprites</Filter>
     </ClInclude>
@@ -68,11 +65,14 @@
     <ClInclude Include="FrmCreditos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FrmNivel1.h">
+    <ClInclude Include="FrmNivel2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FrmNivel3.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Leopold.h">
+      <Filter>Header Files\Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
