@@ -19,6 +19,8 @@ namespace Ullyses {
 		FrmNivel1(void) {
 			InitializeComponent();
 			juego = nullptr;
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
 
 	protected:
