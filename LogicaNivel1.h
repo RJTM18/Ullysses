@@ -53,7 +53,7 @@ public:
 		{
 			contadorMovimientos++;
 
-			if (contadorMovimientos >= 5)
+			if (contadorMovimientos >= 10)
 			{
 				sumarMetros(5);
 				contadorMovimientos = 0;
