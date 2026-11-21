@@ -36,21 +36,19 @@ public:
 
 	virtual ~Sprite() {}
 
-
-	virtual void mover(Direccion tecla, int limiteAncho, int limiteAlto) = 0;
-
+	virtual void mover(Direccion tecla, int limiteAnchoPantalla, int limiteAltoPantalla) = 0;
 
 	void dibujar(Graphics^ g, Bitmap^ imagen)	{
-		Rectangle recorte = Rectangle(indiceX * anchoFrame, indiceY * altoFrame, anchoFrame, altoFrame);
-		Rectangle destino = Rectangle(x, y, (int)(anchoFrame * escala), (int)(altoFrame * escala));
+		Rectangle recorte (indiceX * anchoFrame, indiceY * altoFrame, anchoFrame, altoFrame);
+		Rectangle destino (x, y, (int)(anchoFrame * escala), (int)(altoFrame * escala));
 		g->DrawImage(imagen, destino, recorte, GraphicsUnit::Pixel);
 	}
 
 	//HAMP Explica: rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	Rectangle getRectangle()
 	{
-		int ancho = anchoFrame * escala;
-		int alto = altoFrame * escala;
+		int ancho = (int)(anchoFrame * escala);
+		int alto = (int)(altoFrame * escala);
 
 		return Rectangle(
 			x + ancho / 4,

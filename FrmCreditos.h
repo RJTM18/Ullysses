@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Lab2 {
+namespace Ullyses {
 
 	using namespace System;
 	using namespace System::ComponentModel;

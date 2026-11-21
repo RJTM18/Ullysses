@@ -1,6 +1,8 @@
 #include "pch.h"
-#include "FrmNivel1.h"
-#include "FrmMenuInicio.h"
+//#include "FrmNivel1.h"
+//#include "FrmMenuInicio.h"
+#include "FrmNivel2.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -8,7 +10,7 @@ using namespace System::Windows::Forms;
 int main() {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    Application::Run(gcnew Lab2::FrmMenuInicio());
+    Application::Run(gcnew Ullyses::FrmNivel2());
     return 0;
 }
 

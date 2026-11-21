@@ -1,0 +1,44 @@
+#pragma once
+#include "Sprite.h"
+
+class Stephen : public Sprite {
+public:
+	Stephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) :
+		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
+	~Stephen() {};
+
+	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {
+		//movimiento
+		dx = dy = 0;
+
+		if (tecla == Derecha)	dx = 1;
+		if (tecla == Izquierda) dx = -1;
+		if (tecla == Arriba)	dy = -1;
+		if (tecla == Abajo)		dy = 1;
+
+		x += velocidad * dx;
+		y += velocidad * dy;
+
+		//limites
+		if (x < 0) x = 0;
+		if (y < 0) y = 0;
+		if (x > WidthScreen - anchoFrame) x = WidthScreen - anchoFrame;
+		if (y > HeightScreen - altoFrame) y = HeightScreen - altoFrame;
+
+		animar(tecla);
+	};
+
+	void animar(Direccion tecla) {
+		if (tecla == Arriba)	indiceY = 0;
+		if (tecla == Abajo)		indiceY = 1;
+		if (tecla == Izquierda)	indiceY = 2;
+		if (tecla == Derecha)	indiceY = 3;
+
+		if (tecla != Ninguno) {
+			if (indiceX == 1) { indiceX = 4; return; }
+			indiceX = 1;
+		}
+		else { indiceX = 0; }
+	};
+
+};
