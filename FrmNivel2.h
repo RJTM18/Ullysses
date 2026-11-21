@@ -1,6 +1,6 @@
 #pragma once
+#include "LogicaNivel1.h"
 #include "LogicaNivel2.h"
-
 namespace Ullyses {
 
 	using namespace System;
@@ -27,7 +27,7 @@ namespace Ullyses {
 	private:
 		Bitmap^ stephen;
 		Bitmap^ fondoNivel2;
-		
+		Bitmap^ Antisemita;
 		Nivel_2* logicaNivel2;
 
 		Direccion teclaPresionada;
@@ -88,7 +88,9 @@ namespace Ullyses {
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
 			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
+			Antisemita = cargarImagen("Sprites\\Anti_Semita.png");
 
+			
 			logicaNivel2->crearStephen(
 				/* Posicion x: */			30,
 				/* Posicion y: */			pnlSpriteNivel2->Height / 2,
@@ -100,6 +102,8 @@ namespace Ullyses {
 				/* Escala: */				1
 			);
 			teclaPresionada = Ninguno;
+
+			
 		};
 
 		private: System::Void Timer1_tick(System::Object^ sender, System::EventArgs^ e) {

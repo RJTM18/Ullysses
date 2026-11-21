@@ -5,6 +5,7 @@
 #include "Carro.h"
 #include <algorithm>
 #include "LogicaNivel1.h"
+#include "AntiSemita.h"
 using namespace std;
 class Juego {
 public:
@@ -15,18 +16,24 @@ public:
         protección = 0;
     };
 	~Juego() { 
-		delete leopold; 
+        delete leopold;
         delete logica;
 
         for (Carro* c : carros)
         {
             delete c;
         }
+
+        for (AntiSemita* a : antisemita)
+        {
+            delete a;
+        }
 	};
 
 	void crearLeopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { leopold = new Leopold(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala); }
     void crearCarro(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { carros.push_back(new Carro(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala)); }
-   
+    void crearAntisemita(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { antisemita.push_back(new AntiSemita(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala)); }
+
     void moverCarros() 
     {
         
@@ -39,9 +46,29 @@ public:
            
     }
 
+    void moverAntisemita()
+    {
+
+        for (AntiSemita* a : antisemita)
+        {
+            a->mover(Ninguno, anchoPantalla, altoPantalla);
+            a->reaparecer(anchoPantalla, altoPantalla);
+        }
+
+
+    }
+
     void dibujarCarros(Graphics^ g, Bitmap^ img) {
         for (Carro* c : carros)
             c->dibujar(g, img);
+    }
+
+    void dibujarAntisemita(Graphics^ g, Bitmap^ img)
+    {
+        for (AntiSemita* a : antisemita)
+        {
+            a->dibujar(g, img);
+        }
     }
 
     void moverLeopold(Direccion tecla, int ancho, int alto) 
@@ -76,6 +103,16 @@ public:
             }
         }
 
+        for (AntiSemita* a : antisemita)
+        {
+            if (leopold->getRectangle().IntersectsWith(a->getRectangle()))
+            {
+                logica->perderVida();
+                protección = 10;
+                return;
+            }
+        }
+
     }
 
     int getVida()
@@ -98,6 +135,11 @@ public:
         for (Carro* c : carros)
         {
             g->DrawRectangle(Pens::Yellow, c->getRectangle());
+        }
+
+        for (AntiSemita* a : antisemita)
+        {
+            g->DrawRectangle(Pens::Blue, a->getRectangle());
         }
     }
 
@@ -128,6 +170,7 @@ private:
 	Leopold* leopold;
 	vector <Carro*> carros;
     Logica1* logica;
+    vector<AntiSemita*> antisemita;
 
 };
 

@@ -1,63 +1,63 @@
+
 #pragma once
-#include <algorithm>
-#include <vector>
+
 class Logica1
 {
 private:
-	int vida;
-	int MetrosLogrados;
-	int contadorMovimientos;
+    int vida;
+    int MetrosLogrados;
+    int contadorMovimientos;
+
 public:
-	Logica1(int vida, int MetrosLogrados)
-	{
-		this->vida = vida;
-		this->MetrosLogrados = MetrosLogrados;
-		contadorMovimientos = 0;
-	}
-	int getVida()
-	{
-		return vida;
-	}
+    Logica1(int vida, int MetrosLogrados)
+    {
+        this->vida = vida;
+        this->MetrosLogrados = MetrosLogrados;
+        contadorMovimientos = 0;
+    }
 
-	int getMetrosLogrados()
-	{
-		return MetrosLogrados;
-	}
+    int getVida()
+    {
+        return vida;
+    }
 
-	void perderVida()
-	{
-		if (vida > 0)
-		{
-			vida--;
-		}
-	}
+    int getMetrosLogrados()
+    {
+        return MetrosLogrados;
+    }
 
-	bool perdio()
-	{
-		return vida <= 0;
-	}
+    void perderVida()
+    {
+        if (vida > 0)
+            vida--;
+    }
 
-	bool gano()
-	{
-		return MetrosLogrados >= 400;
-	}
+    bool perdio()
+    {
+        return vida <= 0;
+    }
 
-	void sumarMetros(int metros)
-	{
-		MetrosLogrados += metros;
-	}
+    bool gano()
+    {
+        return MetrosLogrados >= 400;
+    }
 
-	void actualizarMetros(bool avanzaDerecha)
-	{
-		if (avanzaDerecha)
-		{
-			contadorMovimientos++;
+    void sumarMetros(int metros)
+    {
+        MetrosLogrados += metros;
+    }
 
-			if (contadorMovimientos >= 10)
-			{
-				sumarMetros(5);
-				contadorMovimientos = 0;
-			}
-		}
-	}
+    void actualizarMetros(bool derecha)
+    {
+        if (derecha)
+        {
+            contadorMovimientos++;
+
+            if (contadorMovimientos >= 5)
+            {
+                sumarMetros(5);
+                contadorMovimientos = 0;
+            }
+        }
+    }
 };

@@ -143,6 +143,7 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AntiSemita.h" />
     <ClInclude Include="Carro.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FrmCreditos.h">
