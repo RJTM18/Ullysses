@@ -1,0 +1,14 @@
+#include "pch.h"
+#include "FrmNivel2.h"
+
+using namespace System;
+using namespace System::Windows::Forms;
+
+[STAThread]
+int main() {
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew Ullyses::FrmNivel2());
+    return 0;
+}
+
