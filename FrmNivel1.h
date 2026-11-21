@@ -30,7 +30,6 @@ namespace Ullyses {
 		}
 
 	private:
-		int contadorMovimientos = 0;
 		Juego* juego;
 		Bitmap^ fondoJuego;
 		Bitmap^ Leopold;
@@ -175,7 +174,8 @@ namespace Ullyses {
 
 		int carriles[3] = { 325, 400, 600 };
 		
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 3; i++) 
+			{
 				juego->crearCarro(
 					pnlSpriteScreen->Width + i * 500,
 					carriles[i],
@@ -195,19 +195,8 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	juego->moverLeopold(TeclaPresionada,
 		pnlSpriteScreen->Width - pnlEstadistica->Width,
 		pnlSpriteScreen->Height);
+	juego->actualizarMetros(TeclaPresionada);
 
-	if (TeclaPresionada == Derecha)
-	{
-		contadorMovimientos++;
-
-		if (contadorMovimientos >= 5)
-		{
-			juego->aumentarMetros(5);
-			contadorMovimientos = 0;
-		}
-
-		
-	}
 	juego->moverCarros();
 
 	Graphics^ canvas = pnlSpriteScreen->CreateGraphics();

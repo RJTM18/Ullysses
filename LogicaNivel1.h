@@ -1,5 +1,4 @@
 #pragma once
-#include "Juego.h"
 #include <algorithm>
 #include <vector>
 class Logica1
@@ -7,11 +6,13 @@ class Logica1
 private:
 	int vida;
 	int MetrosLogrados;
+	int contadorMovimientos;
 public:
 	Logica1(int vida, int MetrosLogrados)
 	{
 		this->vida = vida;
 		this->MetrosLogrados = MetrosLogrados;
+		contadorMovimientos = 0;
 	}
 	int getVida()
 	{
@@ -44,5 +45,19 @@ public:
 	void sumarMetros(int metros)
 	{
 		MetrosLogrados += metros;
+	}
+
+	void actualizarMetros(bool avanzaDerecha)
+	{
+		if (avanzaDerecha)
+		{
+			contadorMovimientos++;
+
+			if (contadorMovimientos >= 5)
+			{
+				sumarMetros(5);
+				contadorMovimientos = 0;
+			}
+		}
 	}
 };

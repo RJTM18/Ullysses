@@ -27,7 +27,8 @@ public:
 	void crearLeopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { leopold = new Leopold(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala); }
     void crearCarro(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { carros.push_back(new Carro(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala)); }
    
-    void moverCarros() {
+    void moverCarros() 
+    {
         
         for (Carro* c : carros)
         {
@@ -43,7 +44,8 @@ public:
             c->dibujar(g, img);
     }
 
-    void moverLeopold(Direccion tecla, int ancho, int alto) {
+    void moverLeopold(Direccion tecla, int ancho, int alto) 
+    {
         leopold->mover(tecla, ancho, alto);
     }
 
@@ -112,6 +114,11 @@ public:
     bool gano()
     {
         return logica->gano();
+    }
+
+    void actualizarMetros(Direccion tecla)
+    {
+        logica->actualizarMetros(tecla == Derecha);
     }
 
 private:
