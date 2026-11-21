@@ -195,6 +195,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmMenuInicio.resx">
+      <DependentUpon>FrmMenuInicio.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel1.resx">
       <DependentUpon>FrmNivel1.h</DependentUpon>
     </EmbeddedResource>

@@ -50,12 +50,12 @@ namespace Lab2 {
 		{
 			this->SuspendLayout();
 			// 
-			// FrmNivel1
+			// FrmNivel2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 253);
-			this->Name = L"FrmNivel1";
+			this->ClientSize = System::Drawing::Size(842, 564);
+			this->Name = L"FrmNivel2";
 			this->Text = L"FrmNivel1";
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel1_Load);
 			this->ResumeLayout(false);
