@@ -121,7 +121,7 @@
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(ProjectDir)*.png" "$(OutDir)" </Command>
+      <Command>xcopy /y /d /s /i "$(ProjectDir)Sprites\*.png" "$(OutDir)Sprites\" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
