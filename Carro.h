@@ -9,8 +9,8 @@ public:
         int altoSpriteSheet, int filas, int columnas,
         int velocidad, double escala)
         : Sprite(x, y, anchoSpriteSheet, altoSpriteSheet,
-            filas, columnas, velocidad, escala) {
-
+            filas, columnas, velocidad, escala) 
+    {
         indiceX = 0;
         indiceY = 2;
     }

@@ -5,14 +5,13 @@
 #include "Carro.h"
 #include <algorithm>
 #include "LogicaNivel1.h"
-
 using namespace std;
 class Juego {
 public:
 	Juego(int anchoPantallaPixel, int altoPantallaPixel) : anchoPantalla(anchoPantallaPixel), altoPantalla(altoPantallaPixel) 
     {
         leopold = nullptr;
-        logica = new Logica1(3, 0);
+        logica = new Logica1(5, 0);
         protección = 0;
     };
 	~Juego() { 

@@ -117,9 +117,9 @@ namespace Ullyses {
 			this->lblNombre->AutoSize = true;
 			this->lblNombre->Font = (gcnew System::Drawing::Font(L"Matura MT Script Capitals", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblNombre->Location = System::Drawing::Point(35, 48);
+			this->lblNombre->Location = System::Drawing::Point(24, 52);
 			this->lblNombre->Name = L"lblNombre";
-			this->lblNombre->Size = System::Drawing::Size(308, 45);
+			this->lblNombre->Size = System::Drawing::Size(302, 44);
 			this->lblNombre->TabIndex = 0;
 			this->lblNombre->Text = L"Nivel 1: Leopold";
 			// 

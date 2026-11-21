@@ -21,9 +21,33 @@ public:
 			x += dx * velocidad;
 			y += dy * velocidad;
 
-			//Limites
+			
 			int anchoPersonaje = (int)(anchoFrame * escala);
 			int altoPersonaje = (int)(altoFrame * escala);
+			
+			//Aqui es donde se puede utilizar el límite del personaje hecho
+			int limiteIzquierdo = 0;
+			int limiteDerecho = AnchoPantallaSprite;
+
+			//aqui es la cantidad pero en el eje y
+			int limiteSuperior = 300;
+			int limiteInferior = 1200;
+
+             //aqui es donde se aplican los límites del personaje para que no se salga del mapa
+			
+			//en x
+			if (x < limiteIzquierdo)
+				x = limiteIzquierdo;
+
+			if (x > limiteDerecho - anchoPersonaje)
+				x = limiteDerecho - anchoPersonaje;
+
+			//en y
+			if (y < limiteSuperior)
+				y = limiteSuperior;
+
+			if (y > limiteInferior - altoPersonaje)
+				y = limiteInferior - altoPersonaje;
 
 			if (x < 0) x = 0;
 			if (y < 0) y = 0;
@@ -36,7 +60,7 @@ public:
 			Animar(tecla);
 		}
 	};
-
+	//esto sirve para que pueda realizar la animación siguendo los indices 4x4
 	void Animar(Direccion tecla) {
 		if (tecla == Abajo)		indiceY = 0;
 		if (tecla == Izquierda) indiceY = 2;
