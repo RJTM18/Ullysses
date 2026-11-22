@@ -253,7 +253,8 @@ namespace Ullyses {
 			juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 			juego->dibujarCarros(buffer->Graphics, AutoNegro);
 	       //sirve para dibujar las colisiones mediante rectangulos
-			juego->dibujarColisiones(buffer->Graphics);
+		   //juego->dibujarColisiones(buffer->Graphics);
+
 			buffer->Render(canvas);
 			//eliminarlos de la memoria
 			delete buffer;
