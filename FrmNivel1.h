@@ -173,7 +173,7 @@ namespace Ullyses {
 
 			fondoJuego = cargarImagen("Sprites\\NivelUno.png");
 			AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
-			Leopold = cargarImagen("Sprites\\LeopoldBloom.png");
+			Leopold = cargarImagen("Sprites\\Leopold.png");
 			Antisemita = cargarImagen("Sprites\\Anti_Semita.png");
 		
 			juego->crearLeopold(
@@ -184,7 +184,7 @@ namespace Ullyses {
 				/* columnas */				4,
 				/* filas */					4,
 				/* velocidad */				20,
-				/* escala (1/2/3) */		4
+				/* escala (1/2/3) */		1.6
 			);
 		
 
