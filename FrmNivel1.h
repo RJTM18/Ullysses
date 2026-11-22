@@ -300,6 +300,6 @@ namespace Ullyses {
 		};
 	private: System::Void pnlSpriteScreen_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-};
+	};
 }
 

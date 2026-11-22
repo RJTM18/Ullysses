@@ -16,10 +16,10 @@ protected:
 	             
 	double escala;
 
-	double hitX = 0.25, 
-		hitY = 0.25, 
-		hitAncho = 0.5, 
-		hitAlto = 0.5;
+	double	hitX = 0.25, 
+			hitY = 0.25, 
+			hitAncho = 0.5, 
+			hitAlto = 0.5;
 
 public:
 	Sprite(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int filas, int columnas, int velocidad, double escala) {
@@ -51,20 +51,22 @@ public:
 
 	//HAMP Explica: rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	//también es una manera mas optima de poder escalar cuadrados en donde vamos a colocar a gusto en cualquier pesonaje con colisiones rectangulares
-	Rectangle getRectangle()
-	{
-		int ancho = (int)(anchoFrame * escala);
-		int alto = (int)(altoFrame * escala);
+	Rectangle getRectangle() {
+		int anchoFigura = (int)(anchoFrame * escala); //ancho modificado del sprite
+		int altoFigura = (int)(altoFrame * escala); //alto modificado del sprite
 
+		//Genera un rectangulo de dimensiones menores al del sprite
 		return Rectangle(
-			x + (int)(ancho * hitX),
-			y + (int)(alto * hitY),
-			(int)(ancho * hitAncho),
-			(int)(alto * hitAlto)
+			x + (int)(anchoFigura * hitX),
+			y + (int)(altoFigura * hitY),
+			(int)(anchoFigura * hitAncho),
+			(int)(altoFigura * hitAlto)
 		);
 	}
 	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
 	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); }
+	
+	//en el caso de querer hacer cambios del hitbox
 	void setHitbox(double hx, double hy, double ha, double hal) {
 		hitX = hx; hitY = hy; hitAncho = ha; hitAlto = hal;
 	}
