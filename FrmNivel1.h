@@ -159,9 +159,10 @@ namespace Ullyses {
 		if (pnlSpriteScreen->Width <= 0 || pnlSpriteScreen->Height <= 0) return;
 		if (juego == nullptr) juego = new Juego(pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 		fondoJuego = cargarImagen("Sprites\\NivelUno.png");
+		AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
 		Leopold = cargarImagen("Sprites\\LeopoldBloom.png");
 		Antisemita = cargarImagen("Sprites\\Anti_Semita.png");
-		AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
+		
 		juego->crearLeopold(
 			/* Posicion X */			30,
 			/* Posicion Y */			(int)(pnlSpriteScreen->Height / 2),
@@ -213,10 +214,10 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteScreen->ClientRectangle);
 	
 	buffer->Graphics->DrawImage(fondoJuego, 0, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
-
+	juego->dibujarLeopold(buffer->Graphics, Leopold);
 	juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 	juego->dibujarCarros(buffer->Graphics, AutoNegro);
-	juego->dibujarLeopold(buffer->Graphics, Leopold);
+	
 	juego->dibujarColisiones(buffer->Graphics);
 	buffer->Render(canvas);
 

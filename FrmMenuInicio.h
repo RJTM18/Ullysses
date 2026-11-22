@@ -115,7 +115,7 @@ namespace Ullyses {
 			this->Name = L"FrmMenuInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmMenuInicio";
-			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->WindowState = System::Windows::Forms::FormWindowState::Normal;
 			this->Load += gcnew System::EventHandler(this, &FrmMenuInicio::FrmMenuInicio_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
