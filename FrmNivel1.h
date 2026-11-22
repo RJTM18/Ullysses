@@ -32,12 +32,18 @@ namespace Ullyses {
 		}
 
 	private:
+		int anchoPantallaSprite;
+		int altoPantallaSprite;
+
 		Juego* juego;
+
 		Bitmap^ fondoJuego;
 		Bitmap^ Leopold;
-		Direccion TeclaPresionada;
 		Bitmap^ AutoNegro;
 		Bitmap^ Antisemita;
+
+		Direccion TeclaPresionada;
+
 	private: System::Windows::Forms::Panel^ pnlSpriteScreen;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Panel^ pnlEstadistica;
@@ -161,6 +167,9 @@ namespace Ullyses {
 			if (pnlSpriteScreen->Width <= 0 || pnlSpriteScreen->Height <= 0) return;
 			if (juego == nullptr) juego = new Juego(pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 
+			anchoPantallaSprite = pnlSpriteScreen->Width - pnlEstadistica->Width;
+			altoPantallaSprite = pnlSpriteScreen->Height;
+
 			fondoJuego = cargarImagen("Sprites\\NivelUno.png");
 			AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
 			Leopold = cargarImagen("Sprites\\LeopoldBloom.png");
@@ -205,9 +214,7 @@ namespace Ullyses {
 			if (juego == nullptr || fondoJuego == nullptr ||
 				Leopold == nullptr || AutoNegro == nullptr) return;
 
-			juego->moverLeopold(TeclaPresionada,
-				pnlSpriteScreen->Width - pnlEstadistica->Width,
-				pnlSpriteScreen->Height);
+			juego->moverLeopold(TeclaPresionada, anchoPantallaSprite, altoPantallaSprite);
 			juego->actualizarMetros(TeclaPresionada);
 			juego->moverAntisemita();
 			juego->moverCarros();
@@ -215,7 +222,7 @@ namespace Ullyses {
 			Graphics^ canvas = pnlSpriteScreen->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteScreen->ClientRectangle);
 	
-			buffer->Graphics->DrawImage(fondoJuego, 0, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+			buffer->Graphics->DrawImage(fondoJuego, 0, 0, anchoPantallaSprite, altoPantallaSprite);
 			juego->dibujarLeopold(buffer->Graphics, Leopold);
 			juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 			juego->dibujarCarros(buffer->Graphics, AutoNegro);
