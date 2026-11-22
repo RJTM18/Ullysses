@@ -29,7 +29,7 @@ namespace Ullyses {
 		Bitmap^ stephen;
 		Bitmap^ fondoNivel2;
 		
-		Nivel_2* logicaNivel2;
+		LogicaNivel2* logicaNivel2;
 
 		Direccion teclaPresionada;
 
@@ -87,7 +87,7 @@ namespace Ullyses {
 
 		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new Nivel_2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 			timer1->Enabled = true;
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");

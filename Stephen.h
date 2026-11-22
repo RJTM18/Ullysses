@@ -7,6 +7,8 @@ public:
 		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
 	~Stephen() {};
 
+	int getVida() { return puntosVida; }
+
 	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {		
 		//movimiento
 		dx = dy = 0;
@@ -45,4 +47,6 @@ public:
 		else { indiceX = 0; }
 	};
 
+private: 
+	int puntosVida;
 };
