@@ -191,7 +191,7 @@ namespace Ullyses {
     antiSemitas[i],
     Antisemita->Width,
     Antisemita->Height,
-    4, 4, 15, 0.7
+    4, 4, 15, 0.6
 );
 			}
 		

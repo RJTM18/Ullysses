@@ -27,7 +27,7 @@ public:
 			
 			//Aqui es donde se puede utilizar el límite del personaje hecho
 			int limiteIzquierdo = 0;
-			int limiteDerecho = AnchoPantallaSprite;
+			int limiteDerecho = 1000;
 
 			//aqui es la cantidad pero en el eje y
 			int limiteSuperior = 300;
