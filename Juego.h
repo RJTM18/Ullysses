@@ -1,5 +1,4 @@
 #pragma once
-#include "Debug.h"
 #include <vector>
 #include "Leopold.h"
 #include "Carro.h"

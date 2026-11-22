@@ -53,11 +53,9 @@ namespace Ullyses {
 			// 
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
-			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
-			this->pnlSpriteNivel2->Size = System::Drawing::Size(843, 564);
+			this->pnlSpriteNivel2->Size = System::Drawing::Size(632, 458);
 			this->pnlSpriteNivel2->TabIndex = 0;
-			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// timer1
 			// 
@@ -65,14 +63,16 @@ namespace Ullyses {
 			// 
 			// FrmNivel2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(843, 564);
+			this->ClientSize = System::Drawing::Size(632, 458);
 			this->Controls->Add(this->pnlSpriteNivel2);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmNivel2";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyUp);
 			this->ResumeLayout(false);
 
 		}
@@ -98,8 +98,8 @@ namespace Ullyses {
 				/* Altura de Imagen: */		stephen->Height,
 				/* Nº Filas: */             4, 
 				/* Nº Columnas: */			8,
-				/* Velocidad: */			20,
-				/* Escala: */				1
+				/* Velocidad: */			40,
+				/* Escala: */				0.75
 			);
 			teclaPresionada = Ninguno;
 		};
@@ -120,21 +120,18 @@ namespace Ullyses {
 			delete canvas;
 		};
 
-		private: System::Void FrmJuego_keyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		private: System::Void FrmNivel2_keyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			if (e->KeyCode == Keys::Down || e->KeyCode == Keys::S)	teclaPresionada = Abajo;
 			if (e->KeyCode == Keys::Up || e->KeyCode == Keys::W)	teclaPresionada = Arriba;
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A)	teclaPresionada = Izquierda;
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) teclaPresionada = Derecha;
 		};
 
-		private: System::Void FrmJuego_keyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		private: System::Void FrmNivel2_keyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			if (e->KeyCode == Keys::Down || e->KeyCode == Keys::S) { if (teclaPresionada == Abajo)		teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Up || e->KeyCode == Keys::W) { if (teclaPresionada == Arriba)	teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-
-	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
 	};
 };

@@ -7,7 +7,7 @@ public:
 		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
 	~Stephen() {};
 
-	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {
+	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {		
 		//movimiento
 		dx = dy = 0;
 
@@ -19,20 +19,24 @@ public:
 		x += velocidad * dx;
 		y += velocidad * dy;
 
+		//tamaño del sprite modificado
+		int anchoFrameModificado = (anchoFrame * escala);
+		int altoFrameModificado = (altoFrame * escala);
+
 		//limites
 		if (x < 0) x = 0;
 		if (y < 0) y = 0;
-		if (x > WidthScreen - anchoFrame) x = WidthScreen - anchoFrame;
-		if (y > HeightScreen - altoFrame) y = HeightScreen - altoFrame;
+		if (x > WidthScreen - anchoFrameModificado) x = WidthScreen - anchoFrameModificado;
+		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
 		animar(tecla);
 	};
 
 	void animar(Direccion tecla) {
-		if (tecla == Arriba)	indiceY = 0;
-		if (tecla == Abajo)		indiceY = 1;
-		if (tecla == Izquierda)	indiceY = 2;
-		if (tecla == Derecha)	indiceY = 3;
+		if (tecla == Abajo)		indiceY = 0;
+		if (tecla == Izquierda)	indiceY = 1;
+		if (tecla == Derecha)	indiceY = 2;
+		if (tecla == Arriba)	indiceY = 3;
 
 		if (tecla != Ninguno) {
 			indiceX++;
