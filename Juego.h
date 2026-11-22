@@ -99,7 +99,7 @@ public:
             {
                 logica->perderVida();
                 protección = 10;
-                break;
+                return
             }
         }
 
