@@ -35,6 +35,7 @@ namespace Ullyses {
 		Bitmap^ Leopold;
 		Direccion TeclaPresionada;
 		Bitmap^ AutoNegro;
+		Bitmap^ Antisemita;
 	private: System::Windows::Forms::Panel^ pnlSpriteScreen;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Panel^ pnlEstadistica;
@@ -159,7 +160,8 @@ namespace Ullyses {
 		if (juego == nullptr) juego = new Juego(pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 		fondoJuego = cargarImagen("Sprites\\NivelUno.png");
 		Leopold = cargarImagen("Sprites\\LeopoldBloom.png");
-		
+		Antisemita = cargarImagen("Sprites\\Anti_Semita.png");
+		AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
 		juego->crearLeopold(
 			/* Posicion X */			30,
 			/* Posicion Y */			(int)(pnlSpriteScreen->Height / 2),
@@ -170,10 +172,10 @@ namespace Ullyses {
 			/* velocidad */				25,
 			/* escala (1/2/3) */		0.6
 		);
-		AutoNegro = cargarImagen("Sprites\\AutoNegro.png");
+		
 
 		int carriles[3] = { 325, 400, 600 };
-		
+		int antiSemitas[3] = { 340, 420, 620 };
 			for (int i = 0; i < 3; i++) 
 			{
 				juego->crearCarro(
@@ -181,8 +183,16 @@ namespace Ullyses {
 					carriles[i],
 					AutoNegro->Width,
 					AutoNegro->Height,
-					4, 4, 20, 0.8
+					4, 4, 30, 0.8
 				);
+
+				juego->crearAntisemita(
+    pnlSpriteScreen->Width + i * 250,
+    antiSemitas[i],
+    Antisemita->Width,
+    Antisemita->Height,
+    4, 4, 15, 0.7
+);
 			}
 		
 	};
@@ -196,7 +206,7 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 		pnlSpriteScreen->Width - pnlEstadistica->Width,
 		pnlSpriteScreen->Height);
 	juego->actualizarMetros(TeclaPresionada);
-
+	juego->moverAntisemita();
 	juego->moverCarros();
 
 	Graphics^ canvas = pnlSpriteScreen->CreateGraphics();
@@ -204,6 +214,7 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	
 	buffer->Graphics->DrawImage(fondoJuego, 0, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 
+	juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 	juego->dibujarCarros(buffer->Graphics, AutoNegro);
 	juego->dibujarLeopold(buffer->Graphics, Leopold);
 	juego->dibujarColisiones(buffer->Graphics);
@@ -247,7 +258,7 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 		if (e->KeyCode == Keys::Up || e->KeyCode == Keys::W) { if (TeclaPresionada == Arriba)		TeclaPresionada = Ninguno; }
 	};
 	private: System::Void pnlSpriteScreen_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
+ 	}
 private: System::Void lblVida_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void lblMetros_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -27,7 +27,7 @@ namespace Ullyses {
 	private:
 		Bitmap^ stephen;
 		Bitmap^ fondoNivel2;
-		Bitmap^ Antisemita;
+		
 		Nivel_2* logicaNivel2;
 
 		Direccion teclaPresionada;
@@ -88,7 +88,7 @@ namespace Ullyses {
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
 			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
-			Antisemita = cargarImagen("Sprites\\Anti_Semita.png");
+		
 
 			
 			logicaNivel2->crearStephen(
