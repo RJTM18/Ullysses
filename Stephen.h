@@ -35,8 +35,8 @@ public:
 		if (tecla == Derecha)	indiceY = 3;
 
 		if (tecla != Ninguno) {
-			if (indiceX == 1) { indiceX = 4; return; }
-			indiceX = 1;
+			indiceX++;
+			if (indiceX >= columnas) indiceX = 0;
 		}
 		else { indiceX = 0; }
 	};

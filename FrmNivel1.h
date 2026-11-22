@@ -19,6 +19,8 @@ namespace Ullyses {
 		FrmNivel1(void) {
 			InitializeComponent();
 			juego = nullptr;
+			TeclaPresionada = Ninguno;
+
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
@@ -188,12 +190,12 @@ namespace Ullyses {
 				);
 
 				juego->crearAntisemita(
-    pnlSpriteScreen->Width + i * 250,
-    antiSemitas[i],
-    Antisemita->Width,
-    Antisemita->Height,
-    4, 4, 15, 0.6
-);
+					pnlSpriteScreen->Width + i * 250,
+					antiSemitas[i],
+					Antisemita->Width,
+					Antisemita->Height,
+					4, 4, 15, 0.6
+				);
 			}
 		
 	};

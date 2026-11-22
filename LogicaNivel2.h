@@ -3,7 +3,7 @@
 
 class Nivel_2 {
 public:
-	Nivel_2(int anchoPantalla, int altoPantalla) : widthScreen(anchoPantalla), heightScreen(altoPantalla) {};
+	Nivel_2(int anchoPantalla, int altoPantalla) : widthScreen(anchoPantalla), heightScreen(altoPantalla), stephen(nullptr) {};
 	~Nivel_2() { delete stephen; };
 
 	void crearStephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) {

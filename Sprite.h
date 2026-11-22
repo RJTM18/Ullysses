@@ -1,7 +1,7 @@
 #pragma once
 using namespace System::Drawing;
 
-enum Direccion { Abajo, Izquierda, Derecha, Arriba, Ninguno };
+enum Direccion { Ninguno, Abajo, Izquierda, Derecha, Arriba };
 
 class Sprite {
 protected:
@@ -58,10 +58,7 @@ public:
 		);
 	}
 	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
-	void dibujarRectangulo(Graphics^ g)
-	{
-		g->DrawRectangle(Pens::Red, getRectangle());
-	}
+	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); }
 
 	int getX() { return x; }
 	int getY() { return y; }

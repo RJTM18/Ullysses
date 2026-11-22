@@ -1,5 +1,6 @@
 #pragma once
 #include "FrmNivel1.h"
+#include "FrmNivel2.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -30,7 +31,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Button^ btnCreditos;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnSalir;
-	private: System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::Button^ btnNivel2;
+	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -43,12 +45,13 @@ namespace Ullyses {
 			this->btnCreditos = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
+			this->btnNivel2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnJugar
 			// 
 			this->btnJugar->Location = System::Drawing::Point(214, 153);
-			this->btnJugar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
 			this->btnJugar->Name = L"btnJugar";
 			this->btnJugar->Size = System::Drawing::Size(244, 58);
 			this->btnJugar->TabIndex = 0;
@@ -59,7 +62,7 @@ namespace Ullyses {
 			// btnInstrucciones
 			// 
 			this->btnInstrucciones->Location = System::Drawing::Point(214, 215);
-			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
 			this->btnInstrucciones->Size = System::Drawing::Size(244, 58);
 			this->btnInstrucciones->TabIndex = 1;
@@ -69,7 +72,7 @@ namespace Ullyses {
 			// btnCreditos
 			// 
 			this->btnCreditos->Location = System::Drawing::Point(214, 278);
-			this->btnCreditos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnCreditos->Margin = System::Windows::Forms::Padding(2);
 			this->btnCreditos->Name = L"btnCreditos";
 			this->btnCreditos->Size = System::Drawing::Size(244, 58);
 			this->btnCreditos->TabIndex = 2;
@@ -93,7 +96,7 @@ namespace Ullyses {
 			// btnSalir
 			// 
 			this->btnSalir->Location = System::Drawing::Point(509, 10);
-			this->btnSalir->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnSalir->Margin = System::Windows::Forms::Padding(2);
 			this->btnSalir->Name = L"btnSalir";
 			this->btnSalir->Size = System::Drawing::Size(188, 41);
 			this->btnSalir->TabIndex = 4;
@@ -101,21 +104,32 @@ namespace Ullyses {
 			this->btnSalir->UseVisualStyleBackColor = true;
 			this->btnSalir->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnSalir_Click);
 			// 
+			// btnNivel2
+			// 
+			this->btnNivel2->Location = System::Drawing::Point(387, 460);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(2);
+			this->btnNivel2->Name = L"btnNivel2";
+			this->btnNivel2->Size = System::Drawing::Size(244, 58);
+			this->btnNivel2->TabIndex = 5;
+			this->btnNivel2->Text = L"temporal NIvel2";
+			this->btnNivel2->UseVisualStyleBackColor = true;
+			this->btnNivel2->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnNivel2_click);
+			// 
 			// FrmMenuInicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(706, 557);
+			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnCreditos);
 			this->Controls->Add(this->btnInstrucciones);
 			this->Controls->Add(this->btnJugar);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"FrmMenuInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmMenuInicio";
-			this->WindowState = System::Windows::Forms::FormWindowState::Normal;
 			this->Load += gcnew System::EventHandler(this, &FrmMenuInicio::FrmMenuInicio_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -144,8 +158,18 @@ namespace Ullyses {
 			this->Show();
 		};
 
+
+
 		private: System::Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 			Application::Exit();
 		};
-	};
+
+		private: System::Void btnNivel2_click(System::Object^ sender, System::EventArgs^ e) {
+			Ullyses::FrmNivel2^ nivel2 = gcnew Ullyses::FrmNivel2();
+
+			this->Hide();
+			nivel2->ShowDialog();
+			this->Show();
+		};
+};
 }

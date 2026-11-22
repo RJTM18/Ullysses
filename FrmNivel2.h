@@ -16,6 +16,7 @@ namespace Ullyses {
 		FrmNivel2(void) {
 			InitializeComponent();
 			logicaNivel2 = nullptr;
+			teclaPresionada = Ninguno;
 		}
 
 	protected:
@@ -84,34 +85,33 @@ namespace Ullyses {
 
 		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new Nivel_2(pnlSpriteNivel2->Height, pnlSpriteNivel2->Width);
+			logicaNivel2 = new Nivel_2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			timer1->Enabled = true;
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
 			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
 		
-
-			
 			logicaNivel2->crearStephen(
-				/* Posicion x: */			30,
-				/* Posicion y: */			pnlSpriteNivel2->Height / 2,
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
 				/* Anchura de Imagen: */	stephen->Width,
 				/* Altura de Imagen: */		stephen->Height,
+				/* Nº Filas: */             4, 
 				/* Nº Columnas: */			8,
-				/* Nº Filas: */				4,
 				/* Velocidad: */			20,
 				/* Escala: */				1
 			);
 			teclaPresionada = Ninguno;
-
-			
 		};
 
 		private: System::Void Timer1_tick(System::Object^ sender, System::EventArgs^ e) {
+			if (logicaNivel2 == nullptr) return;
+
 			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
 			Graphics^ canvas = pnlSpriteNivel2->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
-			buffer->Graphics->Clear(Color::White);
+			buffer->Graphics->DrawImage(fondoNivel2, 0, 0, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
 			logicaNivel2->dibujarStephen(buffer->Graphics, stephen);
 			buffer->Render(canvas);
@@ -136,5 +136,5 @@ namespace Ullyses {
 
 	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
+	};
 };
-}
