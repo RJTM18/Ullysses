@@ -1,10 +1,11 @@
 #pragma once
+#include "LogicaGeneral.h"
 #include "Stephen.h"
 
-class Nivel_2 {
+class LogicaNivel2 : public LogicaGeneral {
 public:
-	Nivel_2(int anchoPantalla, int altoPantalla) : widthScreen(anchoPantalla), heightScreen(altoPantalla), stephen(nullptr) {};
-	~Nivel_2() { delete stephen; };
+	LogicaNivel2(int anchoPantalla, int altoPantalla) : LogicaGeneral(anchoPantalla, altoPantalla), stephen(nullptr) {};
+	~LogicaNivel2() { delete stephen; };
 
 	void crearStephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) {
 		stephen = new Stephen(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale);
@@ -21,8 +22,5 @@ public:
 	};
 
 private:
-	int widthScreen;
-	int heightScreen;
-
 	Stephen* stephen;
 };
