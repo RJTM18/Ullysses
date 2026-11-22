@@ -1,6 +1,6 @@
 #pragma once
 #include "Sprite.h"
-
+#include "LogicaNivel1.h"
 class Leopold : public Sprite {
 public:
 	Leopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) :
@@ -20,17 +20,17 @@ public:
 		x += velocidad * dx;
 		y += velocidad * dy;
 
-		//tamaño del sprite modificado
+		//este es el tamaño del sprite pero ya modificado
 		int anchoFrameModificado = (anchoFrame * escala);
 		int altoFrameModificado = (altoFrame * escala);
 
 		//limites
-		if (x < 0) x = 0;
-		if (y < 0) y = 0;
-		if (x > AnchoPantallaSprite - anchoFrameModificado) x = AnchoPantallaSprite - anchoFrameModificado;
-		if (y > AltoPantallaSprite - altoFrameModificado) y = AltoPantallaSprite - altoFrameModificado;
+		Logica1 logica(3, 0);
 
+		x = logica.colisionX(x, anchoFrameModificado);
+		y = logica.colisionY(y, altoFrameModificado);
 		Animar(tecla);
+
 	};
 
 	void Animar(Direccion tecla) {
@@ -44,7 +44,7 @@ public:
 			if (indiceX >= columnas) indiceX = 0;
 		} else { indiceX = 0; }
 	};
-
+	
 	
 
 };

@@ -38,6 +38,7 @@ namespace Ullyses {
 		Juego* juego;
 
 		Bitmap^ fondoJuego;
+		int fondoX = 0;
 		Bitmap^ Leopold;
 		Bitmap^ AutoNegro;
 		Bitmap^ Antisemita;
@@ -78,9 +79,11 @@ namespace Ullyses {
 			this->pnlSpriteScreen->Controls->Add(this->pnlEstadistica);
 			this->pnlSpriteScreen->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteScreen->Location = System::Drawing::Point(0, 0);
+			this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4);
 			this->pnlSpriteScreen->Name = L"pnlSpriteScreen";
-			this->pnlSpriteScreen->Size = System::Drawing::Size(1326, 662);
+			this->pnlSpriteScreen->Size = System::Drawing::Size(1768, 815);
 			this->pnlSpriteScreen->TabIndex = 0;
+			this->pnlSpriteScreen->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlSpriteScreen_Paint);
 			// 
 			// pnlEstadistica
 			// 
@@ -89,10 +92,10 @@ namespace Ullyses {
 			this->pnlEstadistica->Controls->Add(this->lblVida);
 			this->pnlEstadistica->Controls->Add(this->lblNombre);
 			this->pnlEstadistica->Dock = System::Windows::Forms::DockStyle::Right;
-			this->pnlEstadistica->Location = System::Drawing::Point(1060, 0);
-			this->pnlEstadistica->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pnlEstadistica->Location = System::Drawing::Point(1413, 0);
+			this->pnlEstadistica->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pnlEstadistica->Name = L"pnlEstadistica";
-			this->pnlEstadistica->Size = System::Drawing::Size(266, 662);
+			this->pnlEstadistica->Size = System::Drawing::Size(355, 815);
 			this->pnlEstadistica->TabIndex = 0;
 			// 
 			// lblMetros
@@ -100,10 +103,9 @@ namespace Ullyses {
 			this->lblMetros->AutoSize = true;
 			this->lblMetros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMetros->Location = System::Drawing::Point(78, 287);
-			this->lblMetros->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lblMetros->Location = System::Drawing::Point(104, 353);
 			this->lblMetros->Name = L"lblMetros";
-			this->lblMetros->Size = System::Drawing::Size(102, 26);
+			this->lblMetros->Size = System::Drawing::Size(131, 32);
 			this->lblMetros->TabIndex = 3;
 			this->lblMetros->Text = L"Metros: 0";
 			// 
@@ -112,10 +114,9 @@ namespace Ullyses {
 			this->lblVida->AutoSize = true;
 			this->lblVida->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblVida->Location = System::Drawing::Point(90, 180);
-			this->lblVida->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lblVida->Location = System::Drawing::Point(120, 222);
 			this->lblVida->Name = L"lblVida";
-			this->lblVida->Size = System::Drawing::Size(99, 26);
+			this->lblVida->Size = System::Drawing::Size(125, 32);
 			this->lblVida->TabIndex = 2;
 			this->lblVida->Text = L"Vidas: 3";
 			// 
@@ -124,25 +125,25 @@ namespace Ullyses {
 			this->lblNombre->AutoSize = true;
 			this->lblNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblNombre->Location = System::Drawing::Point(18, 42);
-			this->lblNombre->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lblNombre->Location = System::Drawing::Point(24, 52);
 			this->lblNombre->Name = L"lblNombre";
-			this->lblNombre->Size = System::Drawing::Size(224, 31);
+			this->lblNombre->Size = System::Drawing::Size(266, 38);
 			this->lblNombre->TabIndex = 0;
 			this->lblNombre->Text = L"Nivel 1: Leopold";
 			// 
 			// timer1
 			// 
 			this->timer1->Enabled = true;
-			this->timer1->Interval = 200;
+			this->timer1->Interval = 60;
 			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
 			// 
 			// FrmNivel1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1326, 662);
+			this->ClientSize = System::Drawing::Size(1768, 815);
 			this->Controls->Add(this->pnlSpriteScreen);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"FrmNivel1";
 			this->Text = L"Juego";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -182,13 +183,13 @@ namespace Ullyses {
 				/* AltoSpriteSheet*/		Leopold->Height,
 				/* columnas */				4,
 				/* filas */					4,
-				/* velocidad */				25,
-				/* escala (1/2/3) */		0.6
+				/* velocidad */				20,
+				/* escala (1/2/3) */		4
 			);
 		
 
-			int carriles[3] = { 325, 400, 600 };
-				for (int i = 0; i < 3; i++) 
+			int carriles[3] = { 450, 600, 800 };
+				for (int i = 0; i < 3; i++)
 				{
 					juego->crearCarro(
 						pnlSpriteScreen->Width + i * 500,
@@ -203,7 +204,7 @@ namespace Ullyses {
 						carriles[i],
 						Antisemita->Width,
 						Antisemita->Height,
-						4, 4, 15, 0.6
+						4, 4, 25, 0.6
 					);
 				}
 		
@@ -221,15 +222,41 @@ namespace Ullyses {
 
 			Graphics^ canvas = pnlSpriteScreen->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteScreen->ClientRectangle);
-	
-			buffer->Graphics->DrawImage(fondoJuego, 0, 0, anchoPantallaSprite, altoPantallaSprite);
+			//sirve para el movimiento del fondo cuando el personaje se mueve
+			if (TeclaPresionada == Derecha)
+			{
+				fondoX -= 22;
+			}
+
+			if (TeclaPresionada == Izquierda)
+			{
+				fondoX += 15;
+			}
+			//sirve para no irse de largo y esperar que el personaje se mueva para avanzar
+			if (fondoX <= -pnlSpriteScreen->Width)
+				fondoX = 0;
+
+			if (fondoX <= -pnlSpriteScreen->Width)
+				fondoX += pnlSpriteScreen->Width;
+
+			if (fondoX > 0)
+				fondoX -= pnlSpriteScreen->Width;
+
+			buffer->Graphics->DrawImage(fondoJuego,
+				fondoX, 0,
+				pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+
+			buffer->Graphics->DrawImage(fondoJuego,
+				fondoX + pnlSpriteScreen->Width, 0,
+				pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+			//dibujar a los personajes
 			juego->dibujarLeopold(buffer->Graphics, Leopold);
 			juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 			juego->dibujarCarros(buffer->Graphics, AutoNegro);
-	
+	       //sirve para dibujar las colisiones mediante rectangulos
 			juego->dibujarColisiones(buffer->Graphics);
 			buffer->Render(canvas);
-
+			//eliminarlos de la memoria
 			delete buffer;
 			delete canvas;
 
@@ -271,6 +298,8 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (TeclaPresionada == Derecha)	TeclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Up || e->KeyCode == Keys::W) { if (TeclaPresionada == Arriba)		TeclaPresionada = Ninguno; }
 		};
-	};
+	private: System::Void pnlSpriteScreen_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+};
 }
 

@@ -60,4 +60,42 @@ public:
             }
         }
     }
+    // en donde funciona que no pueda salirse del mapa o la longitud de ella
+    int colisionY(int y, int altoPersonaje)
+    {
+        //esto es para calculare los 2 limites
+        int limiteSuperior = 380;
+        int limiteInferior = 960;
+
+        if (y < limiteSuperior)
+        {
+            y = limiteSuperior;
+        }
+
+        if (y + altoPersonaje > limiteInferior)
+        {
+            y = limiteInferior - altoPersonaje;
+        }
+
+        return y;
+    }
+
+    //Ahora sirve para que el personaje no sea capaz de irse de largo del mapa
+    int colisionX(int x, int anchoPersonaje)
+    {
+        int limiteIzquierda = 380; 
+        int limiteDerecha = 800;
+   //estos son las condiciones para que se mantenga en su limite
+        if (x < limiteIzquierda)
+        {
+            x = limiteIzquierda;
+        }
+
+        if (x + anchoPersonaje > limiteDerecha)
+        {
+            x = limiteDerecha - anchoPersonaje;
+        }
+
+        return x;
+    }
 };
