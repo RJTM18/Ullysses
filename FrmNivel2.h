@@ -53,9 +53,11 @@ namespace Ullyses {
 			// 
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
+			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
-			this->pnlSpriteNivel2->Size = System::Drawing::Size(632, 458);
+			this->pnlSpriteNivel2->Size = System::Drawing::Size(843, 564);
 			this->pnlSpriteNivel2->TabIndex = 0;
+			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// timer1
 			// 
@@ -63,11 +65,11 @@ namespace Ullyses {
 			// 
 			// FrmNivel2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(632, 458);
+			this->ClientSize = System::Drawing::Size(843, 564);
 			this->Controls->Add(this->pnlSpriteNivel2);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmNivel2";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
@@ -133,5 +135,7 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-	};
+	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+};
 };

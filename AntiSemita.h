@@ -25,19 +25,10 @@ public:
     }
 
     void reaparecer(int limiteAncho, int limiteAlto) {
-        int anchoCarro = anchoFrame * escala;
+        int anchoCarro = (int)(anchoFrame * escala);
 
-        if (x + anchoCarro < 10)
-        {
-            x = limiteAncho;
-
-            int carril = rand() % 3;
-
-            int altoCarro = altoFrame * escala;
-            int inicioPista = limiteAlto * 45 / 100;
-            int espacio = limiteAlto - inicioPista;
-
-            y = inicioPista + carril * espacio / 3 + (espacio / 3 - altoCarro) / 2;
+        if (x + anchoCarro < 0) {
+            x = limiteAncho + 100 + rand() % 500;
         }
     }
 
