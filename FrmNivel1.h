@@ -232,14 +232,19 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	if (juego->gano())
 	{
 		timer1->Stop();
-		MessageBox::Show("Ganaste!!!");
+		MessageBox::Show("Ganaste!!!", "Victoria");
+
+		this->Close();
 		return;
 	}
 
 	if (juego->perdio())
 	{
 		timer1->Stop();
-		MessageBox::Show("GAME OVER");
+		MessageBox::Show("GAME OVER", "Derrota");
+
+		this->Close();
+		return;
 	}
 	
 };
