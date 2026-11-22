@@ -15,7 +15,7 @@ protected:
 	int indiceX, indiceY;      
 	             
 	double escala;
-
+	
 	double hitX = 0.25, 
 		hitY = 0.25, 
 		hitAncho = 0.5, 
