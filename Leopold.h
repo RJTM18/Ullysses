@@ -5,7 +5,7 @@ class Leopold : public Sprite {
 public:
 	Leopold(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) :
 		Sprite(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala) {
-		setHitbox(0.46, 0.20, 0.10, 0.40);
+		setHitbox(0.46, 0.20, 0.10, 0.25);
 	};
 	~Leopold() {};
 

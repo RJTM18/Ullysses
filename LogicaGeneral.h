@@ -6,7 +6,7 @@ public:
 	//La anchura y la altura de la pantalla donde se moverá el sprite
 	LogicaGeneral(int anchoPantallaSprite, int altoPantallaSprite) :
 		anchoPantallaSprite(anchoPantallaSprite), altoPantallaSprite(altoPantallaSprite) {};
-	virtual ~LogicaGeneral();
+	//virtual ~LogicaGeneral();
 
 
 
