@@ -225,7 +225,7 @@ namespace Ullyses {
 			//sirve para el movimiento del fondo cuando el personaje se mueve
 			if (TeclaPresionada == Derecha)
 			{
-				fondoX -= 22;
+				fondoX -= 23;
 			}
 
 			if (TeclaPresionada == Izquierda)
@@ -235,20 +235,19 @@ namespace Ullyses {
 			//sirve para no irse de largo y esperar que el personaje se mueva para avanzar
 			if (fondoX <= -pnlSpriteScreen->Width)
 				fondoX = 0;
-
+			
 			if (fondoX <= -pnlSpriteScreen->Width)
 				fondoX += pnlSpriteScreen->Width;
 
 			if (fondoX > 0)
 				fondoX -= pnlSpriteScreen->Width;
 
-			buffer->Graphics->DrawImage(fondoJuego,
-				fondoX, 0,
-				pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+			buffer->Graphics->DrawImage(fondoJuego,fondoX, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 
 			buffer->Graphics->DrawImage(fondoJuego,
 				fondoX + pnlSpriteScreen->Width, 0,
 				pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+
 			//dibujar a los personajes
 			juego->dibujarLeopold(buffer->Graphics, Leopold);
 			juego->dibujarAntisemita(buffer->Graphics, Antisemita);
@@ -265,10 +264,11 @@ namespace Ullyses {
 			lblVida->Text = "Vidas: " + juego->getVida().ToString();
 			lblMetros->Text = "Metros: " + juego->metros().ToString();
 
+			//estas son las condiciones cuando el personaje ha ganado o ha perdido dentro de la lógica
 			if (juego->gano())
 			{
 				timer1->Stop();
-				MessageBox::Show("Ganaste!!!", "Victoria");
+				MessageBox::Show("Victoria");
 
 				this->Close();
 				return;
@@ -277,12 +277,12 @@ namespace Ullyses {
 			if (juego->perdio())
 			{
 				timer1->Stop();
-				MessageBox::Show("GAME OVER", "Derrota");
+				MessageBox::Show("Derrota..");
 
 				this->Close();
 				return;
 			}
-	
+
 		};
 
 		private: System::Void FrmJuego_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

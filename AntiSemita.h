@@ -13,6 +13,7 @@ public:
     {
         indiceX = 0;
         indiceY = 2;
+        setHitbox(0.35, 0.04, 0.39, 0.92);
     }
 
     void mover(Direccion tecla, int limiteAncho, int limiteAlto) override {

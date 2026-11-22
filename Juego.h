@@ -114,6 +114,7 @@ public:
 
     }
 
+
     int getVida()
     {
         return logica->getVida();
