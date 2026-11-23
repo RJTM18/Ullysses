@@ -4,16 +4,22 @@
 class Stephen : public Sprite {
 public:
 	Stephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) :
-		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
+		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale), AcasoEstaMuerto(false) {};
 	~Stephen() {};
 
 	int getPuntosVida() { return puntosVida; }
+	bool getAcasoEstaMuerto() { return AcasoEstaMuerto; }
 	void setPuntosVida(int puntosDeVida) { this->puntosVida = puntosDeVida; }
 
-	void fueGolpeado() {
+	void fueImpactado() {
 		puntosVida--;
-		if (puntosVida <= 0) puntosVida = 0;
+		if (puntosVida <= 0) {
+			puntosVida = 0;
+			jugadorMuerto();
+		};			
 	};
+
+	void jugadorMuerto() { this->AcasoEstaMuerto = true; }
 
 	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {		
 		//movimiento
@@ -55,4 +61,5 @@ public:
 
 private: 
 	int puntosVida;
+	bool AcasoEstaMuerto; //determina si el jugador perdio todas sus vidas
 };

@@ -86,6 +86,9 @@
     <ClInclude Include="Molly.h">
       <Filter>Header Files\Sprites</Filter>
     </ClInclude>
+    <ClInclude Include="Policia.h">
+      <Filter>Header Files\Sprites</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

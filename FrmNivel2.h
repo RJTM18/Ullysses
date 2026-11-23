@@ -27,6 +27,7 @@ namespace Ullyses {
 
 	private:
 		Bitmap^ stephen;
+		Bitmap^ policia;
 		Bitmap^ fondoNivel2;
 		
 		LogicaNivel2* logicaNivel2;
@@ -91,8 +92,9 @@ namespace Ullyses {
 			timer1->Enabled = true;
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
+			policia = cargarImagen("Sprites\\Policia.png");
 			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
-		
+					
 			logicaNivel2->crearStephen(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
 				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
@@ -103,6 +105,45 @@ namespace Ullyses {
 				/* Velocidad: */			40,
 				/* Escala: */				0.75
 			);
+
+			//Policía 1
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			10,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			75,
+				/* Escala: */				0.75
+			);
+
+			//Policía 2
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			pnlSpriteNivel2->Height / 2,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			50,
+				/* Escala: */				0.75
+			);
+
+			//Policía número 3
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 + 120,
+				/* Posicion y: */			pnlSpriteNivel2->Height / 0.75,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			50,
+				/* Escala: */				0.75
+			);
+
+			logicaNivel2->setCantidadPuntosVida(3);
+
 			teclaPresionada = Ninguno;
 		};
 
@@ -115,7 +156,7 @@ namespace Ullyses {
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
 			buffer->Graphics->DrawImage(fondoNivel2, 0, 0, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
-			logicaNivel2->dibujarStephen(buffer->Graphics, stephen);
+			logicaNivel2->dibujarEntidades(buffer->Graphics, stephen, policia);
 			buffer->Render(canvas);
 
 			delete buffer;
