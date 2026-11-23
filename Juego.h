@@ -96,7 +96,7 @@ public:
         {
             if (leopold->getRectangle().IntersectsWith(c->getRectangle()))
             {
-                logica->perderVida();
+                logica->PerderPuntosVida();
                 protección = 10;
                 return;
             }
@@ -106,7 +106,7 @@ public:
         {
             if (leopold->getRectangle().IntersectsWith(a->getRectangle()))
             {
-                logica->perderVida();
+                logica->PerderPuntosVida();
                 protección = 10;
                 return;
             }
@@ -117,12 +117,12 @@ public:
 
     int getVida()
     {
-        return logica->getVida();
+        return logica->getPuntosVida();
     }
 
     int perdio()
     {
-        return logica->perdio();
+        return logica->PerdioNivel();
     }
 
     void dibujarColisiones(Graphics^ g)
@@ -155,7 +155,7 @@ public:
 
     bool gano()
     {
-        return logica->gano();
+        return logica->GanoNivel();
     }
 
     void actualizarMetros(Direccion tecla)

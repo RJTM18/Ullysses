@@ -4,21 +4,21 @@
 class Logica1
 {
 private:
-    int vida;
+    int PuntosVida;
     int MetrosLogrados;
     int contadorMovimientos;
 
 public:
     Logica1(int vida, int MetrosLogrados)
     {
-        this->vida = vida;
+        this->PuntosVida = vida;
         this->MetrosLogrados = MetrosLogrados;
         contadorMovimientos = 0;
     }
 
-    int getVida()
+    int getPuntosVida()
     {
-        return vida;
+        return PuntosVida;
     }
 
     int getMetrosLogrados()
@@ -26,27 +26,27 @@ public:
         return MetrosLogrados;
     }
 
-    void perderVida()
+    void PerderPuntosVida()
     {
-        if (vida > 0)
-            vida--;
+        if (PuntosVida > 0)
+            PuntosVida--;
     }
 
-    bool perdio()
+    bool PerdioNivel()
     {
-        return vida <= 0;
+        return PuntosVida <= 0;
     }
 
-    bool gano()
+    bool GanoNivel()
     {
         return MetrosLogrados >= 400;
     }
-
+    //aumentar los metros mediantes int metros
     void sumarMetros(int metros)
     {
         MetrosLogrados += metros;
     }
-
+    //mediante un bool derecha aumentar el contador y si el contador es >5 se suma esos metros  a 5 metros
     void actualizarMetros(bool derecha)
     {
         if (derecha)
