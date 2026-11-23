@@ -8,7 +8,8 @@ public:
 		anchoPantallaSprite(anchoPantallaSprite), altoPantallaSprite(altoPantallaSprite) {};
 	//virtual ~LogicaGeneral();
 
-
+	//Cada nivel define cuántas vidas tendrá el protagonista. 
+	virtual void setCantidadPuntosVida(int puntosDeVida) = 0;
 
 protected:
 	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel

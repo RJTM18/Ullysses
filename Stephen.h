@@ -7,7 +7,13 @@ public:
 		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
 	~Stephen() {};
 
-	int getVida() { return puntosVida; }
+	int getPuntosVida() { return puntosVida; }
+	void setPuntosVida(int puntosDeVida) { this->puntosVida = puntosDeVida; }
+
+	void fueGolpeado() {
+		puntosVida--;
+		if (puntosVida <= 0) puntosVida = 0;
+	};
 
 	void mover(Direccion tecla, int WidthScreen, int HeightScreen) override {		
 		//movimiento
