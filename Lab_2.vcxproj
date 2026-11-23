@@ -211,6 +211,9 @@
     <EmbeddedResource Include="FrmNivel2.resx">
       <DependentUpon>FrmNivel2.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNivel3.resx">
+      <DependentUpon>FrmNivel3.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

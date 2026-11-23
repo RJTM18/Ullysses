@@ -1,6 +1,7 @@
 #pragma once
 #include "FrmNivel1.h"
 #include "FrmNivel2.h"
+#include "FrmCreditos.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -50,10 +51,10 @@ namespace Ullyses {
 			// 
 			// btnJugar
 			// 
-			this->btnJugar->Location = System::Drawing::Point(214, 153);
-			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
+			this->btnJugar->Location = System::Drawing::Point(285, 188);
+			this->btnJugar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnJugar->Name = L"btnJugar";
-			this->btnJugar->Size = System::Drawing::Size(244, 58);
+			this->btnJugar->Size = System::Drawing::Size(325, 71);
 			this->btnJugar->TabIndex = 0;
 			this->btnJugar->Text = L"JUGAR";
 			this->btnJugar->UseVisualStyleBackColor = true;
@@ -61,23 +62,25 @@ namespace Ullyses {
 			// 
 			// btnInstrucciones
 			// 
-			this->btnInstrucciones->Location = System::Drawing::Point(214, 215);
-			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
+			this->btnInstrucciones->Location = System::Drawing::Point(285, 265);
+			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
-			this->btnInstrucciones->Size = System::Drawing::Size(244, 58);
+			this->btnInstrucciones->Size = System::Drawing::Size(325, 71);
 			this->btnInstrucciones->TabIndex = 1;
 			this->btnInstrucciones->Text = L"Instrucciones";
 			this->btnInstrucciones->UseVisualStyleBackColor = true;
 			// 
 			// btnCreditos
 			// 
-			this->btnCreditos->Location = System::Drawing::Point(214, 278);
-			this->btnCreditos->Margin = System::Windows::Forms::Padding(2);
+			this->btnCreditos->Location = System::Drawing::Point(285, 342);
+			this->btnCreditos->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCreditos->Name = L"btnCreditos";
-			this->btnCreditos->Size = System::Drawing::Size(244, 58);
+			this->btnCreditos->Size = System::Drawing::Size(325, 71);
 			this->btnCreditos->TabIndex = 2;
 			this->btnCreditos->Text = L"Creditos";
 			this->btnCreditos->UseVisualStyleBackColor = true;
+			this->btnCreditos->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnCreditos_Click);
+
 			// 
 			// label1
 			// 
@@ -86,19 +89,18 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei Light", 25.8F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Red;
-			this->label1->Location = System::Drawing::Point(283, 94);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(377, 116);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(109, 46);
+			this->label1->Size = System::Drawing::Size(134, 57);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Ulises";
 			// 
 			// btnSalir
 			// 
-			this->btnSalir->Location = System::Drawing::Point(509, 10);
-			this->btnSalir->Margin = System::Windows::Forms::Padding(2);
+			this->btnSalir->Location = System::Drawing::Point(679, 12);
+			this->btnSalir->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnSalir->Name = L"btnSalir";
-			this->btnSalir->Size = System::Drawing::Size(188, 41);
+			this->btnSalir->Size = System::Drawing::Size(251, 50);
 			this->btnSalir->TabIndex = 4;
 			this->btnSalir->Text = L"Salir";
 			this->btnSalir->UseVisualStyleBackColor = true;
@@ -106,10 +108,10 @@ namespace Ullyses {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(387, 460);
-			this->btnNivel2->Margin = System::Windows::Forms::Padding(2);
+			this->btnNivel2->Location = System::Drawing::Point(516, 566);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(244, 58);
+			this->btnNivel2->Size = System::Drawing::Size(325, 71);
 			this->btnNivel2->TabIndex = 5;
 			this->btnNivel2->Text = L"temporal NIvel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -117,16 +119,16 @@ namespace Ullyses {
 			// 
 			// FrmMenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(706, 557);
+			this->ClientSize = System::Drawing::Size(941, 686);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnCreditos);
 			this->Controls->Add(this->btnInstrucciones);
 			this->Controls->Add(this->btnJugar);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmMenuInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmMenuInicio";
@@ -171,5 +173,12 @@ namespace Ullyses {
 			nivel2->ShowDialog();
 			this->Show();
 		};
+private: System::Void btnCreditos_Click(System::Object^ sender, System::EventArgs^ e) {
+	Ullyses::FrmCreditos^ creditos = gcnew Ullyses::FrmCreditos();
+	this->Hide();
+	creditos->ShowDialog();
+	this->Show();
+	
+}
 };
 }
