@@ -3,18 +3,23 @@
 
 class Policia : public Sprite {
 public:
-	Policia(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) :
-		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale) {};
+	Policia(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale,
+		int siJugadorDerecha, int siJugadorIzquierda, int siJugadorArriba, int siJugadorAbajo) :
+		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale),
+		siJugadorAbajo(siJugadorAbajo),
+		siJugadorArriba(siJugadorArriba),
+		siJugadorDerecha(siJugadorDerecha),
+		siJugadorIzquierda(siJugadorIzquierda) {};
 	~Policia() {};
 
 	void mover(Direccion direccionJugador, int WidthScreen, int HeightScreen) override {
 		//movimiento
 		dx = dy = 0;
 
-		if (direccionJugador == Derecha)	dx = -1; //Policía va la izquierda.
-		if (direccionJugador == Izquierda)	dx = 1;	 //Policía a la derecha.
-		if (direccionJugador == Arriba)		dy = 1;  //Policía abajo.
-		if (direccionJugador == Abajo)		dy = -1; //policía arriba.
+		if (direccionJugador == Derecha)	dx = siJugadorDerecha;	//Policía va la izquierda.
+		if (direccionJugador == Izquierda)	dx = siJugadorIzquierda;//Policía a la derecha.
+		if (direccionJugador == Arriba)		dy = siJugadorArriba;	//Policía abajo.
+		if (direccionJugador == Abajo)		dy = siJugadorAbajo;	//policía arriba.
 
 		x += velocidad * dx;
 		y += velocidad * dy;
@@ -44,4 +49,10 @@ public:
 		}
 		else { indiceX = 0; }
 	};
+
+private:
+	int siJugadorDerecha;
+	int siJugadorIzquierda;
+	int siJugadorArriba;
+	int siJugadorAbajo;
 };
