@@ -115,7 +115,11 @@ namespace Ullyses {
 				/* Nº Filas: */             4,
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			75,
-				/* Escala: */				0.75
+				/* Escala: */				0.75,
+				/* Si el jugador va a la derecha: */		-1, //Policía a la izquierda.
+				/* Si el jugador va a la izquierda: */		1,	//policía a la derecha.
+				/* Si el jugador va arriba: */				1,	//policía va abajo.
+				/* Si el jugador va abajo: */				-1	//policía arriba
 			);
 
 			//Policía 2
@@ -127,7 +131,11 @@ namespace Ullyses {
 				/* Nº Filas: */             4,
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			50,
-				/* Escala: */				0.75
+				/* Escala: */				0.75,
+				/* Si el jugador va a la derecha: */		1, //Policía a la izquierda.
+				/* Si el jugador va a la izquierda: */		-1,	//policía a la derecha.
+				/* Si el jugador va arriba: */				-1,	//policía va abajo.
+				/* Si el jugador va abajo: */				1	//policía arriba
 			);
 
 			//Policía número 3
@@ -139,7 +147,11 @@ namespace Ullyses {
 				/* Nº Filas: */             4,
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			50,
-				/* Escala: */				0.75
+				/* Escala: */				0.75,
+				/* Si el jugador va a la derecha: */		-1, //Policía a la izquierda.
+				/* Si el jugador va a la izquierda: */		1,	//policía a la derecha.
+				/* Si el jugador va arriba: */				1,	//policía va abajo.
+				/* Si el jugador va abajo: */				-1	//policía arriba
 			);
 
 			logicaNivel2->setCantidadPuntosVida(3);

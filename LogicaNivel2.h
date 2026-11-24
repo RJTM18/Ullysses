@@ -1,19 +1,17 @@
 #pragma once
 #include "pch.h"
-#include "LogicaGeneral.h"
 #include "Stephen.h"
 #include "Policia.h"
 
-class LogicaNivel2 : public LogicaGeneral{
+class LogicaNivel2{
 public:
-	LogicaNivel2(int anchoPantalla, int altoPantalla) : LogicaGeneral(anchoPantalla, altoPantalla), 
-		stephen(nullptr) {};
+	LogicaNivel2(int anchoPantalla, int altoPantalla) : anchoPantallaSprite(anchoPantalla), altoPantallaSprite(altoPantalla), stephen(nullptr) {};
 	~LogicaNivel2() { 
 		delete stephen; 
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) delete escuadronPolicias[i];
 	};
 
-	void setCantidadPuntosVida(int puntosDeVida) override { stephen->setPuntosVida(puntosDeVida); }
+	void setCantidadPuntosVida(int puntosDeVida) { stephen->setPuntosVida(puntosDeVida); }
 	void impactoJugadorConEntidad() {
 		stephen->fueImpactado();
 		if (stephen->getAcasoEstaMuerto()) {
@@ -25,8 +23,10 @@ public:
 		stephen = new Stephen(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale);
 	};
 
-	void crearNuevoPolicia(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) {
-		Policia* nuevoPolicia = new Policia(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale);
+	void crearNuevoPolicia(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale,
+		int siJugadorDerecha, int siJugadorIzquierda, int siJugadorArriba, int siJugadorAbajo) {
+		Policia* nuevoPolicia = new Policia(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale,
+			siJugadorDerecha, siJugadorIzquierda, siJugadorArriba, siJugadorAbajo);
 		escuadronPolicias.push_back(nuevoPolicia);
 	};
 
@@ -45,6 +45,9 @@ public:
 	};
 
 private:
+	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel
+	int altoPantallaSprite; //alto de pantalla donde se movera el sprite en cada nivel
+
 	Stephen* stephen;
 	std::vector<Policia*> escuadronPolicias;
 };
