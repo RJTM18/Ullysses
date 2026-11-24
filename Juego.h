@@ -33,17 +33,12 @@ public:
     void crearCarro(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { carros.push_back(new Carro(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala)); }
     void crearAntisemita(int x, int y, int anchoSpriteSheet, int altoSpriteSheet, int columnas, int filas, int velocidad, double escala) { antisemita.push_back(new AntiSemita(x, y, anchoSpriteSheet, altoSpriteSheet, filas, columnas, velocidad, escala)); }
 
-    void moverCarros() 
-    {
-        
-        for (Carro* c : carros)
-        {
+    void moverCarros() {
+        for (Carro* c : carros) {
             c->mover(Ninguno, anchoPantalla, altoPantalla);
             c->reaparecer(anchoPantalla, altoPantalla);
         }
-        
-           
-    }
+    };
 
     void moverAntisemita()
     {

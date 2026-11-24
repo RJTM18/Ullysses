@@ -1,19 +1,17 @@
 #pragma once
 #include "pch.h"
-#include "LogicaGeneral.h"
 #include "Stephen.h"
 #include "Policia.h"
 
-class LogicaNivel2 : public LogicaGeneral{
+class LogicaNivel2{
 public:
-	LogicaNivel2(int anchoPantalla, int altoPantalla) : LogicaGeneral(anchoPantalla, altoPantalla), 
-		stephen(nullptr) {};
+	LogicaNivel2(int anchoPantalla, int altoPantalla) : anchoPantallaSprite(anchoPantalla), altoPantallaSprite(altoPantalla), stephen(nullptr) {};
 	~LogicaNivel2() { 
 		delete stephen; 
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) delete escuadronPolicias[i];
 	};
 
-	void setCantidadPuntosVida(int puntosDeVida) override { stephen->setPuntosVida(puntosDeVida); }
+	void setCantidadPuntosVida(int puntosDeVida) { stephen->setPuntosVida(puntosDeVida); }
 	void impactoJugadorConEntidad() {
 		stephen->fueImpactado();
 		if (stephen->getAcasoEstaMuerto()) {
@@ -45,6 +43,9 @@ public:
 	};
 
 private:
+	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel
+	int altoPantallaSprite; //alto de pantalla donde se movera el sprite en cada nivel
+
 	Stephen* stephen;
 	std::vector<Policia*> escuadronPolicias;
 };

@@ -208,11 +208,12 @@ namespace Ullyses {
 			if (!File::Exists(ruta)) ruta = nombre;
 			return gcnew Bitmap(ruta);
 		};
-	private: System::Void FrmCreditos_Load(System::Object^ sender, System::EventArgs^ e) {
-		FondoCreditos = cargarImagen("Sprites\\PantallaInicio.png");
-		this->BackgroundImage = FondoCreditos;
-		this->BackgroundImageLayout = ImageLayout::Stretch;
 
-	}
-};
+		private: System::Void FrmCreditos_Load(System::Object^ sender, System::EventArgs^ e) {
+			FondoCreditos = cargarImagen("Sprites\\PantallaInicio.png");
+			this->BackgroundImage = FondoCreditos;
+			this->BackgroundImageLayout = ImageLayout::Stretch;
+
+		}
+	};
 }

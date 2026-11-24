@@ -163,7 +163,6 @@
     </ClInclude>
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Leopold.h" />
-    <ClInclude Include="LogicaGeneral.h" />
     <ClInclude Include="LogicaNivel1.h" />
     <ClInclude Include="LogicaNivel2.h" />
     <ClInclude Include="LogicaNivel3.h" />

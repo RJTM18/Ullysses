@@ -16,7 +16,7 @@ public:
 		if (puntosVida <= 0) {
 			puntosVida = 0;
 			jugadorMuerto();
-		};			
+		}			
 	};
 
 	void jugadorMuerto() { this->AcasoEstaMuerto = true; }

@@ -62,14 +62,14 @@ public:
 			(int)(anchoFigura * hitAncho),
 			(int)(altoFigura * hitAlto)
 		);
-	}
+	};
 	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
-	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); }
+	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); };
 	
 	//en el caso de querer hacer cambios del hitbox
 	void setHitbox(double hx, double hy, double ha, double hal) {
 		hitX = hx; hitY = hy; hitAncho = ha; hitAlto = hal;
-	}
+	};
 
 	int getX() { return x; }
 	int getY() { return y; }

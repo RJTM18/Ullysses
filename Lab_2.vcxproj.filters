@@ -41,9 +41,6 @@
     <ClInclude Include="FrmNivel1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LogicaGeneral.h">
-      <Filter>Header Files\Logica</Filter>
-    </ClInclude>
     <ClInclude Include="LogicaNivel1.h">
       <Filter>Header Files\Logica</Filter>
     </ClInclude>
