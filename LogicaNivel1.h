@@ -3,23 +3,23 @@
 #include "Leopold.h"
 #include "Carro.h"
 #include "AntiSemita.h"
-
+using namespace std;
 class Logica1
 {
 private:
-    int PuntosVida;
+    int NivelConfianza;
     int MetrosLogrados;
     int contadorMovimientos;
     int proteccion;
 
     int anchoPantalla, altoPantalla;
     Leopold* leopold;
-    std::vector<Carro*> carros;
-    std::vector<AntiSemita*> antisemita;
+    vector<Carro*> carros;
+    vector<AntiSemita*> antisemita;
 
 public:
-    Logica1(int vida, int metros, int anchoPantalla, int altoPantalla)
-        : PuntosVida(vida), MetrosLogrados(metros), contadorMovimientos(0), proteccion(0),
+    Logica1(int NivelConfianza, int metros, int anchoPantalla, int altoPantalla)
+        : NivelConfianza(NivelConfianza), MetrosLogrados(metros), contadorMovimientos(0), proteccion(0),
         anchoPantalla(anchoPantalla), altoPantalla(altoPantalla), leopold(nullptr) {
     }
 
@@ -29,7 +29,7 @@ public:
         for (AntiSemita* a : antisemita) delete a;
     }
 
-    // ---------- creación ----------
+   
     void crearLeopold(int x, int y, int anchoSS, int altoSS, int columnas, int filas, int velocidad, double escala) {
         leopold = new Leopold(x, y, anchoSS, altoSS, columnas, filas, velocidad, escala);
     }
@@ -40,7 +40,7 @@ public:
         antisemita.push_back(new AntiSemita(x, y, anchoSS, altoSS, filas, columnas, velocidad, escala));
     }
 
-    //espacio donde se moverán
+ 
     void moverLeopold(Direccion tecla, int ancho, int alto) {
         if (leopold == nullptr) return;
         leopold->mover(tecla, ancho, alto);
@@ -77,20 +77,23 @@ public:
 
         for (Carro* c : carros)
             if (leopold->getRectangle().IntersectsWith(c->getRectangle())) {
-                PerderPuntosVida(); proteccion = 10; return;
+                PerderNivelConfianza(); proteccion = 10; return;
             }
         for (AntiSemita* a : antisemita)
             if (leopold->getRectangle().IntersectsWith(a->getRectangle())) {
-                PerderPuntosVida(); proteccion = 10; return;
+                PerderNivelConfianza(); proteccion = 10; return;
             }
     }
 
    //Este sería el estado del nivel
-    int  getVida() { return PuntosVida; }
+    int  getConfianza() { return NivelConfianza; }
     int  metros() { return MetrosLogrados; }
-    bool perdio() { return PuntosVida <= 0; }
+    bool perdio() { return NivelConfianza <= 0; }
     bool gano() { return MetrosLogrados >= 400; }
-    void PerderPuntosVida() { if (PuntosVida > 0) PuntosVida--; }
+    void PerderNivelConfianza(int cantidad = 10) {
+        NivelConfianza -= cantidad;
+        if (NivelConfianza < 0) NivelConfianza = 0;
+    }
     void sumarMetros(int m) { MetrosLogrados += m; }
 
     void actualizarMetros(Direccion tecla) {

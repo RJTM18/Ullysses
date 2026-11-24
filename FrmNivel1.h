@@ -49,7 +49,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Panel^ pnlSpriteScreen;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Panel^ pnlEstadistica;
-	private: System::Windows::Forms::Label^ lblVida;
+	private: System::Windows::Forms::Label^ lblConfianza;
+
 
 	private: System::Windows::Forms::Label^ lblNombre;
 	private: System::Windows::Forms::Label^ lblMetros;
@@ -68,7 +69,7 @@ namespace Ullyses {
 			   this->pnlSpriteScreen = (gcnew System::Windows::Forms::Panel());
 			   this->pnlEstadistica = (gcnew System::Windows::Forms::Panel());
 			   this->lblMetros = (gcnew System::Windows::Forms::Label());
-			   this->lblVida = (gcnew System::Windows::Forms::Label());
+			   this->lblConfianza = (gcnew System::Windows::Forms::Label());
 			   this->lblNombre = (gcnew System::Windows::Forms::Label());
 			   this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlSpriteScreen->SuspendLayout();
@@ -90,7 +91,7 @@ namespace Ullyses {
 			   // 
 			   this->pnlEstadistica->BackColor = System::Drawing::SystemColors::Info;
 			   this->pnlEstadistica->Controls->Add(this->lblMetros);
-			   this->pnlEstadistica->Controls->Add(this->lblVida);
+			   this->pnlEstadistica->Controls->Add(this->lblConfianza);
 			   this->pnlEstadistica->Controls->Add(this->lblNombre);
 			   this->pnlEstadistica->Dock = System::Windows::Forms::DockStyle::Right;
 			   this->pnlEstadistica->Location = System::Drawing::Point(1413, 0);
@@ -102,33 +103,34 @@ namespace Ullyses {
 			   // lblMetros
 			   // 
 			   this->lblMetros->AutoSize = true;
-			   this->lblMetros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->lblMetros->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblMetros->Location = System::Drawing::Point(104, 353);
+			   this->lblMetros->Location = System::Drawing::Point(109, 289);
 			   this->lblMetros->Name = L"lblMetros";
-			   this->lblMetros->Size = System::Drawing::Size(131, 32);
+			   this->lblMetros->Size = System::Drawing::Size(141, 36);
 			   this->lblMetros->TabIndex = 3;
 			   this->lblMetros->Text = L"Metros: 0";
 			   // 
-			   // lblVida
+			   // lblConfianza
 			   // 
-			   this->lblVida->AutoSize = true;
-			   this->lblVida->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->lblConfianza->AutoSize = true;
+			   this->lblConfianza->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblVida->Location = System::Drawing::Point(120, 222);
-			   this->lblVida->Name = L"lblVida";
-			   this->lblVida->Size = System::Drawing::Size(125, 32);
-			   this->lblVida->TabIndex = 2;
-			   this->lblVida->Text = L"Vidas: 3";
+			   this->lblConfianza->Location = System::Drawing::Point(75, 188);
+			   this->lblConfianza->Name = L"lblConfianza";
+			   this->lblConfianza->Size = System::Drawing::Size(233, 35);
+			   this->lblConfianza->TabIndex = 2;
+			   this->lblConfianza->Text = L"Confianza: 100%";
+			   this->lblConfianza->Click += gcnew System::EventHandler(this, &FrmNivel1::lblConfianza_Click);
 			   // 
 			   // lblNombre
 			   // 
 			   this->lblNombre->AutoSize = true;
-			   this->lblNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->lblNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblNombre->Location = System::Drawing::Point(24, 52);
+			   this->lblNombre->Location = System::Drawing::Point(43, 98);
 			   this->lblNombre->Name = L"lblNombre";
-			   this->lblNombre->Size = System::Drawing::Size(266, 38);
+			   this->lblNombre->Size = System::Drawing::Size(278, 44);
 			   this->lblNombre->TabIndex = 0;
 			   this->lblNombre->Text = L"Nivel 1: Leopold";
 			   // 
@@ -167,7 +169,7 @@ namespace Ullyses {
 
 	private: System::Void FrmJuego_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (pnlSpriteScreen->Width <= 0 || pnlSpriteScreen->Height <= 0) return;
-		if (juego == nullptr) juego = new Logica1(5, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
+		if (juego == nullptr) juego = new Logica1(100, 0, pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 
 		anchoPantallaSprite = pnlSpriteScreen->Width - pnlEstadistica->Width;
 		altoPantallaSprite = pnlSpriteScreen->Height;
@@ -189,7 +191,7 @@ namespace Ullyses {
 		);
 
 		
-		int carriles[3] = { 450, 600, 800 };
+		int carriles[3] = { 470, 600, 800 };
 		for (int i = 0; i < 3; i++)
 		{
 			juego->crearCarro(
@@ -250,10 +252,11 @@ namespace Ullyses {
 			pnlSpriteScreen->Width, pnlSpriteScreen->Height);
 
 		//dibujar a los personajes
-		juego->dibujarLeopold(buffer->Graphics, Leopold);
 		juego->dibujarAntisemita(buffer->Graphics, Antisemita);
 		juego->dibujarCarros(buffer->Graphics, AutoNegro);
-		//sirve para dibujar las colisiones mediante rectangulos
+		juego->dibujarLeopold(buffer->Graphics, Leopold);
+
+		//esto sirve para dibujar las colisiones mediante rectangulos
 		//juego->dibujarColisiones(buffer->Graphics);
 
 		buffer->Render(canvas);
@@ -262,10 +265,9 @@ namespace Ullyses {
 		delete canvas;
 
 		juego->verificarColisiones();
-
-		lblVida->Text = "Vidas: " + juego->getVida().ToString();
+		lblConfianza->Text = "Confianza: " + juego->getConfianza().ToString() + "%";
 		lblMetros->Text = "Metros: " + juego->metros().ToString();
-
+		
 		//estas son las condiciones cuando el personaje ha ganado o ha perdido dentro de la lógica
 		if (juego->gano())
 		{
@@ -302,5 +304,7 @@ namespace Ullyses {
 	};
 	private: System::Void pnlSpriteScreen_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	};
+	private: System::Void lblConfianza_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
