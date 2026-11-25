@@ -107,8 +107,9 @@ namespace Ullyses {
 			   this->pnlSpriteScreen->Controls->Add(this->pictureBox3);
 			   this->pnlSpriteScreen->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->pnlSpriteScreen->Location = System::Drawing::Point(0, 0);
+			   this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			   this->pnlSpriteScreen->Name = L"pnlSpriteScreen";
-			   this->pnlSpriteScreen->Size = System::Drawing::Size(1326, 662);
+			   this->pnlSpriteScreen->Size = System::Drawing::Size(1768, 815);
 			   this->pnlSpriteScreen->TabIndex = 0;
 			   this->pnlSpriteScreen->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlSpriteScreen_Paint);
 			   // 
@@ -118,10 +119,9 @@ namespace Ullyses {
 			   this->lblMetros->BackColor = System::Drawing::Color::Transparent;
 			   this->lblMetros->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblMetros->Location = System::Drawing::Point(333, 78);
-			   this->lblMetros->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->lblMetros->Location = System::Drawing::Point(906, 96);
 			   this->lblMetros->Name = L"lblMetros";
-			   this->lblMetros->Size = System::Drawing::Size(125, 31);
+			   this->lblMetros->Size = System::Drawing::Size(156, 39);
 			   this->lblMetros->TabIndex = 3;
 			   this->lblMetros->Text = L"Metros: 0";
 			   // 
@@ -131,10 +131,9 @@ namespace Ullyses {
 			   this->lblConfianza->BackColor = System::Drawing::Color::Transparent;
 			   this->lblConfianza->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblConfianza->Location = System::Drawing::Point(549, 80);
-			   this->lblConfianza->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->lblConfianza->Location = System::Drawing::Point(1224, 96);
 			   this->lblConfianza->Name = L"lblConfianza";
-			   this->lblConfianza->Size = System::Drawing::Size(185, 29);
+			   this->lblConfianza->Size = System::Drawing::Size(233, 35);
 			   this->lblConfianza->TabIndex = 2;
 			   this->lblConfianza->Text = L"Confianza: 100%";
 			   this->lblConfianza->Click += gcnew System::EventHandler(this, &FrmNivel1::lblConfianza_Click);
@@ -145,10 +144,9 @@ namespace Ullyses {
 			   this->lblNombre->BackColor = System::Drawing::Color::Transparent;
 			   this->lblNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblNombre->Location = System::Drawing::Point(40, 81);
-			   this->lblNombre->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->lblNombre->Location = System::Drawing::Point(510, 107);
 			   this->lblNombre->Name = L"lblNombre";
-			   this->lblNombre->Size = System::Drawing::Size(200, 31);
+			   this->lblNombre->Size = System::Drawing::Size(246, 39);
 			   this->lblNombre->TabIndex = 0;
 			   this->lblNombre->Text = L"Nivel 1: Leopold";
 			   this->lblNombre->Click += gcnew System::EventHandler(this, &FrmNivel1::lblNombre_Click);
@@ -156,9 +154,10 @@ namespace Ullyses {
 			   // pictureBox1
 			   // 
 			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			   this->pictureBox1->Location = System::Drawing::Point(21, 34);
+			   this->pictureBox1->Location = System::Drawing::Point(467, 42);
+			   this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			   this->pictureBox1->Name = L"pictureBox1";
-			   this->pictureBox1->Size = System::Drawing::Size(243, 125);
+			   this->pictureBox1->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox1->TabIndex = 4;
 			   this->pictureBox1->TabStop = false;
@@ -167,9 +166,10 @@ namespace Ullyses {
 			   // pictureBox2
 			   // 
 			   this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			   this->pictureBox2->Location = System::Drawing::Point(270, 34);
+			   this->pictureBox2->Location = System::Drawing::Point(823, 42);
+			   this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			   this->pictureBox2->Name = L"pictureBox2";
-			   this->pictureBox2->Size = System::Drawing::Size(243, 125);
+			   this->pictureBox2->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox2->TabIndex = 5;
 			   this->pictureBox2->TabStop = false;
@@ -178,9 +178,10 @@ namespace Ullyses {
 			   // pictureBox3
 			   // 
 			   this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			   this->pictureBox3->Location = System::Drawing::Point(519, 34);
+			   this->pictureBox3->Location = System::Drawing::Point(1178, 42);
+			   this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			   this->pictureBox3->Name = L"pictureBox3";
-			   this->pictureBox3->Size = System::Drawing::Size(243, 125);
+			   this->pictureBox3->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox3->TabIndex = 6;
 			   this->pictureBox3->TabStop = false;
@@ -194,10 +195,11 @@ namespace Ullyses {
 			   // 
 			   // FrmNivel1
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(1326, 662);
+			   this->ClientSize = System::Drawing::Size(1768, 815);
 			   this->Controls->Add(this->pnlSpriteScreen);
+			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			   this->Name = L"FrmNivel1";
 			   this->Text = L"Juego";
 			   this->WindowState = System::Windows::Forms::FormWindowState::Maximized;

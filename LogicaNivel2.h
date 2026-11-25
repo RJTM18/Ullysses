@@ -37,7 +37,7 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->dibujar(g, ImgPolicia);
 	};
 
-	void moverStephen(Direccion tecla, int WidthScreen, int HeightScreen) {
+	void moverStephen(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
 		if (stephen == nullptr) return;
 		
 		stephen->mover(teclaPresionada, WidthScreen, HeightScreen);

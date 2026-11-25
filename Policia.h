@@ -16,11 +16,12 @@ public:
 		Direccion dirreccionPolicia = Ninguno;
 		//movimiento
 		dx = dy = 0;
-
+		/*
 		if (direccionPolicia == Derecha)	dx = 1;		//Policía va la izquierda.
 		if (direccionPolicia == Izquierda)	dx = -1;	//Policía a la derecha.
 		if (direccionPolicia == Arriba)		dy = -1;	//Policía abajo.
 		if (direccionPolicia == Abajo)		dy = 1;		//policía arriba.
+		*/
 
 		x += velocidad * dx;
 		y += velocidad * dy;

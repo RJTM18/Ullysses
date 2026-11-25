@@ -49,7 +49,7 @@ public:
 		g->DrawImage(imagen, destino, recorte, GraphicsUnit::Pixel);
 	}
 
-	//HAMP Explica: rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
+	 //rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	//también es una manera mas optima de poder escalar cuadrados en donde vamos a colocar a gusto en cualquier pesonaje con colisiones rectangulares
 	Rectangle getRectangle() {
 		int anchoFigura = (int)(anchoFrame * escala); //ancho modificado del sprite
@@ -63,7 +63,7 @@ public:
 			(int)(altoFigura * hitAlto)
 		);
 	};
-	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
+	
 	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); };
 	
 	//en el caso de querer hacer cambios del hitbox

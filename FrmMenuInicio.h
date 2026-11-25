@@ -94,10 +94,10 @@ namespace Ullyses {
 			this->btnJugar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnJugar->Location = System::Drawing::Point(698, 138);
-			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
+			this->btnJugar->Location = System::Drawing::Point(726, 175);
+			this->btnJugar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnJugar->Name = L"btnJugar";
-			this->btnJugar->Size = System::Drawing::Size(394, 166);
+			this->btnJugar->Size = System::Drawing::Size(525, 204);
 			this->btnJugar->TabIndex = 0;
 			this->btnJugar->Text = L"Jugar";
 			this->btnJugar->UseVisualStyleBackColor = false;
@@ -110,10 +110,10 @@ namespace Ullyses {
 			this->btnInstrucciones->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnInstrucciones->Location = System::Drawing::Point(698, 332);
-			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
+			this->btnInstrucciones->Location = System::Drawing::Point(726, 409);
+			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
-			this->btnInstrucciones->Size = System::Drawing::Size(394, 166);
+			this->btnInstrucciones->Size = System::Drawing::Size(525, 204);
 			this->btnInstrucciones->TabIndex = 1;
 			this->btnInstrucciones->Text = L"Instrucciones";
 			this->btnInstrucciones->UseVisualStyleBackColor = false;
@@ -126,10 +126,10 @@ namespace Ullyses {
 			this->btnCreditos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCreditos->Location = System::Drawing::Point(698, 534);
-			this->btnCreditos->Margin = System::Windows::Forms::Padding(2);
+			this->btnCreditos->Location = System::Drawing::Point(726, 653);
+			this->btnCreditos->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCreditos->Name = L"btnCreditos";
-			this->btnCreditos->Size = System::Drawing::Size(394, 166);
+			this->btnCreditos->Size = System::Drawing::Size(525, 204);
 			this->btnCreditos->TabIndex = 2;
 			this->btnCreditos->Text = L"Creditos";
 			this->btnCreditos->UseVisualStyleBackColor = false;
@@ -142,19 +142,18 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Bauhaus 93", 26.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Black;
-			this->label1->Location = System::Drawing::Point(841, 81);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(924, 99);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(103, 39);
+			this->label1->Size = System::Drawing::Size(130, 50);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Ulises";
 			// 
 			// btnSalir
 			// 
-			this->btnSalir->Location = System::Drawing::Point(380, 104);
-			this->btnSalir->Margin = System::Windows::Forms::Padding(2);
+			this->btnSalir->Location = System::Drawing::Point(342, 128);
+			this->btnSalir->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnSalir->Name = L"btnSalir";
-			this->btnSalir->Size = System::Drawing::Size(230, 58);
+			this->btnSalir->Size = System::Drawing::Size(307, 71);
 			this->btnSalir->TabIndex = 4;
 			this->btnSalir->Text = L"Salir";
 			this->btnSalir->UseVisualStyleBackColor = true;
@@ -162,10 +161,10 @@ namespace Ullyses {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(366, 42);
-			this->btnNivel2->Margin = System::Windows::Forms::Padding(2);
+			this->btnNivel2->Location = System::Drawing::Point(342, 53);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(244, 58);
+			this->btnNivel2->Size = System::Drawing::Size(325, 71);
 			this->btnNivel2->TabIndex = 5;
 			this->btnNivel2->Text = L"temporal NIvel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -184,17 +183,17 @@ namespace Ullyses {
 			// 
 			// FrmMenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1433, 757);
+			this->ClientSize = System::Drawing::Size(1911, 932);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnCreditos);
 			this->Controls->Add(this->btnInstrucciones);
 			this->Controls->Add(this->btnJugar);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmMenuInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmMenuInicio";
