@@ -17,6 +17,12 @@ namespace Ullyses {
 			InitializeComponent();
 			logicaNivel2 = nullptr;
 			teclaPresionada = Ninguno;
+
+			CONFIG_POLICIAS = gcnew array<ConfiguracionPolicia^> {
+				gcnew ConfiguracionPolicia(75, 0.75, -1, 1, 1, -1),
+					gcnew ConfiguracionPolicia(50, 0.75, 1, -1, -1, 1),
+					gcnew ConfiguracionPolicia(50, 0.75, -1, 1, 1, -1)
+			};
 		}
 
 	protected:
@@ -33,6 +39,30 @@ namespace Ullyses {
 		LogicaNivel2* logicaNivel2;
 
 		Direccion teclaPresionada;
+
+		ref struct ConfiguracionPolicia {
+			int    velocidad;
+			double escala;
+			int    dxJugadorDerecha;    // reacción cuando el jugador va a la derecha
+			int    dxJugadorIzquierda;  // reacción cuando va a la izquierda
+			int    dyJugadorArriba;     // reacción cuando va arriba
+			int    dyJugadorAbajo;      // reacción cuando va abajo
+
+			ConfiguracionPolicia(int vel, double esc,
+				int dxDer, int dxIzq, int dyArr, int dyAba)
+				: velocidad(vel), escala(esc),
+				dxJugadorDerecha(dxDer), dxJugadorIzquierda(dxIzq),
+				dyJugadorArriba(dyArr), dyJugadorAbajo(dyAba) {
+			}
+		};
+
+	private:
+		// Tabla central de policías del nivel 2.
+		// Orden: (xRatio, yRatio, velocidad, escala,
+		//         dxJugadorDerecha, dxJugadorIzquierda, dyJugadorArriba, dyJugadorAbajo)
+		static array<ConfiguracionPolicia^>^ CONFIG_POLICIAS;
+
+
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
@@ -58,7 +88,6 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
 			this->pnlSpriteNivel2->Size = System::Drawing::Size(843, 564);
 			this->pnlSpriteNivel2->TabIndex = 0;
-			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// timer1
 			// 
@@ -116,10 +145,10 @@ namespace Ullyses {
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			75,
 				/* Escala: */				0.75,
-				/* Si el jugador va a la derecha: */		-1, //Policía a la izquierda.
-				/* Si el jugador va a la izquierda: */		1,	//policía a la derecha.
-				/* Si el jugador va arriba: */				1,	//policía va abajo.
-				/* Si el jugador va abajo: */				-1	//policía arriba
+				/* Si el jugador va a la derecha: */		if (teclaPresionada == Derecha)		{ RespuestaDireccionPolicia = Izquierda; }, 
+				/* Si el jugador va a la izquierda: */		if (teclaPresionada == izquierda)	{ RespuestaDireccionPolicia = Derecha; },	//policía a la derecha.
+				/* Si el jugador va arriba: */				if (teclaPresionada == arriba)		{ RespuestaDireccionPolicia = Abajo; },		//policía va abajo.
+				/* Si el jugador va abajo: */				if (teclaPresionada == Abajo)		{ RespuestaDireccionPolicia = Arriba; }		//policía arriba
 			);
 
 			//Policía 2
@@ -188,7 +217,7 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-};
+
+
+	};
 };

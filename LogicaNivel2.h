@@ -38,10 +38,15 @@ public:
 	};
 
 	void moverStephen(Direccion tecla, int WidthScreen, int HeightScreen) {
-		if (stephen == nullptr || escuadronPolicias.empty() ) return;
+		if (stephen == nullptr) return;
 		
 		stephen->mover(tecla, WidthScreen, HeightScreen);
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(tecla, WidthScreen, HeightScreen);
+	};
+
+	void moverPolicias(Direccion dicJugador, int WidthScreen, int HeightScreen) {
+		if (escuadronPolicias.empty()) return;
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(dicJugador, WidthScreen, HeightScreen);
 	};
 
 private:
