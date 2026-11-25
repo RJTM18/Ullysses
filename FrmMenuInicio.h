@@ -19,6 +19,8 @@ namespace Ullyses {
 	public:
 		FrmMenuInicio(void) {
 			InitializeComponent();
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
 
 	protected:
@@ -59,18 +61,19 @@ namespace Ullyses {
 			// 
 			// btnJugar
 			// 
-			this->btnJugar->Location = System::Drawing::Point(214, 153);
+			this->btnJugar->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->btnJugar->Location = System::Drawing::Point(775, 260);
 			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
 			this->btnJugar->Name = L"btnJugar";
 			this->btnJugar->Size = System::Drawing::Size(244, 58);
 			this->btnJugar->TabIndex = 0;
 			this->btnJugar->Text = L"JUGAR";
-			this->btnJugar->UseVisualStyleBackColor = true;
+			this->btnJugar->UseVisualStyleBackColor = false;
 			this->btnJugar->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnJugar_Click);
 			// 
 			// btnInstrucciones
 			// 
-			this->btnInstrucciones->Location = System::Drawing::Point(214, 215);
+			this->btnInstrucciones->Location = System::Drawing::Point(775, 346);
 			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
 			this->btnInstrucciones->Size = System::Drawing::Size(244, 58);
@@ -80,7 +83,7 @@ namespace Ullyses {
 			// 
 			// btnCreditos
 			// 
-			this->btnCreditos->Location = System::Drawing::Point(214, 278);
+			this->btnCreditos->Location = System::Drawing::Point(775, 437);
 			this->btnCreditos->Margin = System::Windows::Forms::Padding(2);
 			this->btnCreditos->Name = L"btnCreditos";
 			this->btnCreditos->Size = System::Drawing::Size(244, 58);
@@ -93,22 +96,22 @@ namespace Ullyses {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei Light", 25.8F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Bauhaus 93", 26.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::Red;
-			this->label1->Location = System::Drawing::Point(283, 94);
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->Location = System::Drawing::Point(840, 219);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(109, 46);
+			this->label1->Size = System::Drawing::Size(103, 39);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Ulises";
 			// 
 			// btnSalir
 			// 
-			this->btnSalir->Location = System::Drawing::Point(509, 10);
+			this->btnSalir->Location = System::Drawing::Point(668, 519);
 			this->btnSalir->Margin = System::Windows::Forms::Padding(2);
 			this->btnSalir->Name = L"btnSalir";
-			this->btnSalir->Size = System::Drawing::Size(188, 41);
+			this->btnSalir->Size = System::Drawing::Size(230, 58);
 			this->btnSalir->TabIndex = 4;
 			this->btnSalir->Text = L"Salir";
 			this->btnSalir->UseVisualStyleBackColor = true;
@@ -116,7 +119,7 @@ namespace Ullyses {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(387, 460);
+			this->btnNivel2->Location = System::Drawing::Point(902, 519);
 			this->btnNivel2->Margin = System::Windows::Forms::Padding(2);
 			this->btnNivel2->Name = L"btnNivel2";
 			this->btnNivel2->Size = System::Drawing::Size(244, 58);
@@ -140,8 +143,8 @@ namespace Ullyses {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(706, 557);
-			this->Controls->Add(this->btnNivel3);
+			this->AutoSize = true;
+			this->ClientSize = System::Drawing::Size(1433, 646);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->label1);

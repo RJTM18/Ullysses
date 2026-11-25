@@ -13,6 +13,7 @@ public:
 	~Policia() {};
 
 	void mover(Direccion direccionJugador, int WidthScreen, int HeightScreen) override {
+		Direccion dirreccionPolicia = Ninguno;
 		//movimiento
 		dx = dy = 0;
 
@@ -34,16 +35,16 @@ public:
 		if (x > WidthScreen - anchoFrameModificado) x = WidthScreen - anchoFrameModificado;
 		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
-		animar(direccionJugador);
+		animar(dirreccionPolicia);
 	};
 
-	void animar(Direccion direccionJugador) {
-		if (direccionJugador == Arriba)		indiceY = 0;
-		if (direccionJugador == Abajo)		indiceY = 1;
-		if (direccionJugador == Derecha)	indiceY = 2;
-		if (direccionJugador == Izquierda)	indiceY = 3;
+	void animar(Direccion dirreccionPolicia) {
+		if (dirreccionPolicia == Arriba)		indiceY = 0;
+		if (dirreccionPolicia == Abajo)		indiceY = 1;
+		if (dirreccionPolicia == Derecha)	indiceY = 2;
+		if (dirreccionPolicia == Izquierda)	indiceY = 3;
 
-		if (direccionJugador != Ninguno) {
+		if (dirreccionPolicia != Ninguno) {
 			indiceX++;
 			if (indiceX >= columnas) indiceX = 0;
 		}
