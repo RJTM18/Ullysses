@@ -107,41 +107,41 @@ namespace Ullyses {
 			return gcnew Bitmap(ruta);
 		};
 
-	private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
-		if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-		logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
-		timer1->Enabled = true;
+		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
+			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
+			logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			timer1->Enabled = true;
 
-		stephen = cargarImagen("Sprites\\StephenDedalus.png");
-		policia = cargarImagen("Sprites\\Policia.png");
-		fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
+			stephen = cargarImagen("Sprites\\StephenDedalus.png");
+			policia = cargarImagen("Sprites\\Policia.png");
+			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
 
-		logicaNivel2->crearStephen(
-			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-			/* Posicion y: */			pnlSpriteNivel2->Height - 10,
-			/* Anchura de Imagen: */	stephen->Width,
-			/* Altura de Imagen: */		stephen->Height,
-			/* Nº Filas: */             4,
-			/* Nº Columnas: */			8,
-			/* Velocidad: */			40,
-			/* Escala: */				0.75
-		);
+			logicaNivel2->crearStephen(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
+				/* Anchura de Imagen: */	stephen->Width,
+				/* Altura de Imagen: */		stephen->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			8,
+				/* Velocidad: */			40,
+				/* Escala: */				0.75
+			);
 
-		//Policía 1
-		logicaNivel2->crearNuevoPolicia(
-			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-			/* Posicion y: */			10,
-			/* Anchura de Imagen: */	policia->Width,
-			/* Altura de Imagen: */		policia->Height,
-			/* Nº Filas: */             4,
-			/* Nº Columnas: */			4,
-			/* Velocidad: */			75,
-			/* Escala: */				0.75,
-			/* Si el jugador va a la derecha: */		1, //Policía a la izquierda.
-			/* Si el jugador va a la izquierda: */		-1,	//policía a la derecha.
-			/* Si el jugador va arriba: */				-1,	//policía va abajo.
-			/* Si el jugador va abajo: */				1	//policía arriba
-		);
+			logicaNivel2->setNewHitboxPolicias();
+		
+			//jugador DERECHA, IZQUIERDA, ARRIBA, ABAJO
+			//Policía 1
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			10,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			75,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba)
+			);
 
 			//Policía 2
 			logicaNivel2->crearNuevoPolicia(
@@ -153,13 +153,10 @@ namespace Ullyses {
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			50,
 				/* Escala: */				0.75,
-				/* Si el jugador va a la derecha: */		1, //Policía a la izquierda.
-				/* Si el jugador va a la izquierda: */		-1,	//policía a la derecha.
-				/* Si el jugador va arriba: */				-1,	//policía va abajo.
-				/* Si el jugador va abajo: */				1	//policía arriba
+				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Abajo, Arriba)
 			);
 
-			//Policía número 3
+				//Policía número 3
 			logicaNivel2->crearNuevoPolicia(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 + 120,
 				/* Posicion y: */			pnlSpriteNivel2->Height / 0.75,
@@ -169,12 +166,9 @@ namespace Ullyses {
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			50,
 				/* Escala: */				0.75,
-				/* Si el jugador va a la derecha: */		-1, //Policía a la izquierda.
-				/* Si el jugador va a la izquierda: */		1,	//policía a la derecha.
-				/* Si el jugador va arriba: */				1,	//policía va abajo.
-				/* Si el jugador va abajo: */				-1	//policía arriba
+				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
 			);
-
+		
 			logicaNivel2->setCantidadPuntosVida(3);
 
 			teclaPresionada = Ninguno;
@@ -184,12 +178,14 @@ namespace Ullyses {
 			if (logicaNivel2 == nullptr) return;
 
 			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
 			Graphics^ canvas = pnlSpriteNivel2->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
 			buffer->Graphics->DrawImage(fondoNivel2, 0, 0, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
 			logicaNivel2->dibujarEntidades(buffer->Graphics, stephen, policia);
+			logicaNivel2->graficarCuadros(buffer->Graphics);
 			buffer->Render(canvas);
 
 			delete buffer;

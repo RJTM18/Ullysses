@@ -24,9 +24,8 @@ public:
 	};
 
 	void crearNuevoPolicia(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale,
-		int siJugadorDerecha, int siJugadorIzquierda, int siJugadorArriba, int siJugadorAbajo) {
-		Policia* nuevoPolicia = new Policia(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale,
-			siJugadorDerecha, siJugadorIzquierda, siJugadorArriba, siJugadorAbajo);
+		ReaccionPolicia reaccionPoli) {
+		Policia* nuevoPolicia = new Policia(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale, reaccionPoli);
 		escuadronPolicias.push_back(nuevoPolicia);
 	};
 
@@ -37,7 +36,7 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->dibujar(g, ImgPolicia);
 	};
 
-	void moverStephen(Direccion tecla, int WidthScreen, int HeightScreen) {
+	void moverStephen(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
 		if (stephen == nullptr) return;
 		
 		stephen->mover(teclaPresionada, WidthScreen, HeightScreen);
@@ -49,6 +48,21 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(dicJugador, WidthScreen, HeightScreen);
 	};
 
+	void setNewHitboxPolicias() {
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) { escuadronPolicias[i]->setHitbox(0.38, 0.25, 0.28, 0.5); }
+	}
+
+	void graficarCuadros(Graphics^ g) {
+		stephen->dibujarRectangulo(g);
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) { escuadronPolicias[i]->dibujarRectangulo(g);		}
+	};
+
+	//colisiones
+	void asf() {
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) {
+			if (stephen->getRectangle().IntersectsWith(escuadronPolicias[i]->getRectangle()));
+		}
+	}
 private:
 	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel
 	int altoPantallaSprite; //alto de pantalla donde se movera el sprite en cada nivel

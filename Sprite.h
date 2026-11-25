@@ -56,6 +56,7 @@ public:
 		int altoFigura = (int)(altoFrame * escala); //alto modificado del sprite
 
 		//Genera un rectangulo de dimensiones menores al del sprite
+		//Acompaña siempre al sprite.
 		return Rectangle(
 			x + (int)(anchoFigura * hitX),
 			y + (int)(altoFigura * hitY),
@@ -63,12 +64,16 @@ public:
 			(int)(altoFigura * hitAlto)
 		);
 	};
+
 	//HAMP Explica: TEMPORAL (solo para entender): dibuja el rectangulo de colision como un borde rojo. Luego se retira
 	void dibujarRectangulo(Graphics^ g) { g->DrawRectangle(Pens::Red, getRectangle()); };
-	
-	//en el caso de querer hacer cambios del hitbox
-	void setHitbox(double hx, double hy, double ha, double hal) {
-		hitX = hx; hitY = hy; hitAncho = ha; hitAlto = hal;
+
+	//atributos del hitbox del sprite
+	void setHitbox(double hitx, double hitY, double anchuraH, double alturaH) {
+		this->hitX = hitx; 
+		this->hitY = hitY; 
+		this->hitAncho = anchuraH; 
+		this->hitAlto = alturaH;
 	};
 
 	int getX() { return x; }
