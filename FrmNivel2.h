@@ -1,5 +1,5 @@
 #pragma once
-#include "LogicaNivel1.h"
+#include "Nivel1.h"
 #include "LogicaNivel2.h"
 namespace Ullyses {
 

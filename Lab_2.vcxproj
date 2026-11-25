@@ -161,7 +161,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Leopold.h" />
-    <ClInclude Include="LogicaNivel1.h" />
+    <ClInclude Include="Nivel1.h" />
     <ClInclude Include="LogicaNivel2.h" />
     <ClInclude Include="LogicaNivel3.h" />
     <ClInclude Include="Molly.h" />
@@ -205,6 +205,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel1.resx">
       <DependentUpon>FrmNivel1.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmNivel1.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel2.resx">
       <DependentUpon>FrmNivel2.h</DependentUpon>
