@@ -1,6 +1,7 @@
 #pragma once
 #include "FrmNivel1.h"
 #include "FrmNivel2.h"
+#include "FrmNivel3.h"
 #include "FrmCreditos.h"
 namespace Ullyses {
 
@@ -62,6 +63,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnSalir;
 	private: System::Windows::Forms::Button^ btnNivel2;
+	private: System::Windows::Forms::Button^ btnNivel3;
+
 
 
 
@@ -81,6 +84,7 @@ namespace Ullyses {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
 			this->btnNivel2 = (gcnew System::Windows::Forms::Button());
+			this->btnNivel3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnJugar
@@ -167,6 +171,17 @@ namespace Ullyses {
 			this->btnNivel2->UseVisualStyleBackColor = true;
 			this->btnNivel2->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnNivel2_click);
 			// 
+			// btnNivel3
+			// 
+			this->btnNivel3->Location = System::Drawing::Point(34, 460);
+			this->btnNivel3->Margin = System::Windows::Forms::Padding(2);
+			this->btnNivel3->Name = L"btnNivel3";
+			this->btnNivel3->Size = System::Drawing::Size(244, 58);
+			this->btnNivel3->TabIndex = 6;
+			this->btnNivel3->Text = L"temporal NIvel3";
+			this->btnNivel3->UseVisualStyleBackColor = true;
+			this->btnNivel3->Click += gcnew System::EventHandler(this, &FrmMenuInicio::button1_Click);
+			// 
 			// FrmMenuInicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -231,7 +246,11 @@ private: System::Void btnCreditos_Click(System::Object^ sender, System::EventArg
 	this->Show();
 	
 }
-private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Ullyses::FrmNivel3^ nivel3 = gcnew Ullyses::FrmNivel3();
+	this->Hide();
+	nivel3->ShowDialog();
+	this->Show();
 }
 };
 }
