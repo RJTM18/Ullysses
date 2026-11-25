@@ -145,8 +145,10 @@
   <ItemGroup>
     <ClInclude Include="AntiSemita.h" />
     <ClInclude Include="Carro.h" />
-    <ClInclude Include="Debug.h" />
     <ClInclude Include="FrmCreditos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FrmInstrucciones.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmMenuInicio.h">
@@ -161,13 +163,13 @@
     <ClInclude Include="FrmNivel3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Juego.h" />
     <ClInclude Include="Leopold.h" />
-    <ClInclude Include="LogicaNivel1.h" />
+    <ClInclude Include="Nivel1.h" />
     <ClInclude Include="LogicaNivel2.h" />
     <ClInclude Include="LogicaNivel3.h" />
     <ClInclude Include="Molly.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Pesadilla.h" />
     <ClInclude Include="Policia.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />
@@ -176,6 +178,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="FrmCreditos.cpp" />
+    <ClCompile Include="FrmInstrucciones.cpp" />
     <ClCompile Include="FrmMenuInicio.cpp" />
     <ClCompile Include="FrmNewJuego.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
@@ -202,11 +205,16 @@
     <EmbeddedResource Include="FrmCreditos.resx">
       <DependentUpon>FrmCreditos.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmInstrucciones.resx">
+      <DependentUpon>FrmInstrucciones.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuInicio.resx">
       <DependentUpon>FrmMenuInicio.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmMenuInicio.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel1.resx">
       <DependentUpon>FrmNivel1.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmNivel1.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel2.resx">
       <DependentUpon>FrmNivel2.h</DependentUpon>

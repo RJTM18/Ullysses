@@ -1,5 +1,5 @@
 #pragma once
-#include "LogicaNivel1.h"
+#include "Nivel1.h"
 #include "LogicaNivel2.h"
 namespace Ullyses {
 
@@ -17,6 +17,7 @@ namespace Ullyses {
 			InitializeComponent();
 			logicaNivel2 = nullptr;
 			teclaPresionada = Ninguno;
+
 		}
 
 	protected:
@@ -34,16 +35,26 @@ namespace Ullyses {
 
 		Direccion teclaPresionada;
 
-		ref struct ConfigPolicia {
-			int x;
-			int y;
-			int velocidad;
+		ref struct ConfiguracionPolicia {
+			int    velocidad;
 			double escala;
-			Direccion siJugadorDerecha;
-			Direccion siJugadorIzquierda;
-			Direccion siJugadorArriba;
-			Direccion siJugadorAbajo;
+			int    dxJugadorDerecha;    // reacción cuando el jugador va a la derecha
+			int    dxJugadorIzquierda;  // reacción cuando va a la izquierda
+			int    dyJugadorArriba;     // reacción cuando va arriba
+			int    dyJugadorAbajo;      // reacción cuando va abajo
+
+			ConfiguracionPolicia(int vel, double esc,
+				int dxDer, int dxIzq, int dyArr, int dyAba)
+				: velocidad(vel), escala(esc),
+				dxJugadorDerecha(dxDer), dxJugadorIzquierda(dxIzq),
+				dyJugadorArriba(dyArr), dyJugadorAbajo(dyAba) {
+			}
 		};
+
+	private:
+		
+	
+
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
@@ -69,7 +80,6 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
 			this->pnlSpriteNivel2->Size = System::Drawing::Size(843, 564);
 			this->pnlSpriteNivel2->TabIndex = 0;
-			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// timer1
 			// 
@@ -97,49 +107,41 @@ namespace Ullyses {
 			return gcnew Bitmap(ruta);
 		};
 
-		private: Direccion calcularDireccionPolicia(ConfigPolicia cfg, Direccion dirJugador) {
-			if (dirJugador == Derecha)   return cfg.siJugadorDerecha;
-			if (dirJugador == Izquierda) return cfg.siJugadorIzquierda;
-			if (dirJugador == Arriba)    return cfg.siJugadorArriba;
-			if (dirJugador == Abajo)     return cfg.siJugadorAbajo;
-			return Ninguno;
-		};	
+	private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
+		if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
+		logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+		timer1->Enabled = true;
 
-		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
-			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
-			timer1->Enabled = true;
+		stephen = cargarImagen("Sprites\\StephenDedalus.png");
+		policia = cargarImagen("Sprites\\Policia.png");
+		fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
 
-			stephen = cargarImagen("Sprites\\StephenDedalus.png");
-			policia = cargarImagen("Sprites\\Policia.png");
-			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
-					
-			logicaNivel2->crearStephen(
-				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
-				/* Anchura de Imagen: */	stephen->Width,
-				/* Altura de Imagen: */		stephen->Height,
-				/* Nº Filas: */             4, 
-				/* Nº Columnas: */			8,
-				/* Velocidad: */			40,
-				/* Escala: */				0.75
-			);
+		logicaNivel2->crearStephen(
+			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+			/* Posicion y: */			pnlSpriteNivel2->Height - 10,
+			/* Anchura de Imagen: */	stephen->Width,
+			/* Altura de Imagen: */		stephen->Height,
+			/* Nº Filas: */             4,
+			/* Nº Columnas: */			8,
+			/* Velocidad: */			40,
+			/* Escala: */				0.75
+		);
 
-			//Policía 1
-			logicaNivel2->crearNuevoPolicia(
-				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			10,
-				/* Anchura de Imagen: */	policia->Width,
-				/* Altura de Imagen: */		policia->Height,
-				/* Nº Filas: */             4,
-				/* Nº Columnas: */			4,
-				/* Velocidad: */			75,
-				/* Escala: */				0.75,
-				/* Si el jugador va a la derecha: */		-1, //Policía a la izquierda.
-				/* Si el jugador va a la izquierda: */		1,	//policía a la derecha.
-				/* Si el jugador va arriba: */				1,	//policía va abajo.
-				/* Si el jugador va abajo: */				-1	//policía arriba
-			);
+		//Policía 1
+		logicaNivel2->crearNuevoPolicia(
+			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+			/* Posicion y: */			10,
+			/* Anchura de Imagen: */	policia->Width,
+			/* Altura de Imagen: */		policia->Height,
+			/* Nº Filas: */             4,
+			/* Nº Columnas: */			4,
+			/* Velocidad: */			75,
+			/* Escala: */				0.75,
+			/* Si el jugador va a la derecha: */		1, //Policía a la izquierda.
+			/* Si el jugador va a la izquierda: */		-1,	//policía a la derecha.
+			/* Si el jugador va arriba: */				-1,	//policía va abajo.
+			/* Si el jugador va abajo: */				1	//policía arriba
+		);
 
 			//Policía 2
 			logicaNivel2->crearNuevoPolicia(
@@ -207,7 +209,7 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-};
+
+
+	};
 };

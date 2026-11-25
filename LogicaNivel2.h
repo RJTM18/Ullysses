@@ -37,18 +37,17 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->dibujar(g, ImgPolicia);
 	};
 
-	void moverStephen(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
+	void moverStephen(Direccion tecla, int WidthScreen, int HeightScreen) {
 		if (stephen == nullptr) return;
 		
 		stephen->mover(teclaPresionada, WidthScreen, HeightScreen);
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(teclaPresionada, WidthScreen, HeightScreen);
 	};
 
-	void moverPolicias(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
+	void moverPolicias(Direccion dicJugador, int WidthScreen, int HeightScreen) {
 		if (escuadronPolicias.empty()) return;
-
-		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(teclaPresionada, WidthScreen, HeightScreen);
-	}
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(dicJugador, WidthScreen, HeightScreen);
+	};
 
 private:
 	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel

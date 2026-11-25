@@ -12,7 +12,8 @@ public:
 		siJugadorIzquierda(siJugadorIzquierda) {};
 	~Policia() {};
 
-	void mover(Direccion direccionPolicia, int WidthScreen, int HeightScreen) override {
+	void mover(Direccion direccionJugador, int WidthScreen, int HeightScreen) override {
+		Direccion dirreccionPolicia = Ninguno;
 		//movimiento
 		dx = dy = 0;
 
@@ -34,16 +35,16 @@ public:
 		if (x > WidthScreen - anchoFrameModificado) x = WidthScreen - anchoFrameModificado;
 		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
-		animar(direccionPolicia);
+		animar(dirreccionPolicia);
 	};
 
-	void animar(Direccion direccionPolicia) {
-		if (direccionPolicia == Arriba)		indiceY = 0;
-		if (direccionPolicia == Abajo)		indiceY = 1;
-		if (direccionPolicia == Derecha)	indiceY = 2;
-		if (direccionPolicia == Izquierda)	indiceY = 3;
+	void animar(Direccion dirreccionPolicia) {
+		if (dirreccionPolicia == Arriba)		indiceY = 0;
+		if (dirreccionPolicia == Abajo)		indiceY = 1;
+		if (dirreccionPolicia == Derecha)	indiceY = 2;
+		if (dirreccionPolicia == Izquierda)	indiceY = 3;
 
-		if (direccionPolicia != Ninguno) {
+		if (dirreccionPolicia != Ninguno) {
 			indiceX++;
 			if (indiceX >= columnas) indiceX = 0;
 		}

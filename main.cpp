@@ -2,6 +2,7 @@
 #include "FrmNivel1.h"
 #include "FrmMenuInicio.h"
 #include "FrmNivel2.h"
+#include "FrmNivel3.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
