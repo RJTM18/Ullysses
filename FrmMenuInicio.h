@@ -94,7 +94,7 @@ namespace Ullyses {
 			this->btnJugar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnJugar->Location = System::Drawing::Point(698, 328);
+			this->btnJugar->Location = System::Drawing::Point(698, 138);
 			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
 			this->btnJugar->Name = L"btnJugar";
 			this->btnJugar->Size = System::Drawing::Size(394, 166);
@@ -110,7 +110,7 @@ namespace Ullyses {
 			this->btnInstrucciones->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnInstrucciones->Location = System::Drawing::Point(698, 139);
+			this->btnInstrucciones->Location = System::Drawing::Point(698, 332);
 			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
 			this->btnInstrucciones->Size = System::Drawing::Size(394, 166);
@@ -217,6 +217,11 @@ namespace Ullyses {
 			this->BackgroundImage = FondoMenu;
 			this->BackgroundImageLayout = ImageLayout::Stretch;
 		};
+
+			   private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
+			   {
+
+			   }
 
 		private: System::Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) {
 			Ullyses::FrmNivel1^ nivel1 = gcnew Ullyses::FrmNivel1();
