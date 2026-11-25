@@ -1,5 +1,6 @@
 #pragma once
 #include "Nivel1.h"
+#include "FrmConversacion.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -18,6 +19,9 @@ namespace Ullyses {
 	public:
 		FrmNivel1(void) {
 			InitializeComponent();
+			timer1->Stop();
+			MostrandoHistoria = true;
+			this->KeyPreview = true;
 			lblNombre->Parent = pictureBox1;
 			lblNombre->BackColor = Color::Transparent;
 			//(x,y)
@@ -50,7 +54,9 @@ namespace Ullyses {
 		int altoPantallaSprite;
 
 		Nivel1* juego;
-
+		String^ historia;
+		int IndiceHistoria = 0;
+		bool MostrandoHistoria;
 		Bitmap^ fondoJuego;
 		int fondoX = 0;
 		Bitmap^ Leopold;
@@ -70,6 +76,11 @@ namespace Ullyses {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::Panel^ pnlHistoria;
+	private: System::Windows::Forms::Label^ lblHistoria;
+	private: System::Windows::Forms::Label^ lblContinuar;
+	private: System::Windows::Forms::Timer^ timerHistoria;
+
 
 
 
@@ -84,6 +95,9 @@ namespace Ullyses {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmNivel1::typeid));
 			   this->pnlSpriteScreen = (gcnew System::Windows::Forms::Panel());
+			   this->pnlHistoria = (gcnew System::Windows::Forms::Panel());
+			   this->lblContinuar = (gcnew System::Windows::Forms::Label());
+			   this->lblHistoria = (gcnew System::Windows::Forms::Label());
 			   this->lblMetros = (gcnew System::Windows::Forms::Label());
 			   this->lblConfianza = (gcnew System::Windows::Forms::Label());
 			   this->lblNombre = (gcnew System::Windows::Forms::Label());
@@ -91,7 +105,9 @@ namespace Ullyses {
 			   this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			   this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->timerHistoria = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pnlSpriteScreen->SuspendLayout();
+			   this->pnlHistoria->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -105,13 +121,54 @@ namespace Ullyses {
 			   this->pnlSpriteScreen->Controls->Add(this->pictureBox1);
 			   this->pnlSpriteScreen->Controls->Add(this->pictureBox2);
 			   this->pnlSpriteScreen->Controls->Add(this->pictureBox3);
+			   this->pnlSpriteScreen->Controls->Add(this->pnlHistoria);
 			   this->pnlSpriteScreen->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->pnlSpriteScreen->Location = System::Drawing::Point(0, 0);
-			   this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pnlSpriteScreen->Margin = System::Windows::Forms::Padding(4);
 			   this->pnlSpriteScreen->Name = L"pnlSpriteScreen";
-			   this->pnlSpriteScreen->Size = System::Drawing::Size(1768, 815);
+			   this->pnlSpriteScreen->Size = System::Drawing::Size(1487, 815);
 			   this->pnlSpriteScreen->TabIndex = 0;
 			   this->pnlSpriteScreen->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlSpriteScreen_Paint);
+			   // 
+			   // pnlHistoria
+			   // 
+			   this->pnlHistoria->BackColor = System::Drawing::Color::Black;
+			   this->pnlHistoria->Controls->Add(this->lblContinuar);
+			   this->pnlHistoria->Controls->Add(this->lblHistoria);
+			   this->pnlHistoria->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->pnlHistoria->Location = System::Drawing::Point(0, 0);
+			   this->pnlHistoria->Name = L"pnlHistoria";
+			   this->pnlHistoria->Size = System::Drawing::Size(1487, 815);
+			   this->pnlHistoria->TabIndex = 7;
+			   this->pnlHistoria->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel1::pnlHistoria_Paint);
+			   // 
+			   // lblContinuar
+			   // 
+			   this->lblContinuar->Dock = System::Windows::Forms::DockStyle::Bottom;
+			   this->lblContinuar->Font = (gcnew System::Drawing::Font(L"Consolas", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblContinuar->ForeColor = System::Drawing::Color::Gray;
+			   this->lblContinuar->Location = System::Drawing::Point(0, 788);
+			   this->lblContinuar->Name = L"lblContinuar";
+			   this->lblContinuar->Size = System::Drawing::Size(1487, 27);
+			   this->lblContinuar->TabIndex = 1;
+			   this->lblContinuar->Text = L"Presiona Enter para Continuar";
+			   this->lblContinuar->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->lblContinuar->Visible = false;
+			   // 
+			   // lblHistoria
+			   // 
+			   this->lblHistoria->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->lblHistoria->Font = (gcnew System::Drawing::Font(L"Consolas", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lblHistoria->ForeColor = System::Drawing::Color::White;
+			   this->lblHistoria->Location = System::Drawing::Point(0, 0);
+			   this->lblHistoria->Name = L"lblHistoria";
+			   this->lblHistoria->Size = System::Drawing::Size(1487, 815);
+			   this->lblHistoria->TabIndex = 0;
+			   this->lblHistoria->Text = L"...";
+			   this->lblHistoria->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->lblHistoria->Click += gcnew System::EventHandler(this, &FrmNivel1::lblHistoria_Click);
 			   // 
 			   // lblMetros
 			   // 
@@ -155,7 +212,7 @@ namespace Ullyses {
 			   // 
 			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			   this->pictureBox1->Location = System::Drawing::Point(467, 42);
-			   this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			   this->pictureBox1->Name = L"pictureBox1";
 			   this->pictureBox1->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -167,7 +224,7 @@ namespace Ullyses {
 			   // 
 			   this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			   this->pictureBox2->Location = System::Drawing::Point(823, 42);
-			   this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 			   this->pictureBox2->Name = L"pictureBox2";
 			   this->pictureBox2->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -179,7 +236,7 @@ namespace Ullyses {
 			   // 
 			   this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
 			   this->pictureBox3->Location = System::Drawing::Point(1178, 42);
-			   this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pictureBox3->Margin = System::Windows::Forms::Padding(4);
 			   this->pictureBox3->Name = L"pictureBox3";
 			   this->pictureBox3->Size = System::Drawing::Size(324, 154);
 			   this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -193,13 +250,18 @@ namespace Ullyses {
 			   this->timer1->Interval = 30;
 			   this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel1::timer1_Tick);
 			   // 
+			   // timerHistoria
+			   // 
+			   this->timerHistoria->Interval = 45;
+			   this->timerHistoria->Tick += gcnew System::EventHandler(this, &FrmNivel1::timerHistoria_Tick);
+			   // 
 			   // FrmNivel1
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(1768, 815);
+			   this->ClientSize = System::Drawing::Size(1487, 815);
 			   this->Controls->Add(this->pnlSpriteScreen);
-			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->Name = L"FrmNivel1";
 			   this->Text = L"Juego";
 			   this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -208,6 +270,7 @@ namespace Ullyses {
 			   this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel1::FrmJuego_KeyUp);
 			   this->pnlSpriteScreen->ResumeLayout(false);
 			   this->pnlSpriteScreen->PerformLayout();
+			   this->pnlHistoria->ResumeLayout(false);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -264,6 +327,49 @@ namespace Ullyses {
 				4, 4, 25, 0.6
 			);
 		}
+
+		//unicode utilizado para poder mostrar los signos sin ningun problema, mostrando la historia
+		historia = L"Dubl\u00EDn, Irlanda.\r\n"
+			L"16 de junio de 1904.\r\n\r\n"
+
+			L"La ciudad despertaba como cualquier otra ma\u00F1ana.\r\n"
+			L"Las calles comenzaban a llenarse de comerciantes, "
+			L"trabajadores y desconocidos.\r\n\r\n"
+
+			L"Entre ellos se encontraba Leopold Bloom, "
+			L"un hombre corriente que cargaba con recuerdos "
+			L"que el tiempo no hab\u00EDa logrado borrar.\r\n\r\n"
+
+			L"La p\u00E9rdida de su hijo, el distanciamiento de su esposa "
+			L"y el rechazo de una sociedad que lo consideraba diferente "
+			L"hab\u00EDan debilitado poco a poco su confianza.\r\n\r\n"
+
+			L"A pesar de todo, decidi\u00F3 salir de casa "
+			L"y continuar con su vida.\r\n\r\n"
+
+			L"Pero las calles de Dubl\u00EDn no ser\u00EDan un camino sencillo.\r\n"
+			L"Entre veh\u00EDculos, miradas hostiles y hombres consumidos "
+			L"por el prejuicio, Leopold tendr\u00EDa que encontrar "
+			L"la fuerza para seguir adelante.\r\n\r\n"
+
+			L"Su mayor desaf\u00EDo no ser\u00EDa llegar a su destino...\r\n\r\n"
+
+			L"Sino llegar sin perderse a s\u00ED mismo.\r\n\r\n"
+
+			L"OBJETIVO: Recorre 400 metros sin perder toda tu confianza.";
+
+		//activarlos
+		IndiceHistoria = 0;
+		MostrandoHistoria = true;
+
+		lblHistoria->Text = "";
+		lblContinuar->Visible = false;
+
+		pnlHistoria->Visible = true;
+		pnlHistoria->BringToFront();
+
+		timer1->Stop();
+		timerHistoria->Start();
 
 	};
 
@@ -357,6 +463,41 @@ namespace Ullyses {
 			//funcion en donde para pausar, el juego va desde verdadero a falso y viceversa
 			timer1->Enabled = !timer1->Enabled;
 		}
+
+		if (MostrandoHistoria)
+		{
+			if (e->KeyCode == Keys::Enter)
+			{
+				timerHistoria->Stop();
+
+				MostrandoHistoria = false;
+				pnlHistoria->Visible = false;
+				TeclaPresionada = Ninguno;
+
+				timer1->Start();
+			}
+		}
+		//la accion cuando se hable
+		juego->actualizarMetros(TeclaPresionada);
+		if (juego->conversar())
+		{
+			timer1->Stop();
+			TeclaPresionada = Ninguno;
+
+			juego->finalizarConversacion();
+
+			MessageBox::Show("Un desconocido se acerca a Leopold...");
+
+			FrmConversacion^ ventana = gcnew FrmConversacion();
+			ventana->ShowDialog(this);
+
+			juego->aplicarRespuesta(ventana->getRespuesta());
+
+			delete ventana;
+
+			timer1->Start();
+			return;
+		}
 		
 		
 	
@@ -379,6 +520,24 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pnlHistoria_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void timerHistoria_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (IndiceHistoria < historia->Length)
+	{
+		IndiceHistoria++;
+
+		lblHistoria->Text = historia->Substring(0, IndiceHistoria);
+
+  }
+	else
+	{
+		timerHistoria->Stop();
+		lblContinuar->Visible = true;
+	}
+}
+private: System::Void lblHistoria_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
