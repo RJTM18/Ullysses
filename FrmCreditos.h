@@ -19,6 +19,8 @@ namespace Ullyses {
 		FrmCreditos(void)
 		{
 			InitializeComponent();
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -79,9 +81,10 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(323, 9);
+			this->label1->Location = System::Drawing::Point(855, 53);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(237, 45);
+			this->label1->Size = System::Drawing::Size(191, 36);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"CREDITOS";
 			// 
@@ -92,9 +95,10 @@ namespace Ullyses {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label5->Location = System::Drawing::Point(289, 173);
+			this->label5->Location = System::Drawing::Point(857, 206);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(318, 30);
+			this->label5->Size = System::Drawing::Size(252, 24);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Rafael Justo Tito Martel";
 			// 
@@ -105,9 +109,10 @@ namespace Ullyses {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label4->Location = System::Drawing::Point(508, 128);
+			this->label4->Location = System::Drawing::Point(618, 153);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(329, 30);
+			this->label4->Size = System::Drawing::Size(263, 24);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Boris Ore Laureano Ango";
 			// 
@@ -118,9 +123,10 @@ namespace Ullyses {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label3->Location = System::Drawing::Point(-1, 128);
+			this->label3->Location = System::Drawing::Point(1023, 153);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(438, 30);
+			this->label3->Size = System::Drawing::Size(349, 24);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Kevin Imanol Bustamante Velasco";
 			// 
@@ -131,9 +137,10 @@ namespace Ullyses {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label2->Location = System::Drawing::Point(345, 67);
+			this->label2->Location = System::Drawing::Point(872, 102);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(196, 38);
+			this->label2->Size = System::Drawing::Size(160, 31);
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"Integrantes";
 			// 
@@ -144,9 +151,10 @@ namespace Ullyses {
 			this->label6->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label6->Location = System::Drawing::Point(238, 260);
+			this->label6->Location = System::Drawing::Point(808, 290);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(405, 38);
+			this->label6->Size = System::Drawing::Size(331, 31);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"Herramientas utilizadas";
 			// 
@@ -157,9 +165,10 @@ namespace Ullyses {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label7->Location = System::Drawing::Point(45, 319);
+			this->label7->Location = System::Drawing::Point(1177, 341);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(110, 38);
+			this->label7->Size = System::Drawing::Size(89, 31);
 			this->label7->TabIndex = 10;
 			this->label7->Text = L"Codex";
 			// 
@@ -170,9 +179,10 @@ namespace Ullyses {
 			this->label8->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label8->Location = System::Drawing::Point(383, 319);
+			this->label8->Location = System::Drawing::Point(913, 341);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(118, 38);
+			this->label8->Size = System::Drawing::Size(96, 31);
 			this->label8->TabIndex = 11;
 			this->label8->Text = L"Piksel";
 			// 
@@ -183,17 +193,18 @@ namespace Ullyses {
 			this->label9->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label9->Location = System::Drawing::Point(745, 319);
+			this->label9->Location = System::Drawing::Point(660, 341);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(124, 38);
+			this->label9->Size = System::Drawing::Size(102, 31);
 			this->label9->TabIndex = 12;
 			this->label9->Text = L"Claude";
 			// 
 			// FrmCreditos
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(928, 832);
+			this->ClientSize = System::Drawing::Size(1383, 736);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
@@ -203,6 +214,7 @@ namespace Ullyses {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmCreditos";
 			this->Text = L"FrmCreditos";
 			this->Load += gcnew System::EventHandler(this, &FrmCreditos::FrmCreditos_Load);

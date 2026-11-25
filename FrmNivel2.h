@@ -18,11 +18,6 @@ namespace Ullyses {
 			logicaNivel2 = nullptr;
 			teclaPresionada = Ninguno;
 
-			CONFIG_POLICIAS = gcnew array<ConfiguracionPolicia^> {
-				gcnew ConfiguracionPolicia(75, 0.75, -1, 1, 1, -1),
-					gcnew ConfiguracionPolicia(50, 0.75, 1, -1, -1, 1),
-					gcnew ConfiguracionPolicia(50, 0.75, -1, 1, 1, -1)
-			};
 		}
 
 	protected:
@@ -57,11 +52,8 @@ namespace Ullyses {
 		};
 
 	private:
-		// Tabla central de policías del nivel 2.
-		// Orden: (xRatio, yRatio, velocidad, escala,
-		//         dxJugadorDerecha, dxJugadorIzquierda, dyJugadorArriba, dyJugadorAbajo)
-		static array<ConfiguracionPolicia^>^ CONFIG_POLICIAS;
-
+		
+	
 
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
@@ -115,41 +107,41 @@ namespace Ullyses {
 			return gcnew Bitmap(ruta);
 		};
 
-		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
-			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
-			timer1->Enabled = true;
+	private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
+		if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
+		logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+		timer1->Enabled = true;
 
-			stephen = cargarImagen("Sprites\\StephenDedalus.png");
-			policia = cargarImagen("Sprites\\Policia.png");
-			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
-					
-			logicaNivel2->crearStephen(
-				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
-				/* Anchura de Imagen: */	stephen->Width,
-				/* Altura de Imagen: */		stephen->Height,
-				/* Nº Filas: */             4, 
-				/* Nº Columnas: */			8,
-				/* Velocidad: */			40,
-				/* Escala: */				0.75
-			);
+		stephen = cargarImagen("Sprites\\StephenDedalus.png");
+		policia = cargarImagen("Sprites\\Policia.png");
+		fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
 
-			//Policía 1
-			logicaNivel2->crearNuevoPolicia(
-				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			10,
-				/* Anchura de Imagen: */	policia->Width,
-				/* Altura de Imagen: */		policia->Height,
-				/* Nº Filas: */             4,
-				/* Nº Columnas: */			4,
-				/* Velocidad: */			75,
-				/* Escala: */				0.75,
-				/* Si el jugador va a la derecha: */		if (teclaPresionada == Derecha)		{ RespuestaDireccionPolicia = Izquierda; }, 
-				/* Si el jugador va a la izquierda: */		if (teclaPresionada == izquierda)	{ RespuestaDireccionPolicia = Derecha; },	//policía a la derecha.
-				/* Si el jugador va arriba: */				if (teclaPresionada == arriba)		{ RespuestaDireccionPolicia = Abajo; },		//policía va abajo.
-				/* Si el jugador va abajo: */				if (teclaPresionada == Abajo)		{ RespuestaDireccionPolicia = Arriba; }		//policía arriba
-			);
+		logicaNivel2->crearStephen(
+			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+			/* Posicion y: */			pnlSpriteNivel2->Height - 10,
+			/* Anchura de Imagen: */	stephen->Width,
+			/* Altura de Imagen: */		stephen->Height,
+			/* Nº Filas: */             4,
+			/* Nº Columnas: */			8,
+			/* Velocidad: */			40,
+			/* Escala: */				0.75
+		);
+
+		//Policía 1
+		logicaNivel2->crearNuevoPolicia(
+			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+			/* Posicion y: */			10,
+			/* Anchura de Imagen: */	policia->Width,
+			/* Altura de Imagen: */		policia->Height,
+			/* Nº Filas: */             4,
+			/* Nº Columnas: */			4,
+			/* Velocidad: */			75,
+			/* Escala: */				0.75,
+			/* Si el jugador va a la derecha: */		1, //Policía a la izquierda.
+			/* Si el jugador va a la izquierda: */		-1,	//policía a la derecha.
+			/* Si el jugador va arriba: */				-1,	//policía va abajo.
+			/* Si el jugador va abajo: */				1	//policía arriba
+		);
 
 			//Policía 2
 			logicaNivel2->crearNuevoPolicia(

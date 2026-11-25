@@ -18,9 +18,36 @@ namespace Ullyses {
 	public:
 		FrmMenuInicio(void) {
 			InitializeComponent();
+			
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+
+			btnJugar->FlatStyle = FlatStyle::Flat;
+			btnJugar->FlatAppearance->BorderSize = 0;
+			btnJugar->FlatAppearance->MouseOverBackColor = Color::Transparent;
+			btnJugar->FlatAppearance->MouseDownBackColor = Color::Transparent;
+			btnJugar->BackColor = Color::Transparent;
+			btnJugar->BackgroundImageLayout = ImageLayout::Zoom;
+			btnJugar->UseVisualStyleBackColor = false;
+
+			btnCreditos->FlatStyle = FlatStyle::Flat;
+			btnCreditos->FlatAppearance->BorderSize = 0;
+			btnCreditos->FlatAppearance->MouseOverBackColor = Color::Transparent;
+			btnCreditos->FlatAppearance->MouseDownBackColor = Color::Transparent;
+			btnCreditos->BackColor = Color::Transparent;
+			btnCreditos->BackgroundImageLayout = ImageLayout::Zoom;
+			btnCreditos->UseVisualStyleBackColor = false;
+
+			btnInstrucciones->FlatStyle = FlatStyle::Flat;
+			btnInstrucciones->FlatAppearance->BorderSize = 0;
+			btnInstrucciones->FlatAppearance->MouseOverBackColor = Color::Transparent;
+			btnInstrucciones->FlatAppearance->MouseDownBackColor = Color::Transparent;
+			btnInstrucciones->BackColor = Color::Transparent;
+			btnInstrucciones->BackgroundImageLayout = ImageLayout::Zoom;
+			btnInstrucciones->UseVisualStyleBackColor = false;
 		}
+
+
 
 	protected:
 		~FrmMenuInicio() {
@@ -37,6 +64,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Button^ btnNivel2;
 
 
+
+
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -45,6 +74,7 @@ namespace Ullyses {
 		/// the contents of this method with the code editor.
 		/// </summary>
 		void InitializeComponent(void) {
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmMenuInicio::typeid));
 			this->btnJugar = (gcnew System::Windows::Forms::Button());
 			this->btnInstrucciones = (gcnew System::Windows::Forms::Button());
 			this->btnCreditos = (gcnew System::Windows::Forms::Button());
@@ -55,35 +85,50 @@ namespace Ullyses {
 			// 
 			// btnJugar
 			// 
-			this->btnJugar->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->btnJugar->Location = System::Drawing::Point(775, 260);
+			this->btnJugar->BackColor = System::Drawing::Color::Transparent;
+			this->btnJugar->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnJugar.BackgroundImage")));
+			this->btnJugar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnJugar->Location = System::Drawing::Point(698, 328);
 			this->btnJugar->Margin = System::Windows::Forms::Padding(2);
 			this->btnJugar->Name = L"btnJugar";
-			this->btnJugar->Size = System::Drawing::Size(244, 58);
+			this->btnJugar->Size = System::Drawing::Size(394, 166);
 			this->btnJugar->TabIndex = 0;
-			this->btnJugar->Text = L"JUGAR";
+			this->btnJugar->Text = L"Jugar";
 			this->btnJugar->UseVisualStyleBackColor = false;
 			this->btnJugar->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnJugar_Click);
 			// 
 			// btnInstrucciones
 			// 
-			this->btnInstrucciones->Location = System::Drawing::Point(775, 346);
+			this->btnInstrucciones->BackColor = System::Drawing::Color::Transparent;
+			this->btnInstrucciones->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnInstrucciones.BackgroundImage")));
+			this->btnInstrucciones->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnInstrucciones->Location = System::Drawing::Point(698, 139);
 			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
-			this->btnInstrucciones->Size = System::Drawing::Size(244, 58);
+			this->btnInstrucciones->Size = System::Drawing::Size(394, 166);
 			this->btnInstrucciones->TabIndex = 1;
 			this->btnInstrucciones->Text = L"Instrucciones";
-			this->btnInstrucciones->UseVisualStyleBackColor = true;
+			this->btnInstrucciones->UseVisualStyleBackColor = false;
+			this->btnInstrucciones->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnInstrucciones_Click);
 			// 
 			// btnCreditos
 			// 
-			this->btnCreditos->Location = System::Drawing::Point(775, 437);
+			this->btnCreditos->BackColor = System::Drawing::Color::Transparent;
+			this->btnCreditos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnCreditos.BackgroundImage")));
+			this->btnCreditos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnCreditos->Location = System::Drawing::Point(698, 534);
 			this->btnCreditos->Margin = System::Windows::Forms::Padding(2);
 			this->btnCreditos->Name = L"btnCreditos";
-			this->btnCreditos->Size = System::Drawing::Size(244, 58);
+			this->btnCreditos->Size = System::Drawing::Size(394, 166);
 			this->btnCreditos->TabIndex = 2;
 			this->btnCreditos->Text = L"Creditos";
-			this->btnCreditos->UseVisualStyleBackColor = true;
+			this->btnCreditos->UseVisualStyleBackColor = false;
 			this->btnCreditos->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnCreditos_Click);
 			// 
 			// label1
@@ -93,7 +138,7 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Bauhaus 93", 26.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Black;
-			this->label1->Location = System::Drawing::Point(840, 219);
+			this->label1->Location = System::Drawing::Point(841, 81);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(103, 39);
@@ -102,7 +147,7 @@ namespace Ullyses {
 			// 
 			// btnSalir
 			// 
-			this->btnSalir->Location = System::Drawing::Point(668, 519);
+			this->btnSalir->Location = System::Drawing::Point(380, 104);
 			this->btnSalir->Margin = System::Windows::Forms::Padding(2);
 			this->btnSalir->Name = L"btnSalir";
 			this->btnSalir->Size = System::Drawing::Size(230, 58);
@@ -113,7 +158,7 @@ namespace Ullyses {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(902, 519);
+			this->btnNivel2->Location = System::Drawing::Point(366, 42);
 			this->btnNivel2->Margin = System::Windows::Forms::Padding(2);
 			this->btnNivel2->Name = L"btnNivel2";
 			this->btnNivel2->Size = System::Drawing::Size(244, 58);
@@ -127,7 +172,7 @@ namespace Ullyses {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1433, 646);
+			this->ClientSize = System::Drawing::Size(1433, 757);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->label1);
@@ -185,6 +230,8 @@ private: System::Void btnCreditos_Click(System::Object^ sender, System::EventArg
 	creditos->ShowDialog();
 	this->Show();
 	
+}
+private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
