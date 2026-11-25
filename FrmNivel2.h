@@ -58,6 +58,8 @@ namespace Ullyses {
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Label^ lblHP;
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -70,33 +72,48 @@ namespace Ullyses {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlSpriteNivel2 = (gcnew System::Windows::Forms::Panel());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lblHP = (gcnew System::Windows::Forms::Label());
+			this->pnlSpriteNivel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlSpriteNivel2
 			// 
+			this->pnlSpriteNivel2->Controls->Add(this->lblHP);
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
-			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
-			this->pnlSpriteNivel2->Size = System::Drawing::Size(843, 564);
+			this->pnlSpriteNivel2->Size = System::Drawing::Size(1304, 491);
 			this->pnlSpriteNivel2->TabIndex = 0;
 			// 
 			// timer1
 			// 
 			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel2::Timer1_tick);
 			// 
+			// lblHP
+			// 
+			this->lblHP->AutoSize = true;
+			this->lblHP->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblHP->Location = System::Drawing::Point(902, 20);
+			this->lblHP->Name = L"lblHP";
+			this->lblHP->Size = System::Drawing::Size(160, 23);
+			this->lblHP->TabIndex = 0;
+			this->lblHP->Text = L"Puntos de vida: -";
+			// 
 			// FrmNivel2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(843, 564);
+			this->ClientSize = System::Drawing::Size(1304, 491);
 			this->Controls->Add(this->pnlSpriteNivel2);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmNivel2";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyUp);
+			this->pnlSpriteNivel2->ResumeLayout(false);
+			this->pnlSpriteNivel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -169,7 +186,7 @@ namespace Ullyses {
 				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
 			);
 		
-			logicaNivel2->setCantidadPuntosVida(3);
+			logicaNivel2->setStephenPuntosVida(3);
 
 			teclaPresionada = Ninguno;
 		};
@@ -190,6 +207,10 @@ namespace Ullyses {
 
 			delete buffer;
 			delete canvas;
+
+			//verifica en cada tick si jugador impacto con alguna entidad
+			logicaNivel2->impactoJugadorConEntidad();
+			lblHP->Text = "Puntos de vida: " + logicaNivel2->getStephenPuntosVida().ToString();
 		};
 
 		private: System::Void FrmNivel2_keyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

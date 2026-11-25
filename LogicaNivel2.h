@@ -11,14 +11,6 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) delete escuadronPolicias[i];
 	};
 
-	void setCantidadPuntosVida(int puntosDeVida) { stephen->setPuntosVida(puntosDeVida); }
-	void impactoJugadorConEntidad() {
-		stephen->fueImpactado();
-		if (stephen->getAcasoEstaMuerto()) {
-
-		};
-	};
-
 	void crearStephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) {
 		stephen = new Stephen(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale);
 	};
@@ -58,11 +50,21 @@ public:
 	};
 
 	//colisiones
-	void asf() {
+	void impactoJugadorConEntidad() {
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) {
-			if (stephen->getRectangle().IntersectsWith(escuadronPolicias[i]->getRectangle()));
-		}
-	}
+			if (stephen->getRectangle().IntersectsWith(escuadronPolicias[i]->getRectangle())) {
+				stephen->fueImpactado();
+				if (stephen->getAcasoEstaMuerto()) {
+					//juegoterminado()
+				}
+			}
+		};
+	};
+
+	void setStephenPuntosVida(int puntosDeVida) { stephen->setPuntosVida(puntosDeVida); }
+	int getStephenPuntosVida() { return stephen->getPuntosVida(); }
+
+
 private:
 	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel
 	int altoPantallaSprite; //alto de pantalla donde se movera el sprite en cada nivel
