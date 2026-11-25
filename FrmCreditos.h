@@ -50,6 +50,7 @@ namespace Ullyses {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 		   /// <summary>
 		/// Required designer variable.
@@ -63,6 +64,7 @@ namespace Ullyses {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FrmCreditos::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -72,91 +74,99 @@ namespace Ullyses {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::DarkGray;
+			this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(855, 53);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(790, 109);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(191, 36);
+			this->label1->Size = System::Drawing::Size(237, 45);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"CREDITOS";
+			this->label1->Click += gcnew System::EventHandler(this, &FrmCreditos::label1_Click);
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->label5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label5->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label5->Location = System::Drawing::Point(857, 206);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(769, 311);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(252, 24);
+			this->label5->Size = System::Drawing::Size(318, 30);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Rafael Justo Tito Martel";
+			this->label5->Click += gcnew System::EventHandler(this, &FrmCreditos::label5_Click);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->label4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label4->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label4->Location = System::Drawing::Point(618, 153);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(748, 222);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(263, 24);
+			this->label4->Size = System::Drawing::Size(329, 30);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Boris Ore Laureano Ango";
+			this->label4->Click += gcnew System::EventHandler(this, &FrmCreditos::label4_Click);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->label3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label3->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label3->Location = System::Drawing::Point(1023, 153);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(694, 269);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(349, 24);
+			this->label3->Size = System::Drawing::Size(438, 30);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Kevin Imanol Bustamante Velasco";
+			this->label3->Click += gcnew System::EventHandler(this, &FrmCreditos::label3_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->label2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label2->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label2->Location = System::Drawing::Point(872, 102);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(813, 169);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(160, 31);
+			this->label2->Size = System::Drawing::Size(196, 38);
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"Integrantes";
+			this->label2->Click += gcnew System::EventHandler(this, &FrmCreditos::label2_Click);
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->BackColor = System::Drawing::Color::SandyBrown;
+			this->label6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label6->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label6->Location = System::Drawing::Point(808, 290);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(704, 365);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(331, 31);
+			this->label6->Size = System::Drawing::Size(405, 38);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"Herramientas utilizadas";
+			this->label6->Click += gcnew System::EventHandler(this, &FrmCreditos::label6_Click);
 			// 
 			// label7
 			// 
@@ -165,12 +175,12 @@ namespace Ullyses {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label7->Location = System::Drawing::Point(1177, 341);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(1064, 427);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(89, 31);
+			this->label7->Size = System::Drawing::Size(110, 38);
 			this->label7->TabIndex = 10;
 			this->label7->Text = L"Codex";
+			this->label7->Click += gcnew System::EventHandler(this, &FrmCreditos::label7_Click);
 			// 
 			// label8
 			// 
@@ -179,12 +189,12 @@ namespace Ullyses {
 			this->label8->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label8->Location = System::Drawing::Point(913, 341);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label8->Location = System::Drawing::Point(869, 427);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(96, 31);
+			this->label8->Size = System::Drawing::Size(118, 38);
 			this->label8->TabIndex = 11;
 			this->label8->Text = L"Piksel";
+			this->label8->Click += gcnew System::EventHandler(this, &FrmCreditos::label8_Click);
 			// 
 			// label9
 			// 
@@ -193,31 +203,45 @@ namespace Ullyses {
 			this->label9->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label9->Location = System::Drawing::Point(660, 341);
-			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label9->Location = System::Drawing::Point(677, 427);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(102, 31);
+			this->label9->Size = System::Drawing::Size(124, 38);
 			this->label9->TabIndex = 12;
 			this->label9->Text = L"Claude";
+			this->label9->Click += gcnew System::EventHandler(this, &FrmCreditos::label9_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(-34, 30);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(1908, 960);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 13;
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &FrmCreditos::pictureBox1_Click);
 			// 
 			// FrmCreditos
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1383, 736);
+			this->ClientSize = System::Drawing::Size(1844, 977);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmCreditos";
 			this->Text = L"FrmCreditos";
 			this->Load += gcnew System::EventHandler(this, &FrmCreditos::FrmCreditos_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -235,5 +259,25 @@ namespace Ullyses {
 			this->BackgroundImageLayout = ImageLayout::Stretch;
 
 		}
-	};
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

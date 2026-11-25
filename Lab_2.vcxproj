@@ -212,9 +212,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreditos.resx">
       <DependentUpon>FrmCreditos.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmCreditos.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInstrucciones.resx">
       <DependentUpon>FrmInstrucciones.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmInstrucciones.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuInicio.resx">
       <DependentUpon>FrmMenuInicio.h</DependentUpon>

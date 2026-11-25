@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Lab2 {
+namespace Ullyses {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -57,17 +57,20 @@ namespace Lab2 {
 			// 
 			// panel1
 			// 
-			this->panel1->Location = System::Drawing::Point(-2, -4);
+			this->panel1->Location = System::Drawing::Point(-3, -5);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(790, 614);
+			this->panel1->Size = System::Drawing::Size(1053, 756);
 			this->panel1->TabIndex = 0;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmInstrucciones::panel1_Paint);
 			// 
 			// FrmInstrucciones
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(785, 611);
+			this->ClientSize = System::Drawing::Size(1047, 752);
 			this->Controls->Add(this->panel1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"FrmInstrucciones";
 			this->Text = L"FrmInstrucciones";
 			this->Load += gcnew System::EventHandler(this, &FrmInstrucciones::FrmInstrucciones_Load);
@@ -76,6 +79,8 @@ namespace Lab2 {
 		}
 #pragma endregion
 	private: System::Void FrmInstrucciones_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 	};
 }

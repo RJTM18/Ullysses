@@ -3,6 +3,7 @@
 #include "FrmNivel2.h"
 #include "FrmNivel3.h"
 #include "FrmCreditos.h"
+#include "FrmInstrucciones.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -219,7 +220,11 @@ namespace Ullyses {
 
 	    private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
 	    {
-				 
+			Ullyses::FrmInstrucciones^ instrucciones = gcnew Ullyses::FrmInstrucciones();
+			this->Hide();
+			instrucciones->ShowDialog();
+			this->Show();
+			
 	    }
 
 		private: System::Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) {
