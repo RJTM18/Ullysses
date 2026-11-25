@@ -218,10 +218,10 @@ namespace Ullyses {
 			this->BackgroundImageLayout = ImageLayout::Stretch;
 		};
 
-			   private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
-			   {
-
-			   }
+	    private: System::Void btnInstrucciones_Click(System::Object^ sender, System::EventArgs^ e)
+	    {
+				 
+	    }
 
 		private: System::Void btnJugar_Click(System::Object^ sender, System::EventArgs^ e) {
 			Ullyses::FrmNivel1^ nivel1 = gcnew Ullyses::FrmNivel1();

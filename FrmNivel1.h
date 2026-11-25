@@ -326,7 +326,7 @@ namespace Ullyses {
 			timer1->Stop();
 			MessageBox::Show("Victoria");
 
-			this->Hide();
+			this->Close();
 			
 			
 

@@ -148,6 +148,9 @@
     <ClInclude Include="FrmCreditos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmInstrucciones.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmMenuInicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -175,6 +178,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="FrmCreditos.cpp" />
+    <ClCompile Include="FrmInstrucciones.cpp" />
     <ClCompile Include="FrmMenuInicio.cpp" />
     <ClCompile Include="FrmNewJuego.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
@@ -200,6 +204,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmCreditos.resx">
       <DependentUpon>FrmCreditos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInstrucciones.resx">
+      <DependentUpon>FrmInstrucciones.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuInicio.resx">
       <DependentUpon>FrmMenuInicio.h</DependentUpon>
