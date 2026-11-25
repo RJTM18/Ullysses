@@ -4,7 +4,7 @@
 #include "Carro.h"
 #include "AntiSemita.h"
 using namespace std;
-class Logica1
+class Nivel1
 {
 private:
     int NivelConfianza;
@@ -18,12 +18,12 @@ private:
     vector<AntiSemita*> antisemita;
 
 public:
-    Logica1(int NivelConfianza, int metros, int anchoPantalla, int altoPantalla)
+    Nivel1(int NivelConfianza, int metros, int anchoPantalla, int altoPantalla)
         : NivelConfianza(NivelConfianza), MetrosLogrados(metros), contadorMovimientos(0), proteccion(0),
         anchoPantalla(anchoPantalla), altoPantalla(altoPantalla), leopold(nullptr) {
     }
 
-    ~Logica1() {
+    ~Nivel1() {
         delete leopold;
         for (Carro* c : carros) delete c;
         for (AntiSemita* a : antisemita) delete a;
