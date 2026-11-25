@@ -167,6 +167,7 @@
     <ClInclude Include="LogicaNivel3.h" />
     <ClInclude Include="Molly.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Pesadilla.h" />
     <ClInclude Include="Policia.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />
