@@ -34,6 +34,17 @@ namespace Ullyses {
 
 		Direccion teclaPresionada;
 
+		ref struct ConfigPolicia {
+			int x;
+			int y;
+			int velocidad;
+			double escala;
+			Direccion siJugadorDerecha;
+			Direccion siJugadorIzquierda;
+			Direccion siJugadorArriba;
+			Direccion siJugadorAbajo;
+		};
+
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::ComponentModel::IContainer^ components;
@@ -80,11 +91,19 @@ namespace Ullyses {
 
 		}
 #pragma endregion
-		Bitmap^ cargarImagen(String^ name) {
+		private: Bitmap^ cargarImagen(String^ name) {
 			String^ ruta = Path::Combine(Application::StartupPath, name);
 			if (!File::Exists(ruta)) ruta = name;
 			return gcnew Bitmap(ruta);
 		};
+
+		private: Direccion calcularDireccionPolicia(ConfigPolicia cfg, Direccion dirJugador) {
+			if (dirJugador == Derecha)   return cfg.siJugadorDerecha;
+			if (dirJugador == Izquierda) return cfg.siJugadorIzquierda;
+			if (dirJugador == Arriba)    return cfg.siJugadorArriba;
+			if (dirJugador == Abajo)     return cfg.siJugadorAbajo;
+			return Ninguno;
+		};	
 
 		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;

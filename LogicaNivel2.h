@@ -37,12 +37,18 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->dibujar(g, ImgPolicia);
 	};
 
-	void moverStephen(Direccion tecla, int WidthScreen, int HeightScreen) {
-		if (stephen == nullptr || escuadronPolicias.empty() ) return;
+	void moverStephen(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
+		if (stephen == nullptr) return;
 		
-		stephen->mover(tecla, WidthScreen, HeightScreen);
-		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(tecla, WidthScreen, HeightScreen);
+		stephen->mover(teclaPresionada, WidthScreen, HeightScreen);
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(teclaPresionada, WidthScreen, HeightScreen);
 	};
+
+	void moverPolicias(Direccion teclaPresionada, int WidthScreen, int HeightScreen) {
+		if (escuadronPolicias.empty()) return;
+
+		for (int i = 0; i < (int)escuadronPolicias.size(); i++) escuadronPolicias[i]->mover(teclaPresionada, WidthScreen, HeightScreen);
+	}
 
 private:
 	int anchoPantallaSprite; //ancho de pantalla donde se movera el sprite en cada nivel
@@ -50,4 +56,7 @@ private:
 
 	Stephen* stephen;
 	std::vector<Policia*> escuadronPolicias;
+
+	//Un vector que contenga las direcciones
+	std::vector<Direccion> Direcciones;
 };

@@ -12,14 +12,14 @@ public:
 		siJugadorIzquierda(siJugadorIzquierda) {};
 	~Policia() {};
 
-	void mover(Direccion direccionJugador, int WidthScreen, int HeightScreen) override {
+	void mover(Direccion direccionPolicia, int WidthScreen, int HeightScreen) override {
 		//movimiento
 		dx = dy = 0;
 
-		if (direccionJugador == Derecha)	dx = siJugadorDerecha;	//Policía va la izquierda.
-		if (direccionJugador == Izquierda)	dx = siJugadorIzquierda;//Policía a la derecha.
-		if (direccionJugador == Arriba)		dy = siJugadorArriba;	//Policía abajo.
-		if (direccionJugador == Abajo)		dy = siJugadorAbajo;	//policía arriba.
+		if (direccionPolicia == Derecha)	dx = 1;		//Policía va la izquierda.
+		if (direccionPolicia == Izquierda)	dx = -1;	//Policía a la derecha.
+		if (direccionPolicia == Arriba)		dy = -1;	//Policía abajo.
+		if (direccionPolicia == Abajo)		dy = 1;		//policía arriba.
 
 		x += velocidad * dx;
 		y += velocidad * dy;
@@ -34,16 +34,16 @@ public:
 		if (x > WidthScreen - anchoFrameModificado) x = WidthScreen - anchoFrameModificado;
 		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
-		animar(direccionJugador);
+		animar(direccionPolicia);
 	};
 
-	void animar(Direccion direccionJugador) {
-		if (direccionJugador == Arriba)		indiceY = 0;
-		if (direccionJugador == Abajo)		indiceY = 1;
-		if (direccionJugador == Derecha)	indiceY = 2;
-		if (direccionJugador == Izquierda)	indiceY = 3;
+	void animar(Direccion direccionPolicia) {
+		if (direccionPolicia == Arriba)		indiceY = 0;
+		if (direccionPolicia == Abajo)		indiceY = 1;
+		if (direccionPolicia == Derecha)	indiceY = 2;
+		if (direccionPolicia == Izquierda)	indiceY = 3;
 
-		if (direccionJugador != Ninguno) {
+		if (direccionPolicia != Ninguno) {
 			indiceX++;
 			if (indiceX >= columnas) indiceX = 0;
 		}
