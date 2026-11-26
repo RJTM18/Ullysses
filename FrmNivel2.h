@@ -1,6 +1,5 @@
 #pragma once
-#include "Nivel1.h"
-#include "LogicaNivel2.h"
+#include "Nivel2.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -31,7 +30,7 @@ namespace Ullyses {
 		Bitmap^ policia;
 		Bitmap^ fondoNivel2;
 		
-		LogicaNivel2* logicaNivel2;
+		Nivel2* logicaNivel2;
 
 		Direccion teclaPresionada;
 
@@ -126,7 +125,7 @@ namespace Ullyses {
 
 		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
 			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new LogicaNivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			logicaNivel2 = new Nivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 			timer1->Enabled = true;
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
@@ -144,8 +143,6 @@ namespace Ullyses {
 				/* Escala: */				0.75
 			);
 
-			logicaNivel2->setNewHitboxPolicias();
-		
 			//jugador DERECHA, IZQUIERDA, ARRIBA, ABAJO
 			//Policía 1
 			logicaNivel2->crearNuevoPolicia(
@@ -186,7 +183,7 @@ namespace Ullyses {
 				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
 			);
 		
-			logicaNivel2->setStephenPuntosVida(3);
+			logicaNivel2->setStephenPuntosVida(100);
 
 			teclaPresionada = Ninguno;
 		};
@@ -194,8 +191,8 @@ namespace Ullyses {
 		private: System::Void Timer1_tick(System::Object^ sender, System::EventArgs^ e) {
 			if (logicaNivel2 == nullptr) return;
 
-			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
-			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width / 2, pnlSpriteNivel2->Height);
+			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width / 2, pnlSpriteNivel2->Height);
 
 			Graphics^ canvas = pnlSpriteNivel2->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
@@ -226,7 +223,5 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-
-
 	};
 };

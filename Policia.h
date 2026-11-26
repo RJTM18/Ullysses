@@ -45,10 +45,13 @@ public:
 		int anchoFrameModificado = (anchoFrame * escala);
 		int altoFrameModificado = (altoFrame * escala);
 
+		//mitad de la anchura de la calle
+		const int mitadAnchuraCalle = 500;
+
 		//limites
-		if (x < 0) x = 0;
+		if (x < WidthScreen - mitadAnchuraCalle) x = WidthScreen - mitadAnchuraCalle;
 		if (y < 0) y = 0;
-		if (x > WidthScreen - anchoFrameModificado) x = WidthScreen - anchoFrameModificado;
+		if (x > (WidthScreen + mitadAnchuraCalle )- anchoFrameModificado) x = (WidthScreen + mitadAnchuraCalle) - anchoFrameModificado;
 		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
 		animar(direccionPolicia);
