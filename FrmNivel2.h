@@ -70,8 +70,8 @@ namespace Ullyses {
 		void InitializeComponent(void) {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlSpriteNivel2 = (gcnew System::Windows::Forms::Panel());
-			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lblHP = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pnlSpriteNivel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -80,32 +80,35 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Controls->Add(this->lblHP);
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
+			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
-			this->pnlSpriteNivel2->Size = System::Drawing::Size(1304, 491);
+			this->pnlSpriteNivel2->Size = System::Drawing::Size(1739, 604);
 			this->pnlSpriteNivel2->TabIndex = 0;
-			// 
-			// timer1
-			// 
-			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel2::Timer1_tick);
+			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// lblHP
 			// 
 			this->lblHP->AutoSize = true;
 			this->lblHP->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHP->Location = System::Drawing::Point(902, 20);
+			this->lblHP->Location = System::Drawing::Point(1203, 25);
+			this->lblHP->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblHP->Name = L"lblHP";
-			this->lblHP->Size = System::Drawing::Size(160, 23);
+			this->lblHP->Size = System::Drawing::Size(208, 31);
 			this->lblHP->TabIndex = 0;
 			this->lblHP->Text = L"Puntos de vida: -";
 			// 
+			// timer1
+			// 
+			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel2::Timer1_tick);
+			// 
 			// FrmNivel2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1304, 491);
+			this->ClientSize = System::Drawing::Size(1739, 604);
 			this->Controls->Add(this->pnlSpriteNivel2);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmNivel2";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);

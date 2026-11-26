@@ -7,11 +7,13 @@ using namespace std;
 class Nivel1
 {
 private:
+    //punto interno de leopold, su confianza
     int NivelConfianza;
+
     int MetrosLogrados;
     int contadorMovimientos;
     int proteccion;
-
+    bool ConversacionRealizada;
     int anchoPantalla, altoPantalla;
     Leopold* leopold;
     vector<Carro*> carros;
@@ -19,8 +21,14 @@ private:
 
 public:
     Nivel1(int NivelConfianza, int metros, int anchoPantalla, int altoPantalla)
-        : NivelConfianza(NivelConfianza), MetrosLogrados(metros), contadorMovimientos(0), proteccion(0),
-        anchoPantalla(anchoPantalla), altoPantalla(altoPantalla), leopold(nullptr) {
+        : NivelConfianza(NivelConfianza),
+        MetrosLogrados(metros),
+        contadorMovimientos(0),
+        proteccion(0),
+        ConversacionRealizada(false),
+        anchoPantalla(anchoPantalla),
+        altoPantalla(altoPantalla),
+        leopold(nullptr) {
     }
 
     ~Nivel1() {
@@ -89,7 +97,7 @@ public:
     int  getConfianza() { return NivelConfianza; }
     int  metros() { return MetrosLogrados; }
     bool perdio() { return NivelConfianza <= 0; }
-    bool gano() { return MetrosLogrados >= 400; }
+    bool gano() { return MetrosLogrados >= 600; }
     void PerderNivelConfianza(int cantidad = 10) {
         NivelConfianza -= cantidad;
         if (NivelConfianza < 0) NivelConfianza = 0;
@@ -103,7 +111,7 @@ public:
         }
     }
 
-    // ---------- límites del mapa ----------
+    // Limites del mapa
     int colisionY(int y, int alto) {
         int sup = 380, inf = 960;
         if (y < sup) y = sup;
@@ -115,5 +123,39 @@ public:
         if (x < izq) x = izq;
         if (x + ancho > der) x = der - ancho;
         return x;
+    }
+    //accion para conversar cuando llegue a los 200 metros
+    bool conversar()
+    {
+        return MetrosLogrados >= 200 &&
+            ConversacionRealizada == false &&
+            !perdio();
+    }
+    //cuando se acaba
+    void finalizarConversacion()
+    {
+        ConversacionRealizada = true;
+    }
+    //cuando las respuestas de nuestras acciones le bajan o suben el nivel de confianza
+    void aplicarRespuesta(int respuesta) {
+        //utilizando switch
+        switch (respuesta) 
+        {
+      //para las 3 opciones
+        case 1:
+            PerderNivelConfianza(10);
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            NivelConfianza += 15;
+
+            if (NivelConfianza > 100)
+                NivelConfianza = 100;
+
+            break;
+        }
     }
 };

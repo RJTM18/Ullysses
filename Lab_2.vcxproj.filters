@@ -86,6 +86,9 @@
     <ClInclude Include="FrmInstrucciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmConversacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +116,9 @@
       <Filter>Source Files\Funciones Forms</Filter>
     </ClCompile>
     <ClCompile Include="FrmInstrucciones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmConversación.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
