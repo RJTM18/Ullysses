@@ -100,7 +100,7 @@ namespace  Ullyses {
 			this->lblPersonaje->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblPersonaje->ForeColor = System::Drawing::SystemColors::Control;
-			this->lblPersonaje->Location = System::Drawing::Point(872, 520);
+			this->lblPersonaje->Location = System::Drawing::Point(866, 520);
 			this->lblPersonaje->Name = L"lblPersonaje";
 			this->lblPersonaje->Size = System::Drawing::Size(209, 36);
 			this->lblPersonaje->TabIndex = 1;
@@ -112,7 +112,7 @@ namespace  Ullyses {
 			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblDialogo->ForeColor = System::Drawing::SystemColors::Control;
-			this->lblDialogo->Location = System::Drawing::Point(633, 572);
+			this->lblDialogo->Location = System::Drawing::Point(597, 570);
 			this->lblDialogo->Name = L"lblDialogo";
 			this->lblDialogo->Size = System::Drawing::Size(42, 36);
 			this->lblDialogo->TabIndex = 2;

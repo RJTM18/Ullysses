@@ -14,6 +14,7 @@ private:
     int contadorMovimientos;
     int proteccion;
     bool ConversacionRealizada;
+    bool ConversacionRealizada2;
     int anchoPantalla, altoPantalla;
     Leopold* leopold;
     vector<Carro*> carros;
@@ -28,6 +29,7 @@ public:
         ConversacionRealizada(false),
         anchoPantalla(anchoPantalla),
         altoPantalla(altoPantalla),
+        ConversacionRealizada2(false),
         leopold(nullptr) {
     }
 
@@ -131,10 +133,22 @@ public:
             ConversacionRealizada == false &&
             !perdio();
     }
+
+    bool conversar2()
+    {
+        return MetrosLogrados >= 450 &&
+            ConversacionRealizada2 == false &&
+            !perdio();
+    }
     //cuando se acaba
     void finalizarConversacion()
     {
         ConversacionRealizada = true;
+    }
+
+    void finalizarConversacion2()
+    {
+        ConversacionRealizada2 = true;
     }
     //cuando las respuestas de nuestras acciones le bajan o suben el nivel de confianza
     void aplicarRespuesta(int respuesta) {
@@ -142,6 +156,30 @@ public:
         switch (respuesta) 
         {
       //para las 3 opciones
+        case 1:
+            PerderNivelConfianza(10);
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            NivelConfianza += 15;
+
+            if (NivelConfianza > 100)
+                NivelConfianza = 100;
+
+            break;
+        }
+
+
+    }
+
+    void aplicarRespuesta2(int respuesta) {
+        //utilizando switch
+        switch (respuesta)
+        {
+            //para las 3 opciones
         case 1:
             PerderNivelConfianza(10);
             break;

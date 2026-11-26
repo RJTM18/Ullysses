@@ -1,6 +1,7 @@
 #pragma once
 #include "Nivel1.h"
 #include "FrmConversacion.h"
+#include "FrmConversacion2.h"
 namespace Ullyses {
 
 	using namespace System;
@@ -477,6 +478,8 @@ namespace Ullyses {
 				timer1->Start();
 			}
 		}
+
+	
 		//la accion cuando se hable
 		juego->actualizarMetros(TeclaPresionada);
 		if (juego->conversar())
@@ -498,6 +501,32 @@ namespace Ullyses {
 			timer1->Start();
 			return;
 		}
+
+		if (juego->conversar2())
+		{
+			timer1->Stop();
+			TeclaPresionada = Ninguno;
+
+			juego->finalizarConversacion2();
+
+			MessageBox::Show("Leopold recuerda a Molly...");
+
+			FrmConversacion2^ ventana = gcnew FrmConversacion2();
+
+			ventana->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			ventana->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+
+			ventana->ShowDialog(this);
+
+			juego->aplicarRespuesta2(ventana->getRespuesta());
+
+			delete ventana;
+
+			timer1->Start();
+			return;
+		}
+
+
 		
 		
 	

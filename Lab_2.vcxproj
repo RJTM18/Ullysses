@@ -148,6 +148,9 @@
     <ClInclude Include="FrmConversacion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmConversacion2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmCreditos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -180,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="FrmConversacion2.cpp" />
     <ClCompile Include="FrmConversación.cpp" />
     <ClCompile Include="FrmCreditos.cpp" />
     <ClCompile Include="FrmInstrucciones.cpp" />
@@ -209,6 +213,10 @@
     <EmbeddedResource Include="FrmConversacion.resx">
       <DependentUpon>FrmConversacion.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmConversacion.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConversacion2.resx">
+      <DependentUpon>FrmConversacion2.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmConversacion2.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreditos.resx">
       <DependentUpon>FrmCreditos.h</DependentUpon>

@@ -70,6 +70,7 @@ namespace Ullyses {
 			this->pnlSpriteNivel3->Name = L"pnlSpriteNivel3";
 			this->pnlSpriteNivel3->Size = System::Drawing::Size(914, 871);
 			this->pnlSpriteNivel3->TabIndex = 0;
+			this->pnlSpriteNivel3->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel3::pnlSpriteNivel3_Paint);
 			// 
 			// timer1
 			// 
@@ -89,6 +90,7 @@ namespace Ullyses {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel3::FrmNivel3_KeyUp);
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 
@@ -147,5 +149,7 @@ namespace Ullyses {
 		if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 		if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)   teclaPresionada = Ninguno; }
 	};
-	};
+	private: System::Void pnlSpriteNivel3_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+};
 }
