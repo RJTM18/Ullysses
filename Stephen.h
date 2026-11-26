@@ -4,19 +4,31 @@
 class Stephen : public Sprite {
 public:
 	Stephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) :
-		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale), AcasoEstaMuerto(false) {};
+		Sprite(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale), 
+		AcasoEstaMuerto(false), recibioImpactoPrevio(false),ticks(0) {};
 	~Stephen() {};
 
 	int getPuntosVida() { return puntosVida; }
 	bool getAcasoEstaMuerto() { return AcasoEstaMuerto; }
+	bool getRecibioImpactoPrevio() { return recibioImpactoPrevio; }
 	void setPuntosVida(int puntosDeVida) { this->puntosVida = puntosDeVida; }
 
+	//Esta función empieza a sumar solo si el jugador ha sido impactado previamente. 
+	void sumarTicks() {
+		ticks++;
+		if (ticks >= 45) {
+			ticks = 0;
+			recibioImpactoPrevio = false;
+		}
+	};
+
 	void fueImpactado() {
-		puntosVida--;
-		if (puntosVida <= 0) {
-			puntosVida = 0;
-			jugadorMuerto();
-		}			
+		// Solo hacer daño si NO está en período de invencibilidad
+		if (!recibioImpactoPrevio) {
+			recibioImpactoPrevio = true;			
+			puntosVida--;
+			ticks = 0;  // Reiniciar el contador desde 0
+		}
 	};
 
 	void jugadorMuerto() { this->AcasoEstaMuerto = true; }
@@ -63,5 +75,8 @@ public:
 
 private: 
 	int puntosVida;
+	int ticks;
 	bool AcasoEstaMuerto; //determina si el jugador perdio todas sus vidas
+	bool recibioImpactoPrevio; //determina si el jugador ha sido impactado previamente 
+
 };

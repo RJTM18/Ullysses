@@ -47,9 +47,9 @@ public:
 		Rectangle recorte (indiceX * anchoFrame, indiceY * altoFrame, anchoFrame, altoFrame);
 		Rectangle destino (x, y, (int)(anchoFrame * escala), (int)(altoFrame * escala));
 		g->DrawImage(imagen, destino, recorte, GraphicsUnit::Pixel);
-	}
+	};
 
-	 //rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
+	//rectangulo de colision: empieza a 1/5 del dibujo y mide 3/5 de ancho y de alto, asi no cuenta el aire alrededor del personaje
 	//también es una manera mas optima de poder escalar cuadrados en donde vamos a colocar a gusto en cualquier pesonaje con colisiones rectangulares
 	Rectangle getRectangle() {
 		int anchoFigura = (int)(anchoFrame * escala); //ancho modificado del sprite

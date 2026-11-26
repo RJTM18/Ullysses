@@ -46,7 +46,12 @@ public:
 	};
 
 	//colisiones
+	//Sumar text tiene que sumar de 0 a 90 desde el momento que el jugador se impacta.
+	//Mientras que el contador esté subiendo, este puede reiniciarse en el caso de que el jugador vuelva a pactar con una entidad.
+	//En el caso de llegar a 90, se vuelve a cero y de ahí no se suman más.
 	void impactoJugadorConEntidad() {
+		if (stephen->getRecibioImpactoPrevio()) stephen->sumarTicks();
+		
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) {
 			if (stephen->getRectangle().IntersectsWith(escuadronPolicias[i]->getRectangle())) {
 				stephen->fueImpactado();
@@ -56,6 +61,8 @@ public:
 			}
 		};
 	};
+
+	//El tick tiene que comenzar desde el impacto.
 
 	void setStephenPuntosVida(int puntosDeVida) { stephen->setPuntosVida(puntosDeVida); }
 	int getStephenPuntosVida() { return stephen->getPuntosVida(); }

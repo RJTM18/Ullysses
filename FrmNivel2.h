@@ -84,7 +84,6 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
 			this->pnlSpriteNivel2->Size = System::Drawing::Size(1739, 604);
 			this->pnlSpriteNivel2->TabIndex = 0;
-			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// lblHP
 			// 
