@@ -114,12 +114,12 @@ namespace  Ullyses {
 			// 
 			this->lblDialogo->AutoSize = true;
 			this->lblDialogo->BackColor = System::Drawing::Color::PapayaWhip;
-			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblDialogo->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->lblDialogo->Location = System::Drawing::Point(597, 570);
+			this->lblDialogo->Location = System::Drawing::Point(569, 575);
 			this->lblDialogo->Name = L"lblDialogo";
-			this->lblDialogo->Size = System::Drawing::Size(42, 36);
+			this->lblDialogo->Size = System::Drawing::Size(41, 32);
 			this->lblDialogo->TabIndex = 2;
 			this->lblDialogo->Text = L"...";
 			this->lblDialogo->Click += gcnew System::EventHandler(this, &FrmConversacion::lblDialogo_Click);
