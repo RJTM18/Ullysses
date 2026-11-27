@@ -50,7 +50,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ picBorde2;
+
 
 		   /// <summary>
 		/// Required designer variable.
@@ -74,8 +75,8 @@ namespace Ullyses {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->picBorde2 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBorde2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -210,17 +211,17 @@ namespace Ullyses {
 			this->label9->Text = L"Claude";
 			this->label9->Click += gcnew System::EventHandler(this, &FrmCreditos::label9_Click);
 			// 
-			// pictureBox1
+			// picBorde2
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-34, 30);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1908, 960);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox1->TabIndex = 13;
-			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &FrmCreditos::pictureBox1_Click);
+			this->picBorde2->BackColor = System::Drawing::Color::Transparent;
+			this->picBorde2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBorde2.Image")));
+			this->picBorde2->Location = System::Drawing::Point(-34, 30);
+			this->picBorde2->Name = L"picBorde2";
+			this->picBorde2->Size = System::Drawing::Size(1908, 960);
+			this->picBorde2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picBorde2->TabIndex = 13;
+			this->picBorde2->TabStop = false;
+			this->picBorde2->Click += gcnew System::EventHandler(this, &FrmCreditos::pictureBox1_Click);
 			// 
 			// FrmCreditos
 			// 
@@ -236,12 +237,12 @@ namespace Ullyses {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->picBorde2);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"FrmCreditos";
 			this->Text = L"FrmCreditos";
 			this->Load += gcnew System::EventHandler(this, &FrmCreditos::FrmCreditos_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBorde2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -258,6 +259,22 @@ namespace Ullyses {
 			this->BackgroundImage = FondoCreditos;
 			this->BackgroundImageLayout = ImageLayout::Stretch;
 
+
+			picBorde2->Location = Point(
+				(this->ClientSize.Width - picBorde2->Width) / 2,
+				(this->ClientSize.Height - picBorde2->Height) / 2
+			);
+			//recorre los labels para poder ordenarlos, es parte del diseño
+			for (int i = 1; i <= 9; i++)
+			{
+				Label^ lbl = (Label^)this->Controls["label" + i.ToString()];
+
+				lbl->Parent = picBorde2;
+				lbl->BackColor = Color::Transparent;
+
+				if (i <= 6)
+					lbl->Left = (picBorde2->Width - lbl->Width) / 2;
+			}
 		}
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

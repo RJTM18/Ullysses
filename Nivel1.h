@@ -196,4 +196,9 @@ public:
             break;
         }
     }
+
+    int calcularPuntaje() {
+        return metros() + getConfianza() * 10;
+    }
+   
 };

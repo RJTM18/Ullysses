@@ -169,6 +169,7 @@
     <ClInclude Include="FrmNivel3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="GestorPuntajes.h" />
     <ClInclude Include="Leopold.h" />
     <ClInclude Include="Nivel1.h" />
     <ClInclude Include="Nivel2.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Pesadilla.h" />
     <ClInclude Include="Policia.h" />
+    <ClInclude Include="Puntuacion.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stephen.h" />

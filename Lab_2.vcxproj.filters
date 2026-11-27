@@ -89,6 +89,15 @@
     <ClInclude Include="FrmConversacion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FrmConversacion2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorPuntajes.h">
+      <Filter>Header Files\Logica</Filter>
+    </ClInclude>
+    <ClInclude Include="Puntuacion.h">
+      <Filter>Header Files\Logica</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -119,6 +128,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrmConversación.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmConversacion2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
