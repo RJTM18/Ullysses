@@ -106,7 +106,7 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(929, 517);
+			this->label1->Location = System::Drawing::Point(940, 522);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(180, 36);
 			this->label1->TabIndex = 1;
@@ -119,7 +119,7 @@ namespace Ullyses {
 			this->lblMolly->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblMolly->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->lblMolly->Location = System::Drawing::Point(698, 561);
+			this->lblMolly->Location = System::Drawing::Point(724, 560);
 			this->lblMolly->Name = L"lblMolly";
 			this->lblMolly->Size = System::Drawing::Size(98, 32);
 			this->lblMolly->TabIndex = 2;

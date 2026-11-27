@@ -17,7 +17,8 @@ namespace  Ullyses {
 	private:
 		String^ dialogo;
 		int indiceDialogo;
-		int respuesta;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+		   int respuesta;
 
 	public:
 		FrmConversacion(void)
@@ -58,7 +59,7 @@ namespace  Ullyses {
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
-		
+		Bitmap^ Fondo2;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -80,14 +81,16 @@ namespace  Ullyses {
 			this->timerDialogo = (gcnew System::Windows::Forms::Timer(this->components));
 			this->btnRespuesta2 = (gcnew System::Windows::Forms::Button());
 			this->btnRespuesta3 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPersonaje))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// picPersonaje
 			// 
 			this->picPersonaje->BackColor = System::Drawing::Color::Black;
 			this->picPersonaje->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picPersonaje.Image")));
-			this->picPersonaje->Location = System::Drawing::Point(722, 12);
+			this->picPersonaje->Location = System::Drawing::Point(722, 1);
 			this->picPersonaje->Name = L"picPersonaje";
 			this->picPersonaje->Size = System::Drawing::Size(500, 505);
 			this->picPersonaje->TabIndex = 0;
@@ -97,10 +100,11 @@ namespace  Ullyses {
 			// lblPersonaje
 			// 
 			this->lblPersonaje->AutoSize = true;
+			this->lblPersonaje->BackColor = System::Drawing::Color::Moccasin;
 			this->lblPersonaje->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPersonaje->ForeColor = System::Drawing::SystemColors::Control;
-			this->lblPersonaje->Location = System::Drawing::Point(866, 520);
+			this->lblPersonaje->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->lblPersonaje->Location = System::Drawing::Point(868, 530);
 			this->lblPersonaje->Name = L"lblPersonaje";
 			this->lblPersonaje->Size = System::Drawing::Size(209, 36);
 			this->lblPersonaje->TabIndex = 1;
@@ -109,9 +113,10 @@ namespace  Ullyses {
 			// lblDialogo
 			// 
 			this->lblDialogo->AutoSize = true;
+			this->lblDialogo->BackColor = System::Drawing::Color::PapayaWhip;
 			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblDialogo->ForeColor = System::Drawing::SystemColors::Control;
+			this->lblDialogo->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->lblDialogo->Location = System::Drawing::Point(597, 570);
 			this->lblDialogo->Name = L"lblDialogo";
 			this->lblDialogo->Size = System::Drawing::Size(42, 36);
@@ -169,6 +174,17 @@ namespace  Ullyses {
 			this->btnRespuesta3->UseVisualStyleBackColor = true;
 			this->btnRespuesta3->Click += gcnew System::EventHandler(this, &FrmConversacion::btnRespuesta3_Click);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(404, 353);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(1103, 506);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 7;
+			this->pictureBox1->TabStop = false;
+			// 
 			// FrmConversacion
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -182,6 +198,7 @@ namespace  Ullyses {
 			this->Controls->Add(this->lblDialogo);
 			this->Controls->Add(this->lblPersonaje);
 			this->Controls->Add(this->picPersonaje);
+			this->Controls->Add(this->pictureBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->KeyPreview = true;
 			this->Name = L"FrmConversacion";
@@ -190,15 +207,24 @@ namespace  Ullyses {
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmConversacion::FrmConversación_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPersonaje))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-		
+		Bitmap^ cargarImagen(String^ nombre) {
+			String^ ruta = Path::Combine(Application::StartupPath, nombre);
+			if (!File::Exists(ruta)) ruta = nombre;
+			return gcnew Bitmap(ruta);
+		};
 
 
 	private: System::Void FrmConversación_Load(System::Object^ sender, System::EventArgs^ e) {
+		Fondo2 = cargarImagen("Sprites\\PantallaInicio.png");
+		this->BackgroundImage = Fondo2;
+		this->BackgroundImageLayout = ImageLayout::Stretch;
+
 		dialogo = L"Bloom, \u00BFpor qu\u00E9 insistes en caminar por estas calles?\n"
 			L"Sabes perfectamente que muchos aqu\u00ED\n"
 			L"no te consideran uno de los nuestros.";
