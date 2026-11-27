@@ -114,18 +114,33 @@ public:
     }
 
     // Limites del mapa
-    int colisionY(int y, int alto) {
-        int sup = 380, inf = 960;
-        if (y < sup) y = sup;
-        if (y + alto > inf) y = inf - alto;
-        return y;
-    }
     int colisionX(int x, int ancho) {
-        int izq = 380, der = 800;
-        if (x < izq) x = izq;
-        if (x + ancho > der) x = der - ancho;
+        int izquierda = 380;
+        int derecha = 800;
+
+        if (x < izquierda)
+            return izquierda;
+
+        if (x + ancho > derecha)
+            return derecha - ancho;
+
         return x;
     }
+
+    // Limites verticales del jugador
+    int colisionY(int y, int alto) {
+        int superior = 430;
+        int inferior = 960;
+
+        if (y < superior)
+            return superior;
+
+        if (y + alto > inferior)
+            return inferior - alto;
+
+        return y;
+    }
+
     //accion para conversar cuando llegue a los 200 metros
     bool conversar()
     {

@@ -20,51 +20,15 @@ namespace Ullyses {
 	public:
 		FrmMenuInicio(void) {
 			InitializeComponent();
-			
-			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 
-			btnJugar->Parent = picBorde;
-			btnJugar->FlatStyle = FlatStyle::Flat;
-			btnJugar->FlatAppearance->BorderSize = 0;
-			btnJugar->FlatAppearance->MouseOverBackColor = Color::Transparent;
-			btnJugar->FlatAppearance->MouseDownBackColor = Color::Transparent;
-			btnJugar->BackColor = Color::Transparent;
-			btnJugar->BackgroundImageLayout = ImageLayout::Zoom;
-			btnJugar->UseVisualStyleBackColor = false;
-
-			btnCreditos->Parent = picBorde;
-			btnCreditos->FlatStyle = FlatStyle::Flat;
-			btnCreditos->FlatAppearance->BorderSize = 0;
-			btnCreditos->FlatAppearance->MouseOverBackColor = Color::Transparent;
-			btnCreditos->FlatAppearance->MouseDownBackColor = Color::Transparent;
-			btnCreditos->BackColor = Color::Transparent;
-			btnCreditos->BackgroundImageLayout = ImageLayout::Zoom;
-			btnCreditos->UseVisualStyleBackColor = false;
-
-			btnInstrucciones->Parent = picBorde;
-			btnInstrucciones->FlatStyle = FlatStyle::Flat;
-			btnInstrucciones->FlatAppearance->BorderSize = 0;
-			btnInstrucciones->FlatAppearance->MouseOverBackColor = Color::Transparent;
-			btnInstrucciones->FlatAppearance->MouseDownBackColor = Color::Transparent;
-			btnInstrucciones->BackColor = Color::Transparent;
-			btnInstrucciones->BackgroundImageLayout = ImageLayout::Zoom;
-			btnInstrucciones->UseVisualStyleBackColor = false;
-
-			btnSalir->Parent = picBorde;
-			btnSalir->FlatStyle = FlatStyle::Flat;
-			btnSalir->FlatAppearance->BorderSize = 0;
-			btnSalir->FlatAppearance->MouseOverBackColor = Color::Transparent;
-			btnSalir->FlatAppearance->MouseDownBackColor = Color::Transparent;
-			btnSalir->BackColor = Color::Transparent;
-			btnSalir->BackgroundImageLayout = ImageLayout::Zoom;
-			btnSalir->UseVisualStyleBackColor = false;
-
-			//para mover los puntos de los botones dentro del picBorde
-			btnJugar->Location = Point(83, 340);
-			btnInstrucciones->Location = Point(83, 510);
-			btnCreditos->Location = Point(83, 680);
-			btnSalir->Location = Point(83, 850);
+			this->WindowState = FormWindowState::Maximized;
+			this->FormBorderStyle =
+				System::Windows::Forms::FormBorderStyle::None;
+			//boton a configurar, su direccion y
+			configurarBoton(btnJugar, 340);
+			configurarBoton(btnInstrucciones, 510);
+			configurarBoton(btnCreditos, 680);
+			configurarBoton(btnSalir, 850);
 		}
 
 
@@ -74,6 +38,23 @@ namespace Ullyses {
 			if (components) { delete components; }
 		}
 	private:
+
+		void configurarBoton(Button^ btn, int y) {
+			//sirve para eliminar el fondo blanco entre otros
+			btn->Parent = picBorde;
+			btn->FlatStyle = FlatStyle::Flat;
+			btn->FlatAppearance->BorderSize = 0;
+			btn->FlatAppearance->MouseOverBackColor = Color::Transparent;
+			btn->FlatAppearance->MouseDownBackColor = Color::Transparent;
+			btn->BackColor = Color::Transparent;
+
+			btn->BackgroundImageLayout = ImageLayout::Zoom;
+			btn->UseVisualStyleBackColor = false;
+			//esto es para centrarlo
+			btn->Left = (picBorde->Width - btn->Width) / 2;
+			//esto es para ya establecerlos en la posicion vertical
+			btn->Top = y;
+		}
 		Bitmap^ FondoMenu;
 
 	private: System::Windows::Forms::Button^ btnJugar;
@@ -165,7 +146,7 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Bauhaus 93", 26.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Black;
-			this->label1->Location = System::Drawing::Point(924, 99);
+			this->label1->Location = System::Drawing::Point(946, 34);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(130, 50);
 			this->label1->TabIndex = 3;
