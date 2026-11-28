@@ -9,7 +9,7 @@ namespace Ullyses {
 	};
 	
 	void FrmNivel2::InicializarDialogo() {
-		dialogo = "¡Bienvenido al Nivel 2! En este nivel, te enfrentarás a un grupo de policías que intentarán detenerte. Mantente alerta y utiliza tus habilidades para esquivarlos y llegar a la meta. ¡Buena suerte!";
+		dialogo = L"¡Bienvenido al Nivel 2! En este nivel, te enfrentarás a un grupo de policías que intentarán detenerte. Mantente alerta y utiliza tus habilidades para esquivarlos y llegar a la meta. ¡Buena suerte!";
 		indiceDialogo = 0;
 		timerDialogo->Interval = 40; // velocidad de escritura del diálogo
 		timerDialogo->Start(); 

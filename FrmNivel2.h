@@ -38,7 +38,7 @@ namespace Ullyses {
 
 		//dialogo
 		String^ dialogo;
-	int indiceDialogo;
+		int indiceDialogo;
 
 
 		ref struct ConfiguracionPolicia {
@@ -59,7 +59,6 @@ namespace Ullyses {
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timerGame;
-
 	private: System::Windows::Forms::Label^ lblHP;
 	private: System::Windows::Forms::Label^ lblDialogo;
 	private: System::Windows::Forms::Timer^ timerDialogo;
@@ -95,13 +94,16 @@ namespace Ullyses {
 			// 
 			// lblDialogo
 			// 
-			this->lblDialogo->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblDialogo->AutoSize = true;
-			this->lblDialogo->Location = System::Drawing::Point(587, 214);
+			this->lblDialogo->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblDialogo->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->lblDialogo->Location = System::Drawing::Point(0, 0);
 			this->lblDialogo->Name = L"lblDialogo";
-			this->lblDialogo->Size = System::Drawing::Size(35, 13);
+			this->lblDialogo->Size = System::Drawing::Size(0, 43);
 			this->lblDialogo->TabIndex = 1;
-			this->lblDialogo->Text = L"label1";
+			this->lblDialogo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// lblHP
 			// 
