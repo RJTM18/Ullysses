@@ -241,6 +241,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNivel3.resx">
       <DependentUpon>FrmNivel3.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Ullyses.FrmNivel2.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
