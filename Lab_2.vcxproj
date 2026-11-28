@@ -192,6 +192,7 @@
     <ClCompile Include="FrmMenuInicio.cpp" />
     <ClCompile Include="FrmNewJuego.cpp" />
     <ClCompile Include="FrmNivel1.cpp" />
+    <ClCompile Include="FrmNivel2.cpp" />
     <ClCompile Include="FrmNivel3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
