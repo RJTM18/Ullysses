@@ -35,6 +35,12 @@ namespace Ullyses {
 
 		Direccion teclaPresionada;
 
+		//dialogo
+		String^ dialogo;
+		Timer^ timerDialogo;
+		int indiceDialogo;
+
+
 		ref struct ConfiguracionPolicia {
 			int    velocidad;
 			double escala;
@@ -54,7 +60,7 @@ namespace Ullyses {
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Label^ lblHP;
-
+	private: System::Windows::Forms::Label^ lblDialogo;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -68,17 +74,19 @@ namespace Ullyses {
 			this->pnlSpriteNivel2 = (gcnew System::Windows::Forms::Panel());
 			this->lblHP = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lblDialogo = (gcnew System::Windows::Forms::Label());
 			this->pnlSpriteNivel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlSpriteNivel2
 			// 
+			this->pnlSpriteNivel2->BackColor = System::Drawing::SystemColors::Desktop;
+			this->pnlSpriteNivel2->Controls->Add(this->lblDialogo);
 			this->pnlSpriteNivel2->Controls->Add(this->lblHP);
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
-			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
-			this->pnlSpriteNivel2->Size = System::Drawing::Size(1739, 604);
+			this->pnlSpriteNivel2->Size = System::Drawing::Size(1304, 491);
 			this->pnlSpriteNivel2->TabIndex = 0;
 			// 
 			// lblHP
@@ -86,10 +94,9 @@ namespace Ullyses {
 			this->lblHP->AutoSize = true;
 			this->lblHP->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHP->Location = System::Drawing::Point(1203, 25);
-			this->lblHP->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblHP->Location = System::Drawing::Point(902, 20);
 			this->lblHP->Name = L"lblHP";
-			this->lblHP->Size = System::Drawing::Size(208, 31);
+			this->lblHP->Size = System::Drawing::Size(160, 23);
 			this->lblHP->TabIndex = 0;
 			this->lblHP->Text = L"Puntos de vida: -";
 			// 
@@ -97,13 +104,23 @@ namespace Ullyses {
 			// 
 			this->timer1->Tick += gcnew System::EventHandler(this, &FrmNivel2::Timer1_tick);
 			// 
+			// lblDialogo
+			// 
+			this->lblDialogo->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->lblDialogo->AutoSize = true;
+			this->lblDialogo->Location = System::Drawing::Point(587, 214);
+			this->lblDialogo->Name = L"lblDialogo";
+			this->lblDialogo->Size = System::Drawing::Size(35, 13);
+			this->lblDialogo->TabIndex = 1;
+			this->lblDialogo->Text = L"label1";
+			// 
 			// FrmNivel2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1739, 604);
+			this->ClientSize = System::Drawing::Size(1304, 491);
 			this->Controls->Add(this->pnlSpriteNivel2);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmNivel2";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &FrmNivel2::FrmNivel2_Load);
@@ -121,20 +138,36 @@ namespace Ullyses {
 			return gcnew Bitmap(ruta);
 		};
 
-		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
-			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
-			logicaNivel2 = new Nivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
-			timer1->Enabled = true;
+		private: void InicializarDialogo() {
+			dialogo = "¡Bienvenido al Nivel 2! En este nivel, te enfrentarás a un grupo de policías que intentarán detenerte. Mantente alerta y utiliza tus habilidades para esquivarlos y llegar a la meta. ¡Buena suerte!";
+			indiceDialogo = 0;
+			timerDialogo->Interval = 40; // velocidad de escritura del diálogo
+			timerDialogo->Start();
+		};
+		
+		private: void timerDialogo_Tick(Object^ sender, EventArgs^ e) {
+			if (indiceDialogo < dialogo->Length) {
+				indiceDialogo++;
+				lblDialogo->Text = dialogo->Substring(0, indiceDialogo);
+			}
+			else {
+				timerDialogo->Stop();
+				InicializarJuego();          // salto a fase 2
+			}
+		};
 
+		private: void InicializarJuego() {
+			// Aquí puedes agregar la lógica para iniciar el juego, como habilitar controles, iniciar temporizadores, etc.
+			// Por ejemplo
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
 			policia = cargarImagen("Sprites\\Policia.png");
 			fondoNivel2 = cargarImagen("Sprites\\NivelDosFondo.png");
 
 			int altoPantalla = pnlSpriteNivel2->Height;
-			
+
 			//proporcion de diferencia (tamaño de ventana / tamaño de fondo)
-			double escalaFondo = (double)pnlSpriteNivel2->Width / (double)fondoNivel2->Width; 
-			
+			double escalaFondo = (double)pnlSpriteNivel2->Width / (double)fondoNivel2->Width;
+
 			//ajustado con la proporcion de las anchuras
 			alturaFondoNivel2 = (int)(fondoNivel2->Height * escalaFondo);
 
@@ -423,15 +456,30 @@ namespace Ullyses {
 				ReaccionPolicia(Izquierda, Derecha, Arriba, Abajo));
 
 
-			logicaNivel2->setMetaY(0);	
+			logicaNivel2->setMetaY(0);
 			logicaNivel2->setStephenPuntosVida(100);
 			logicaNivel2->actualizarCamara();
 
 			teclaPresionada = Ninguno;
+
+			timer1->Enabled = true; // Habilitar el temporizador del juego
+			lblDialogo->Visible = false; // Ocultar el diálogo
+		};
+
+
+		private: System::Void FrmNivel2_Load(System::Object^ sender, System::EventArgs^ e) {
+			if (pnlSpriteNivel2->Height <= 0 || pnlSpriteNivel2->Width <= 0) return;
+			logicaNivel2 = new Nivel2(pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
+			timer1->Enabled = true;
+			
+			// Inicializar el diálogo
+			InicializarDialogo();
 		};
 
 		private: System::Void Timer1_tick(System::Object^ sender, System::EventArgs^ e) {
 			if (logicaNivel2 == nullptr) return;
+
+			timerDialogo_Tick(sender, e);
 
 			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width / 2, alturaFondoNivel2);
 			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width / 2, alturaFondoNivel2);
