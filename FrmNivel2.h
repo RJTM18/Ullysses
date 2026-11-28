@@ -29,8 +29,10 @@ namespace Ullyses {
 		int alturaFondoNivel2 = 0;
 
 		Bitmap^ stephen;
+		Bitmap^ leopold;
 		Bitmap^ policia;
 		Bitmap^ fondoNivel2;
+		Bitmap^ fondoStats;
 		
 		Nivel2* logicaNivel2;
 
@@ -39,7 +41,7 @@ namespace Ullyses {
 		//dialogo
 		String^ dialogo;
 		int indiceDialogo;
-
+		bool AcasoMostrandoDialogo; //Acaso == pregunta cerrada
 
 		ref struct ConfiguracionPolicia {
 			int    velocidad;
@@ -62,6 +64,7 @@ namespace Ullyses {
 	private: System::Windows::Forms::Label^ lblHP;
 	private: System::Windows::Forms::Label^ lblDialogo;
 	private: System::Windows::Forms::Timer^ timerDialogo;
+	private: System::Windows::Forms::Label^ lblContinuar;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -73,6 +76,7 @@ namespace Ullyses {
 		void InitializeComponent(void) {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->pnlSpriteNivel2 = (gcnew System::Windows::Forms::Panel());
+			this->lblContinuar = (gcnew System::Windows::Forms::Label());
 			this->lblDialogo = (gcnew System::Windows::Forms::Label());
 			this->lblHP = (gcnew System::Windows::Forms::Label());
 			this->timerGame = (gcnew System::Windows::Forms::Timer(this->components));
@@ -83,6 +87,7 @@ namespace Ullyses {
 			// pnlSpriteNivel2
 			// 
 			this->pnlSpriteNivel2->BackColor = System::Drawing::SystemColors::Desktop;
+			this->pnlSpriteNivel2->Controls->Add(this->lblContinuar);
 			this->pnlSpriteNivel2->Controls->Add(this->lblDialogo);
 			this->pnlSpriteNivel2->Controls->Add(this->lblHP);
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -92,29 +97,44 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Size = System::Drawing::Size(1304, 491);
 			this->pnlSpriteNivel2->TabIndex = 0;
 			// 
+			// lblContinuar
+			// 
+			this->lblContinuar->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->lblContinuar->ForeColor = System::Drawing::SystemColors::ControlDark;
+			this->lblContinuar->Location = System::Drawing::Point(0, 468);
+			this->lblContinuar->Name = L"lblContinuar";
+			this->lblContinuar->Size = System::Drawing::Size(1304, 23);
+			this->lblContinuar->TabIndex = 2;
+			this->lblContinuar->Text = L"Presiona Enter para continuar";
+			this->lblContinuar->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->lblContinuar->Visible = false;
+			// 
 			// lblDialogo
 			// 
-			this->lblDialogo->AutoSize = true;
 			this->lblDialogo->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->lblDialogo->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblDialogo->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->lblDialogo->Location = System::Drawing::Point(0, 0);
+			this->lblDialogo->Location = System::Drawing::Point(0, 50);
 			this->lblDialogo->Name = L"lblDialogo";
-			this->lblDialogo->Size = System::Drawing::Size(0, 43);
+			this->lblDialogo->Size = System::Drawing::Size(1304, 441);
 			this->lblDialogo->TabIndex = 1;
 			this->lblDialogo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// lblHP
 			// 
-			this->lblHP->AutoSize = true;
-			this->lblHP->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblHP->Location = System::Drawing::Point(902, 20);
+			this->lblHP->Dock = System::Windows::Forms::DockStyle::Top;
+			this->lblHP->Font = (gcnew System::Drawing::Font(L"Monotype Corsiva", 30, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lblHP->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->lblHP->Location = System::Drawing::Point(0, 0);
 			this->lblHP->Name = L"lblHP";
-			this->lblHP->Size = System::Drawing::Size(160, 23);
+			this->lblHP->Size = System::Drawing::Size(1304, 50);
 			this->lblHP->TabIndex = 0;
 			this->lblHP->Text = L"Puntos de vida: -";
+			this->lblHP->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->lblHP->Visible = false;
 			// 
 			// timerGame
 			// 
@@ -137,7 +157,6 @@ namespace Ullyses {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmNivel2::FrmNivel2_keyUp);
 			this->pnlSpriteNivel2->ResumeLayout(false);
-			this->pnlSpriteNivel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -161,7 +180,7 @@ namespace Ullyses {
 			}
 			else {
 				timerDialogo->Stop();
-				InicializarJuego();          // salto a fase 2
+				lblContinuar->Visible = true;
 			}
 		};
 
@@ -176,9 +195,11 @@ namespace Ullyses {
 			Graphics^ canvas = pnlSpriteNivel2->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
 
+			lblHP->BackgroundImage = fondoStats;
+
 			logicaNivel2->dibujarFondo(buffer->Graphics, fondoNivel2);
 			logicaNivel2->aplicarCamara(buffer->Graphics);
-			logicaNivel2->dibujarEntidades(buffer->Graphics, stephen, policia);
+			logicaNivel2->dibujarEntidades(buffer->Graphics, stephen, leopold, policia);
 			logicaNivel2->graficarCuadros(buffer->Graphics);
 			logicaNivel2->quitarCamara(buffer->Graphics);
 			buffer->Render(canvas);
@@ -197,6 +218,15 @@ namespace Ullyses {
 		};
 
 		private: System::Void FrmNivel2_keyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			if (AcasoMostrandoDialogo) {
+				if (e->KeyCode == Keys::Enter) {
+					AcasoMostrandoDialogo = false;
+					teclaPresionada = Ninguno;
+					InicializarJuego();
+				}
+				return;
+			}
+			
 			if (e->KeyCode == Keys::Down || e->KeyCode == Keys::S)	teclaPresionada = Abajo;
 			if (e->KeyCode == Keys::Up || e->KeyCode == Keys::W)	teclaPresionada = Arriba;
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A)	teclaPresionada = Izquierda;

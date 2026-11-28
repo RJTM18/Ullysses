@@ -9,18 +9,32 @@ namespace Ullyses {
 	};
 	
 	void FrmNivel2::InicializarDialogo() {
-		dialogo = L"¡Bienvenido al Nivel 2! En este nivel, te enfrentarás a un grupo de policías que intentarán detenerte. Mantente alerta y utiliza tus habilidades para esquivarlos y llegar a la meta. ¡Buena suerte!";
+		dialogo = L"\u00A1Bienvenido al Nivel 2!\r\n\r\n"
+			L"En este nivel, te enfrentar\u00E1s a un grupo de polic\u00EDas "
+			L"que intentar\u00E1n detenerte.\r\n"
+			L"Mantente alerta y utiliza tus habilidades para esquivarlos "
+			L"y llegar a la meta.\r\n\r\n"
+			L"\u00A1Buena suerte!";
 		indiceDialogo = 0;
+		lblDialogo->Text = "";
+
+		AcasoMostrandoDialogo = true;
+		lblHP->Visible = false;
+		lblContinuar->Visible = false;
+
 		timerDialogo->Interval = 40; // velocidad de escritura del diálogo
 		timerDialogo->Start(); 
 	};
 
 	void FrmNivel2::InicializarJuego() {
-		// Aquí puedes agregar la lógica para iniciar el juego, como habilitar controles, iniciar temporizadores, etc.
-			// Por ejemplo
+		lblContinuar->Visible = false;
+		lblHP->Visible = true;
+
 		stephen = cargarImagen("Sprites\\StephenDedalus.png");
+		leopold = cargarImagen("Sprites\\Leopold.png");
 		policia = cargarImagen("Sprites\\Policia.png");
 		fondoNivel2 = cargarImagen("Sprites\\NivelDosFondo.png");
+		fondoStats = cargarImagen("Sprites\\foto-removebg-preview.png");
 
 		int altoPantalla = pnlSpriteNivel2->Height;
 
@@ -36,18 +50,30 @@ namespace Ullyses {
 
 		int altoStephen = (int)((stephen->Height / 4) * 0.75);
 		int altoPolicia = (int)((policia->Height / 4) * 0.75);
+		int altoLeopold = (int)((leopold->Height / 4) * 0.75);
 
 		int nuevaUbicacionY = alturaFondoNivel2 - altoPantalla;
 
 		logicaNivel2->crearStephen(
 			/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-			/* Posicion y: */			alturaFondoNivel2,
+			/* Posicion y: */			alturaFondoNivel2 - altoStephen,
 			/* Anchura de Imagen: */	stephen->Width,
 			/* Altura de Imagen: */		stephen->Height,
 			/* Nº Filas: */             4,
 			/* Nº Columnas: */			8,
 			/* Velocidad: */			40,
 			/* Escala: */				0.75
+		);
+
+		logicaNivel2->crearLeopold(
+			pnlSpriteNivel2->Width / 2,
+			alturaFondoNivel2 - altoLeopold,
+			leopold->Width,
+			leopold->Height,
+			/* Nº Filas: */             4,
+			/* Nº Columnas: */			8,
+			/* Velocidad: */			40,
+			/* Escala: */				1
 		);
 
 		//jugador DERECHA, IZQUIERDA, ARRIBA, ABAJO
