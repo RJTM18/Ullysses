@@ -66,6 +66,8 @@ namespace Ullyses {
 	private: System::Windows::Forms::Button^ btnNivel3;
 	private: System::Windows::Forms::Button^ btnSalir;
 	private: System::Windows::Forms::PictureBox^ picBorde;
+	private: System::Windows::Forms::Button^ btnNivel3Temporal;
+
 
 
 
@@ -88,6 +90,7 @@ namespace Ullyses {
 			this->btnNivel3 = (gcnew System::Windows::Forms::Button());
 			this->btnSalir = (gcnew System::Windows::Forms::Button());
 			this->picBorde = (gcnew System::Windows::Forms::PictureBox());
+			this->btnNivel3Temporal = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBorde))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -98,10 +101,10 @@ namespace Ullyses {
 			this->btnJugar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnJugar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnJugar->Location = System::Drawing::Point(754, 207);
-			this->btnJugar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnJugar->Location = System::Drawing::Point(566, 168);
+			this->btnJugar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnJugar->Name = L"btnJugar";
-			this->btnJugar->Size = System::Drawing::Size(525, 204);
+			this->btnJugar->Size = System::Drawing::Size(394, 166);
 			this->btnJugar->TabIndex = 0;
 			this->btnJugar->Text = L"Jugar";
 			this->btnJugar->UseVisualStyleBackColor = false;
@@ -114,10 +117,10 @@ namespace Ullyses {
 			this->btnInstrucciones->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnInstrucciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnInstrucciones->Location = System::Drawing::Point(754, 427);
-			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnInstrucciones->Location = System::Drawing::Point(566, 347);
+			this->btnInstrucciones->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnInstrucciones->Name = L"btnInstrucciones";
-			this->btnInstrucciones->Size = System::Drawing::Size(525, 204);
+			this->btnInstrucciones->Size = System::Drawing::Size(394, 166);
 			this->btnInstrucciones->TabIndex = 1;
 			this->btnInstrucciones->Text = L"Instrucciones";
 			this->btnInstrucciones->UseVisualStyleBackColor = false;
@@ -130,10 +133,10 @@ namespace Ullyses {
 			this->btnCreditos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnCreditos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCreditos->Location = System::Drawing::Point(754, 652);
-			this->btnCreditos->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnCreditos->Location = System::Drawing::Point(566, 530);
+			this->btnCreditos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnCreditos->Name = L"btnCreditos";
-			this->btnCreditos->Size = System::Drawing::Size(525, 204);
+			this->btnCreditos->Size = System::Drawing::Size(394, 166);
 			this->btnCreditos->TabIndex = 2;
 			this->btnCreditos->Text = L"Creditos";
 			this->btnCreditos->UseVisualStyleBackColor = false;
@@ -146,18 +149,19 @@ namespace Ullyses {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Bauhaus 93", 26.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Black;
-			this->label1->Location = System::Drawing::Point(946, 34);
+			this->label1->Location = System::Drawing::Point(710, 28);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(130, 50);
+			this->label1->Size = System::Drawing::Size(103, 39);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Ulises";
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(342, 53);
-			this->btnNivel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnNivel2->Location = System::Drawing::Point(256, 43);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(325, 71);
+			this->btnNivel2->Size = System::Drawing::Size(244, 58);
 			this->btnNivel2->TabIndex = 5;
 			this->btnNivel2->Text = L"temporal NIvel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -181,10 +185,10 @@ namespace Ullyses {
 			this->btnSalir->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnSalir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSalir->Location = System::Drawing::Point(754, 880);
-			this->btnSalir->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnSalir->Location = System::Drawing::Point(566, 715);
+			this->btnSalir->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnSalir->Name = L"btnSalir";
-			this->btnSalir->Size = System::Drawing::Size(525, 204);
+			this->btnSalir->Size = System::Drawing::Size(394, 166);
 			this->btnSalir->TabIndex = 2;
 			this->btnSalir->Text = L"Salir";
 			this->btnSalir->UseVisualStyleBackColor = false;
@@ -194,19 +198,32 @@ namespace Ullyses {
 			// 
 			this->picBorde->BackColor = System::Drawing::Color::Transparent;
 			this->picBorde->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBorde.Image")));
-			this->picBorde->Location = System::Drawing::Point(570, -83);
+			this->picBorde->Location = System::Drawing::Point(428, -67);
+			this->picBorde->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->picBorde->Name = L"picBorde";
-			this->picBorde->Size = System::Drawing::Size(813, 1560);
+			this->picBorde->Size = System::Drawing::Size(610, 1268);
 			this->picBorde->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picBorde->TabIndex = 6;
 			this->picBorde->TabStop = false;
 			// 
+			// btnNivel3Temporal
+			// 
+			this->btnNivel3Temporal->Location = System::Drawing::Point(65, 309);
+			this->btnNivel3Temporal->Margin = System::Windows::Forms::Padding(2);
+			this->btnNivel3Temporal->Name = L"btnNivel3Temporal";
+			this->btnNivel3Temporal->Size = System::Drawing::Size(244, 58);
+			this->btnNivel3Temporal->TabIndex = 7;
+			this->btnNivel3Temporal->Text = L"temporal NIvel3";
+			this->btnNivel3Temporal->UseVisualStyleBackColor = true;
+			this->btnNivel3Temporal->Click += gcnew System::EventHandler(this, &FrmMenuInicio::btnNivel3Temporal_Click);
+			// 
 			// FrmMenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1911, 1175);
+			this->ClientSize = System::Drawing::Size(1433, 862);
+			this->Controls->Add(this->btnNivel3Temporal);
 			this->Controls->Add(this->btnSalir);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->label1);
@@ -214,7 +231,7 @@ namespace Ullyses {
 			this->Controls->Add(this->btnInstrucciones);
 			this->Controls->Add(this->btnJugar);
 			this->Controls->Add(this->picBorde);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"FrmMenuInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmMenuInicio";
@@ -287,13 +304,15 @@ private: System::Void btnCreditos_Click(System::Object^ sender, System::EventArg
 	
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	Ullyses::FrmNivel3^ nivel3 = gcnew Ullyses::FrmNivel3();
-	this->Hide();
-	nivel3->ShowDialog();
-	this->Show();
 }
 private: System::Void btnSalir_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void btnNivel3Temporal_Click(System::Object^ sender, System::EventArgs^ e) {
+	FrmNivel3^ nivel3 = gcnew FrmNivel3();
+	this->Hide();
+	nivel3->ShowDialog();
+	this->Show();
 }
 };
 }
