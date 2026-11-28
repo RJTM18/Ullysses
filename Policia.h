@@ -51,7 +51,7 @@ public:
 		//limites
 		if (x < WidthScreen - mitadAnchuraCalle) x = WidthScreen - mitadAnchuraCalle;
 		if (y < 0) y = 0;
-		if (x > (WidthScreen + mitadAnchuraCalle )- anchoFrameModificado) x = (WidthScreen + mitadAnchuraCalle) - anchoFrameModificado;
+		if (x > (WidthScreen + mitadAnchuraCalle ) - anchoFrameModificado) x = (WidthScreen + mitadAnchuraCalle) - anchoFrameModificado;
 		if (y > HeightScreen - altoFrameModificado) y = HeightScreen - altoFrameModificado;
 
 		animar(direccionPolicia);

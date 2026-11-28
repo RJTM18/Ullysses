@@ -11,6 +11,52 @@ public:
 		for (int i = 0; i < (int)escuadronPolicias.size(); i++) delete escuadronPolicias[i];
 	};
 
+	void setAltoNivel(int alto) {
+		alturaNivel = (alto < altoPantallaSprite) ? altoPantallaSprite : alto;
+		camaraY = alturaNivel - altoPantallaSprite; //parte final
+	};
+
+	int getAltoNivel() { return alturaNivel; }
+	int getAltoVista() { return altoPantallaSprite; }
+	int getCamaraY() { return camaraY; }
+
+	void actualizarCamara() {
+		if (stephen == nullptr) return;
+
+		Rectangle r = stephen->getRectangle();
+		int centroY = r.Y + r.Height / 2;                  // centro de Stephen en MUNDO
+		int objetivo = centroY - altoPantallaSprite / 2;   // camaraY que lo deja centrado
+
+		int camaraMax = alturaNivel - altoPantallaSprite;    // límite inferior del mapa
+		if (objetivo < 0) objetivo = 0;                    // límite superior del mapa
+		if (objetivo > camaraMax) objetivo = camaraMax;
+		camaraY = objetivo;
+	};
+
+	void dibujarFondo(Graphics^ g, Bitmap^ fondo) {
+		// factor imagen -> mundo en vertical (si alturaNivel = alto * ancho_vista/ancho_img, es el mismo que en horizontal)
+		float escalaY = (float)alturaNivel / (float)fondo->Height;
+
+		float srcAlto = (float)altoPantallaSprite / escalaY;   // alto visible, en píxeles de la imagen
+		float srcY = (float)camaraY / escalaY;                 // desde qué fila de la imagen empieza la vista
+		if (srcY + srcAlto > (float)fondo->Height) srcY = (float)fondo->Height - srcAlto; // evita pasarse por redondeo
+		if (srcY < 0) srcY = 0;
+
+		Rectangle destino(0, 0, anchoPantallaSprite, altoPantallaSprite);
+		g->DrawImage(fondo, destino, 0.0f, srcY, (float)fondo->Width, srcAlto, GraphicsUnit::Pixel);
+	};
+
+	// Desde aquí todo lo que se dibuje con 'g' en coordenadas de MUNDO sale en su sitio de pantalla.
+	// Funciona igual para dibujar() y dibujarRectangulo(), porque getRectangle() sigue en mundo.
+	void aplicarCamara(Graphics^ g) { g->TranslateTransform(0.0f, (float)(-camaraY)); };
+	void quitarCamara(Graphics^ g) { g->ResetTransform(); };
+
+	// ---------------------------- META (parte superior) ----------------------------
+	// Aún NO se usa: la llamada está comentada en FrmNivel2::Timer1_tick.
+	void setMetaY(int y) { metaY = y; }
+	bool stephenLlegoALaMeta() { return stephen != nullptr && stephen->getY() <= metaY; }
+	// ------------------------------------------------------------------------------
+
 	void crearStephen(int x, int y, int widthSpriteSheet, int heightSpriteSheet, int rows, int columns, int speed, double scale) {
 		stephen = new Stephen(x, y, widthSpriteSheet, heightSpriteSheet, rows, columns, speed, scale);
 	};
@@ -77,4 +123,8 @@ private:
 
 	//Un vector que contenga las direcciones
 	std::vector<Direccion> Direcciones;
+
+	int alturaNivel;  //alto TOTAL del nivel en coordenadas de mundo (>= altoPantallaSprite)
+	int camaraY;    //y del mundo que coincide con el borde superior de la vista
+	int metaY;      //y del mundo a partir de la cual se considera "meta" (arriba)
 };

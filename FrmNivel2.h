@@ -16,16 +16,17 @@ namespace Ullyses {
 			InitializeComponent();
 			logicaNivel2 = nullptr;
 			teclaPresionada = Ninguno;
-
-		}
+		};
 
 	protected:
 		~FrmNivel2() {
 			if (components) { delete components; }
 			if (logicaNivel2 != nullptr) delete logicaNivel2;
-		}
+		};
 
 	private:
+		int alturaFondoNivel2 = 0;
+
 		Bitmap^ stephen;
 		Bitmap^ policia;
 		Bitmap^ fondoNivel2;
@@ -47,13 +48,8 @@ namespace Ullyses {
 				: velocidad(vel), escala(esc),
 				dxJugadorDerecha(dxDer), dxJugadorIzquierda(dxIzq),
 				dyJugadorArriba(dyArr), dyJugadorAbajo(dyAba) {
-			}
+			};
 		};
-
-	private:
-		
-	
-
 
 	private: System::Windows::Forms::Panel^ pnlSpriteNivel2;
 	private: System::Windows::Forms::Timer^ timer1;
@@ -132,11 +128,28 @@ namespace Ullyses {
 
 			stephen = cargarImagen("Sprites\\StephenDedalus.png");
 			policia = cargarImagen("Sprites\\Policia.png");
-			fondoNivel2 = cargarImagen("Sprites\\NivelDos.png");
+			fondoNivel2 = cargarImagen("Sprites\\NivelDosFondo.png");
+
+			int altoPantalla = pnlSpriteNivel2->Height;
+			
+			//proporcion de diferencia (tamaño de ventana / tamaño de fondo)
+			double escalaFondo = (double)pnlSpriteNivel2->Width / (double)fondoNivel2->Width; 
+			
+			//ajustado con la proporcion de las anchuras
+			alturaFondoNivel2 = (int)(fondoNivel2->Height * escalaFondo);
+
+			if (alturaFondoNivel2 < altoPantalla) alturaFondoNivel2 = altoPantalla; //un reajuste en caso el fondo sea tamaño menor
+
+			logicaNivel2->setAltoNivel(alturaFondoNivel2); //desde abajo
+
+			int altoStephen = (int)((stephen->Height / 4) * 0.75);
+			int altoPolicia = (int)((policia->Height / 4) * 0.75);
+
+			int nuevaUbicacionY = alturaFondoNivel2 - altoPantalla;
 
 			logicaNivel2->crearStephen(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			pnlSpriteNivel2->Height - 10,
+				/* Posicion y: */			alturaFondoNivel2,
 				/* Anchura de Imagen: */	stephen->Width,
 				/* Altura de Imagen: */		stephen->Height,
 				/* Nº Filas: */             4,
@@ -149,7 +162,7 @@ namespace Ullyses {
 			//Policía 1
 			logicaNivel2->crearNuevoPolicia(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			10,
+				/* Posicion y: */			10 + nuevaUbicacionY,
 				/* Anchura de Imagen: */	policia->Width,
 				/* Altura de Imagen: */		policia->Height,
 				/* Nº Filas: */             4,
@@ -162,30 +175,257 @@ namespace Ullyses {
 			//Policía 2
 			logicaNivel2->crearNuevoPolicia(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
-				/* Posicion y: */			pnlSpriteNivel2->Height / 2,
+				/* Posicion y: */			pnlSpriteNivel2->Height / 2 + nuevaUbicacionY,
 				/* Anchura de Imagen: */	policia->Width,
 				/* Altura de Imagen: */		policia->Height,
 				/* Nº Filas: */             4,
 				/* Nº Columnas: */			4,
-				/* Velocidad: */			50,
+				/* Velocidad: */			8,
 				/* Escala: */				0.75,
 				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Abajo, Arriba)
 			);
 
-				//Policía número 3
+			//Policía número 3
 			logicaNivel2->crearNuevoPolicia(
 				/* Posicion x: */			pnlSpriteNivel2->Width / 2 + 120,
-				/* Posicion y: */			pnlSpriteNivel2->Height / 0.75,
+				/* Posicion y: */			pnlSpriteNivel2->Height,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			23,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
+			);
+
+			//Policía número 4
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width - 200,
+				/* Posicion y: */			alturaFondoNivel2 / 2,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			30,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Abajo, Arriba, Izquierda, Derecha)
+			);
+
+			//Policía número 3
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 120,
+				/* Posicion y: */			alturaFondoNivel2 * 0.1,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			54,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Abajo, Derecha, Arriba, Izquierda)
+			);
+
+			//Policía número 3
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 + 30,
+				/* Posicion y: */			pnlSpriteNivel2->Height,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			99,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba)
+			);
+
+
+			//jugador DERECHA, IZQUIERDA, ARRIBA, ABAJO
+			//Policía 1
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			10 + nuevaUbicacionY,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			75,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba)
+			);
+
+			//Policía 2
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 - 80,
+				/* Posicion y: */			pnlSpriteNivel2->Height / 2 + nuevaUbicacionY,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			10,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Abajo, Arriba)
+			);
+
+			//Policía número 3
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2 + 120,
+				/* Posicion y: */			pnlSpriteNivel2->Height / 0.75 + nuevaUbicacionY,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			29,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
+			);
+
+			//Policía número 4
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width / 2,
+				/* Posicion y: */			alturaFondoNivel2 / 2,
 				/* Anchura de Imagen: */	policia->Width,
 				/* Altura de Imagen: */		policia->Height,
 				/* Nº Filas: */             4,
 				/* Nº Columnas: */			4,
 				/* Velocidad: */			50,
 				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Abajo, Arriba, Izquierda, Derecha)
+			);
+
+			// Policía número 1
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width * 0.25,
+				/* Posicion y: */			alturaFondoNivel2 * 0.25,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			77,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Abajo, Derecha, Arriba, Izquierda)
+			);
+
+			// Policía número 2
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width * 0.75,
+				/* Posicion y: */			alturaFondoNivel2 * 0.25,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			66,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba)
+			);
+
+			// Policía número 3
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width * 0.75,
+				/* Posicion y: */			alturaFondoNivel2 * 0.75,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			49,
+				/* Escala: */				0.75,
 				/* Direcciones: */			ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo)
 			);
-		
+
+			// Policía número 4
+			logicaNivel2->crearNuevoPolicia(
+				/* Posicion x: */			pnlSpriteNivel2->Width * 0.25,
+				/* Posicion y: */			alturaFondoNivel2 * 0.75,
+				/* Anchura de Imagen: */	policia->Width,
+				/* Altura de Imagen: */		policia->Height,
+				/* Nº Filas: */             4,
+				/* Nº Columnas: */			4,
+				/* Velocidad: */			57,
+				/* Escala: */				0.75,
+				/* Direcciones: */			ReaccionPolicia(Abajo, Arriba, Izquierda, Derecha)
+			);
+
+
+			// Distribución equilibrada: 2 policías en cada zona vertical.
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 - 80, alturaFondoNivel2 * 0.12,
+				policia->Width, policia->Height, 4, 4, 50, 0.75,
+				ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 - 80, alturaFondoNivel2 * 0.45,
+				policia->Width, policia->Height, 4, 4, 44, 0.75,
+				ReaccionPolicia(Derecha, Izquierda, Abajo, Arriba));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 + 120, alturaFondoNivel2 * 0.75,
+				policia->Width, policia->Height, 4, 4, 29, 0.75,
+				ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width - 200, alturaFondoNivel2 * 0.18,
+				policia->Width, policia->Height, 4, 4, 12, 0.75,
+				ReaccionPolicia(Abajo, Arriba, Abajo, Derecha));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 - 120, alturaFondoNivel2 * 0.50,
+				policia->Width, policia->Height, 4, 4, 42, 0.75,
+				ReaccionPolicia(Abajo, Derecha, Arriba, Izquierda));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 + 30, alturaFondoNivel2 * 0.82,
+				policia->Width, policia->Height, 4, 4, 100, 0.75,
+				ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba));
+
+
+			// Distribución equilibrada: 3 policías en cada zona vertical.
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width * 0.25, alturaFondoNivel2 * 0.12,
+				policia->Width, policia->Height, 4, 4, 80, 0.75,
+				ReaccionPolicia(Abajo, Derecha, Arriba, Izquierda));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width * 0.75, alturaFondoNivel2 * 0.12,
+				policia->Width, policia->Height, 4, 4, 82, 0.75,
+				ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 - 80, alturaFondoNivel2 * 0.18,
+				policia->Width, policia->Height, 4, 4, 12, 0.75,
+				ReaccionPolicia(Derecha, Izquierda, Abajo, Arriba));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 - 80, alturaFondoNivel2 * 0.45,
+				policia->Width, policia->Height, 4, 4, 87, 0.75,
+				ReaccionPolicia(Izquierda, Derecha, Abajo, Arriba));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2, alturaFondoNivel2 * 0.50,
+				policia->Width, policia->Height, 4, 4, 13, 0.75,
+				ReaccionPolicia(Abajo, Arriba, Abajo, Derecha));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 + 120, alturaFondoNivel2 * 0.50,
+				policia->Width, policia->Height, 4, 4, 92, 0.75,
+				ReaccionPolicia(Abajo, Derecha, Arriba, Izquierda));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width * 0.75, alturaFondoNivel2 * 0.75,
+				policia->Width, policia->Height, 4, 4, 95, 0.75,
+				ReaccionPolicia(Derecha, Izquierda, Arriba, Abajo));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width * 0.25, alturaFondoNivel2 * 0.75,
+				policia->Width, policia->Height, 4, 4, 99, 0.75,
+				ReaccionPolicia(Abajo, Arriba, Abajo, Derecha));
+
+			logicaNivel2->crearNuevoPolicia(
+				pnlSpriteNivel2->Width / 2 + 30, alturaFondoNivel2 * 0.82,
+				policia->Width, policia->Height, 4, 4, 21, 0.75,
+				ReaccionPolicia(Izquierda, Derecha, Arriba, Abajo));
+
+
+			logicaNivel2->setMetaY(0);	
 			logicaNivel2->setStephenPuntosVida(100);
+			logicaNivel2->actualizarCamara();
 
 			teclaPresionada = Ninguno;
 		};
@@ -193,15 +433,19 @@ namespace Ullyses {
 		private: System::Void Timer1_tick(System::Object^ sender, System::EventArgs^ e) {
 			if (logicaNivel2 == nullptr) return;
 
-			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width / 2, pnlSpriteNivel2->Height);
-			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width / 2, pnlSpriteNivel2->Height);
+			logicaNivel2->moverStephen(teclaPresionada, pnlSpriteNivel2->Width / 2, alturaFondoNivel2);
+			logicaNivel2->moverPolicias(teclaPresionada, pnlSpriteNivel2->Width / 2, alturaFondoNivel2);
+
+			logicaNivel2->actualizarCamara();
 
 			Graphics^ canvas = pnlSpriteNivel2->CreateGraphics();
 			BufferedGraphics^ buffer = BufferedGraphicsManager::Current->Allocate(canvas, pnlSpriteNivel2->ClientRectangle);
-			buffer->Graphics->DrawImage(fondoNivel2, 0, 0, pnlSpriteNivel2->Width, pnlSpriteNivel2->Height);
 
+			logicaNivel2->dibujarFondo(buffer->Graphics, fondoNivel2);
+			logicaNivel2->aplicarCamara(buffer->Graphics);
 			logicaNivel2->dibujarEntidades(buffer->Graphics, stephen, policia);
 			logicaNivel2->graficarCuadros(buffer->Graphics);
+			logicaNivel2->quitarCamara(buffer->Graphics);
 			buffer->Render(canvas);
 
 			delete buffer;
@@ -210,6 +454,11 @@ namespace Ullyses {
 			//verifica en cada tick si jugador impacto con alguna entidad
 			logicaNivel2->impactoJugadorConEntidad();
 			lblHP->Text = "Puntos de vida: " + logicaNivel2->getStephenPuntosVida().ToString();
+
+			if (logicaNivel2->stephenLlegoALaMeta()) {
+				//     timer1->Enabled = false;
+				//     // TODO: mensaje de victoria / abrir FrmNivel3 / cerrar este formulario
+			}
 		};
 
 		private: System::Void FrmNivel2_keyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
