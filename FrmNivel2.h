@@ -80,10 +80,11 @@ namespace Ullyses {
 			this->pnlSpriteNivel2->Controls->Add(this->lblHP);
 			this->pnlSpriteNivel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlSpriteNivel2->Location = System::Drawing::Point(0, 0);
-			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pnlSpriteNivel2->Margin = System::Windows::Forms::Padding(4);
 			this->pnlSpriteNivel2->Name = L"pnlSpriteNivel2";
 			this->pnlSpriteNivel2->Size = System::Drawing::Size(1739, 604);
 			this->pnlSpriteNivel2->TabIndex = 0;
+			this->pnlSpriteNivel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmNivel2::pnlSpriteNivel2_Paint);
 			// 
 			// lblHP
 			// 
@@ -225,5 +226,7 @@ namespace Ullyses {
 			if (e->KeyCode == Keys::Left || e->KeyCode == Keys::A) { if (teclaPresionada == Izquierda) teclaPresionada = Ninguno; }
 			if (e->KeyCode == Keys::Right || e->KeyCode == Keys::D) { if (teclaPresionada == Derecha)	teclaPresionada = Ninguno; }
 		};
-	};
+	private: System::Void pnlSpriteNivel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+};
 };

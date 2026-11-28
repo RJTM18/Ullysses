@@ -119,7 +119,7 @@ namespace Ullyses {
 			this->lblMolly->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblMolly->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->lblMolly->Location = System::Drawing::Point(724, 560);
+			this->lblMolly->Location = System::Drawing::Point(639, 564);
 			this->lblMolly->Name = L"lblMolly";
 			this->lblMolly->Size = System::Drawing::Size(98, 32);
 			this->lblMolly->TabIndex = 2;
@@ -220,9 +220,9 @@ private: System::Void FrmConversacion2_Load(System::Object^ sender, System::Even
 	this->BackgroundImageLayout = ImageLayout::Stretch;
 	
 	
-	dialogo = L"Bloom, te noto bastante pensativo.\n"
-		L"S\u00E9 que la p\u00E9rdida de Rudy fue dif\u00EDcil para ti.\n"
-		L"Dime, \u00BFc\u00F3mo has logrado seguir adelante?";
+	dialogo = L"Leopold, hace tiempo que algo cambio entre nosotros.\n"
+		L"Desde que perdimos a Rudy, ya nada fue igual.\n"
+		L"Dime, ¿aun recuerdas lo que sentiamos antes?";
 
 	indiceDialogo = 0;
 	respuesta = 0;
@@ -231,11 +231,11 @@ private: System::Void FrmConversacion2_Load(System::Object^ sender, System::Even
 	lblMolly->Visible = true;
 	lblMolly->TextAlign = ContentAlignment::MiddleCenter;
 
-	btnRespuesta1->Text = L"No quiero hablar de mi pasado.";
+	btnRespuesta1->Text = L"Quiza nunca logre encajar.";
 
-	btnRespuesta2->Text = L"Todav\u00EDa me duele recordarlo.";
+	btnRespuesta2->Text = L"No quiero discutir contigo.";
 
-	btnRespuesta3->Text = L"Su recuerdo me da fuerzas para continuar.";
+	btnRespuesta3->Text = L"No necesito tu aprobacion para pertenecer.";
 
 	btnRespuesta1->Visible = false;
 	btnRespuesta2->Visible = false;

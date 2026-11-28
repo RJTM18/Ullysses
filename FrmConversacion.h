@@ -106,9 +106,9 @@ namespace  Ullyses {
 			this->lblPersonaje->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->lblPersonaje->Location = System::Drawing::Point(868, 530);
 			this->lblPersonaje->Name = L"lblPersonaje";
-			this->lblPersonaje->Size = System::Drawing::Size(209, 36);
+			this->lblPersonaje->Size = System::Drawing::Size(201, 36);
 			this->lblPersonaje->TabIndex = 1;
-			this->lblPersonaje->Text = L"Desconocido:";
+			this->lblPersonaje->Text = L"El ciudadano";
 			// 
 			// lblDialogo
 			// 
@@ -225,18 +225,20 @@ namespace  Ullyses {
 		this->BackgroundImage = Fondo2;
 		this->BackgroundImageLayout = ImageLayout::Stretch;
 
-		dialogo = L"Bloom, \u00BFpor qu\u00E9 insistes en caminar por estas calles?\n"
-			L"Sabes perfectamente que muchos aqu\u00ED\n"
-			L"no te consideran uno de los nuestros.";
+		dialogo = L"Bloom, dices que Irlanda es tu hogar.\n"
+			L"Pero muchos aqui no te consideran uno de nosotros.\n"
+			L"¿Por que insistes en defender tu lugar?";
 
 		indiceDialogo = 0;
 		respuesta = 0;
 
 		lblDialogo->TextAlign = ContentAlignment::MiddleCenter;
 
-		btnRespuesta1->Text = L"Tengo tanto derecho como t\u00FA.";
-		btnRespuesta2->Text = L"Prefiero evitar problemas.";
-		btnRespuesta3->Text = L"\u00BFPor qu\u00E9 me juzgas sin conocerme?";
+		btnRespuesta1->Text = L"Quiza nunca logre encajar.";
+
+		btnRespuesta2->Text = L"No quiero discutir contigo.";
+
+		btnRespuesta3->Text = L"No necesito tu aprobacion para pertenecer.";
 
 		btnRespuesta1->Visible = false;
 		btnRespuesta2->Visible = false;
